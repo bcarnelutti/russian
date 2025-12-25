@@ -6,8 +6,12 @@ This is a React application built with TypeScript and Vite, designed to help stu
 
 *   **Деепричастие (Gerundio):** Imperfective and Perfective aspects.
 *   **Причастие (Participio):** Present and Past tenses, including Active and Passive voices.
+*   **Cases (Падежи):** Usage and endings for nouns and adjectives.
+*   **Verbs of Motion (Глаголы движения):** Prefixed and unprefixed forms with prepositions.
+*   **Pronouns (Местоимения):** Personal, possessive, and demonstrative pronoun declensions.
+*   **Learn/Teach (Учить/Учиться):** Differences in usage.
 
-The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles to effectively visualize the branching logic of Russian grammar.
+The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics.
 
 ## Architecture & Tech Stack
 
@@ -21,10 +25,14 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 
 ## Key Files
 
-*   `src/App.tsx`: Contains the main application logic, including the `GerundChart` and `ParticipleChart` components, the `ChartProvider`, and the `ControlPanel`. This file currently holds all the chart logic and SVG drawing code.
+*   `src/App.tsx`: Main entry point for the UI components.
+*   `src/CasesChart.tsx`: Logic and layout for Russian case endings.
+*   `src/MotionVerbsChart.tsx` & `src/MotionVerbsPrepositionsChart.tsx`: Visualizations for movement verbs.
+*   `src/PronounChart.tsx`: Declension tables for pronouns.
+*   `src/LearnTeachChart.tsx`: Guidance on using "to learn" and "to teach" verbs.
 *   `src/index.css`: Tailwind CSS imports and global styles.
 *   `src/main.tsx`: Application entry point.
-*   `vite.config.ts`: Vite configuration, including the Tailwind CSS plugin.
+*   `vite.config.ts`: Vite configuration.
 
 ## Development
 
@@ -32,6 +40,7 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 
 *   Node.js (v18+ recommended)
 *   npm
+*   gh CLI (for repository management)
 
 ### Commands
 
@@ -44,22 +53,21 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
     ```bash
     npm run dev
     ```
-    The server typically starts at `http://localhost:5173`.
 
 *   **Build for Production:**
     ```bash
     npm run build
     ```
 
-*   **Preview Production Build:**
-    ```bash
-    npm run preview
-    ```
-
 *   **Linting:**
     ```bash
     npm run lint
     ```
+
+## Source Control
+
+*   **Repository:** `https://github.com/bacarnelutti/russian`
+*   **Workflow:** Always push to GitHub after every major update of the code.
 
 ## Coding Conventions
 
