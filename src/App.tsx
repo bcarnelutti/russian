@@ -9,8 +9,8 @@ import LearnTeachChart from './LearnTeachChart';
 // --- Context Definition ---
 interface ChartContextType {
   // Navigation State
-  view: 'verbs' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach';
-  setView: React.Dispatch<React.SetStateAction<'verbs' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach'>>;
+  view: 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'gerund' | 'participle';
+  setView: React.Dispatch<React.SetStateAction<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'gerund' | 'participle'>>;
 
   // Gerund State
   imperfectiveStep: number;
@@ -41,7 +41,7 @@ interface ChartContextType {
 const ChartContext = createContext<ChartContextType | null>(null);
 
 const ChartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [view, setView] = useState<'verbs' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach'>('verbs');
+  const [view, setView] = useState<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'gerund' | 'participle'>('verbs_menu');
   const [imperfectiveStep, setImperfectiveStep] = useState(0);
   const [perfectiveStep, setPerfectiveStep] = useState(0);
   const [presentStep, setPresentStep] = useState(0);
@@ -102,19 +102,10 @@ const useChartContext = () => {
 
 // --- Components ---
 
-const Arrow = ({ x1, y1, x2, y2, delay = 0 }: { x1: string | number, y1: string | number, x2: string | number, y2: string | number, delay?: number }) => (
-  <motion.line
-    x1={x1} y1={y1} x2={x2} y2={y2}
-    stroke="#4B5563"
-    strokeWidth="2"
-    initial={{ pathLength: 0 }}
-    animate={{ pathLength: 1 }}
-    transition={{ duration: 0.5, delay }}
-  />
-);
-
 const Navigation = () => {
   const { view, setView } = useChartContext();
+
+  const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'gerund', 'participle'].includes(view);
 
   return (
     <div className="flex justify-center mb-12 space-x-6 flex-wrap gap-y-4">
@@ -139,45 +130,45 @@ const Navigation = () => {
         Pronomi
       </button>
       <button
-        onClick={() => setView('motion_verbs')}
+        onClick={() => setView('verbs_menu')}
         className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${
-          view === 'motion_verbs'
+          isVerbsActive
             ? 'bg-indigo-600 text-white shadow-lg scale-105'
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        Verbi di Moto
+        Verbi
       </button>
-      <button
-        onClick={() => setView('motion_verbs_prepositions')}
-        className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${
-          view === 'motion_verbs_prepositions'
-            ? 'bg-indigo-600 text-white shadow-lg scale-105'
-            : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
-        }`}
-      >
-        Verbi di Moto + Prefissi
-      </button>
-      <button
-        onClick={() => setView('learn_teach')}
-        className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${
-          view === 'learn_teach'
-            ? 'bg-indigo-600 text-white shadow-lg scale-105'
-            : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
-        }`}
-      >
-        Imparare e Insegnare
-      </button>
-      <button
-        onClick={() => setView('verbs')}
-        className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${
-          view === 'verbs'
-            ? 'bg-indigo-600 text-white shadow-lg scale-105'
-            : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
-        }`}
-      >
-        Verbi (Деепричастие / Причастие)
-      </button>
+    </div>
+  );
+};
+
+const VerbsMenu = () => {
+  const { setView } = useChartContext();
+
+  const menuItems = [
+    { id: 'motion_verbs', label: 'Verbi di Moto' },
+    { id: 'motion_verbs_prepositions', label: 'Verbi di Moto + Prefissi' },
+    { id: 'learn_teach', label: 'Imparare e Insegnare' },
+    { id: 'gerund', label: 'Gerundio (Деепричастие)' },
+    { id: 'participle', label: 'Participio (Причастие)' },
+  ] as const;
+
+  return (
+    <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+      {menuItems.map((item) => (
+        <motion.button
+          key={item.id}
+          onClick={() => setView(item.id)}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="bg-white p-8 rounded-2xl shadow-md border border-slate-100 hover:shadow-xl transition-all text-left group"
+        >
+          <h3 className="text-xl font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">
+            {item.label}
+          </h3>
+        </motion.button>
+      ))}
     </div>
   );
 };
@@ -267,7 +258,6 @@ const ParticipleBlock = ({
   title, 
   subtitle, 
   colorTheme, 
-  steps, 
   currentStep, 
   advanceStep,
   children
@@ -275,7 +265,7 @@ const ParticipleBlock = ({
   title: string, 
   subtitle: string, 
   colorTheme: 'blue' | 'red', 
-  steps: number,
+  steps?: number,
   currentStep: number,
   advanceStep: (e: React.MouseEvent) => void,
   children: React.ReactNode
@@ -283,7 +273,6 @@ const ParticipleBlock = ({
   const isBlue = colorTheme === 'blue';
   const bgColor = isBlue ? 'bg-blue-50' : 'bg-red-50';
   const borderColor = isBlue ? 'border-blue-200' : 'border-red-200';
-  const textColor = isBlue ? 'text-blue-900' : 'text-red-900';
   const buttonBg = isBlue 
     ? (currentStep > 0 ? 'bg-blue-600 text-white' : 'bg-white text-blue-600 border-blue-200')
     : (currentStep > 0 ? 'bg-[#D52B1E] text-white' : 'bg-white text-[#D52B1E] border-red-200');
@@ -495,7 +484,7 @@ const ParticipleChart = () => {
 const ControlPanel = () => {
   const { expandAll, collapseAll, isAllExpanded, view } = useChartContext();
   
-  if (view === 'pronouns' || view === 'motion_verbs' || view === 'motion_verbs_prepositions' || view === 'cases' || view === 'learn_teach') return null;
+  if (!['gerund', 'participle'].includes(view)) return null;
 
   return (
     <div className="fixed top-8 right-8 z-[100]">
@@ -545,13 +534,16 @@ function App() {
 const MainContent = () => {
   const { view } = useChartContext();
 
-  if (view === 'verbs') {
-    return (
-      <>
-        <GerundChart />
-        <ParticipleChart />
-      </>
-    );
+  if (view === 'verbs_menu') {
+    return <VerbsMenu />;
+  }
+
+  if (view === 'gerund') {
+    return <GerundChart />;
+  }
+
+  if (view === 'participle') {
+    return <ParticipleChart />;
   }
 
   if (view === 'pronouns') {
