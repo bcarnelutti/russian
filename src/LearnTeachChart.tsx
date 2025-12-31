@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, GraduationCap, School, Brain, PenTool, Users, ChevronDown } from 'lucide-react';
+import { useLanguage } from './LanguageContext';
 
 interface VerbConjugation {
   presentFuture: string[];
@@ -8,11 +9,9 @@ interface VerbConjugation {
 }
 
 interface VerbData {
+  id: string;
   verb: string;
-  translation: string;
-  usage: string;
   exampleRu: string;
-  exampleIt: string;
   icon: React.ElementType;
   imperfective: {
     verb: string;
@@ -26,11 +25,9 @@ interface VerbData {
 
 const aspectPairs: VerbData[] = [
   {
+    id: 'uchit_vyuchit',
     verb: 'Учить / Выучить',
-    translation: 'Imparare / Studiare (specifico)',
-    usage: 'Accusativo (что?). Studio di una materia o imparare a memoria (poesie, parole).',
     exampleRu: 'Я учу новые слова каждый день.',
-    exampleIt: 'Imparo nuove parole ogni giorno.',
     icon: Brain,
     imperfective: {
       verb: 'Учить',
@@ -48,11 +45,9 @@ const aspectPairs: VerbData[] = [
     }
   },
   {
+    id: 'izuchat_izuchit',
     verb: 'Изучать / Изучить',
-    translation: 'Studiare (approfonditamente)',
-    usage: 'Accusativo (что?). Studio profondo, accademico. Più formale di учить.',
     exampleRu: 'Учёные изучают космос.',
-    exampleIt: 'Gli scienziati studiano lo spazio.',
     icon: BookOpen,
     imperfective: {
       verb: 'Изучать',
@@ -70,11 +65,9 @@ const aspectPairs: VerbData[] = [
     }
   },
   {
+    id: 'uchit_nauchit',
     verb: 'Учить / Научить',
-    translation: 'Insegnare (a qualcuno)',
-    usage: 'Accusativo (кого? - pers.) + Dativo (чему? - materia) O Infinito.',
     exampleRu: 'Отец учит сына плавать.',
-    exampleIt: 'Il padre insegna al figlio a nuotare.',
     icon: Users,
     imperfective: {
       verb: 'Учить',
@@ -95,11 +88,9 @@ const aspectPairs: VerbData[] = [
 
 const imperfectiveOnly: VerbData[] = [
   {
+    id: 'uchitsya',
     verb: 'Учиться',
-    translation: 'Studiare (essere studente)',
-    usage: '1. Luogo (где?): univ/scuola. 2. Modo (как?): bene/male. 3. + Inf: Imparare a.',
     exampleRu: 'Мой брат учится в университете.',
-    exampleIt: 'Mio fratello studia all\'università.',
     icon: School,
     imperfective: {
       verb: 'Учиться',
@@ -110,11 +101,9 @@ const imperfectiveOnly: VerbData[] = [
     }
   },
   {
+    id: 'zanimatsya',
     verb: 'Заниматься',
-    translation: 'Studiare (fare i compiti)',
-    usage: '1. Studiare sui libri. 2. Strumentale (чем?): Praticare sport/musica.',
     exampleRu: 'Я занимаюсь в библиотеке каждый вечер.',
-    exampleIt: 'Studio in biblioteca ogni sera.',
     icon: PenTool,
     imperfective: {
       verb: 'Заниматься',
@@ -125,11 +114,9 @@ const imperfectiveOnly: VerbData[] = [
     }
   },
   {
+    id: 'prepodavat',
     verb: 'Преподавать',
-    translation: 'Insegnare (professione)',
-    usage: 'Accusativo (что? - materia) o senza oggetto. Attività del docente.',
     exampleRu: 'Она преподаёт русский язык в школе.',
-    exampleIt: 'Lei insegna russo a scuola.',
     icon: GraduationCap,
     imperfective: {
       verb: 'Преподавать',
@@ -145,6 +132,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
   const isBlue = colorTheme === 'blue';
   const headerColor = isBlue ? 'text-blue-800' : 'text-red-800';
   const subHeaderColor = isBlue ? 'text-blue-600' : 'text-red-600';
+  const { t } = useLanguage();
 
   return (
     <div className="text-sm">
@@ -153,7 +141,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
       </div>
       
       <div className="mb-4">
-        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>Presente / Futuro</div>
+        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('learnTeach.presentFuture')}</div>
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 last:border-0 pb-0.5">
@@ -165,7 +153,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
       </div>
 
       <div>
-        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>Passato</div>
+        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('learnTeach.past')}</div>
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Он</span>
@@ -191,11 +179,16 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
 
 const VerbCard = ({ item, colorTheme }: { item: VerbData, colorTheme: 'blue' | 'red' }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { t } = useLanguage();
   const isBlue = colorTheme === 'blue';
   const colorClass = isBlue 
     ? 'bg-blue-50/50 border-blue-200 text-blue-900' 
     : 'bg-red-50/50 border-red-200 text-red-900';
   const iconColor = isBlue ? 'text-blue-700' : 'text-red-700';
+
+  const translation = t(`learnTeach.verbs.${item.id}.translation`);
+  const usage = t(`learnTeach.verbs.${item.id}.usage`);
+  const exampleIt = t(`learnTeach.verbs.${item.id}.exampleIt`);
 
   return (
     <motion.div
@@ -221,17 +214,17 @@ const VerbCard = ({ item, colorTheme }: { item: VerbData, colorTheme: 'blue' | '
 
         <div className="mb-3">
           <span className="text-base font-bold text-slate-700 block mb-1 border-b border-slate-50 pb-1">
-            {item.translation}
+            {translation}
           </span>
           <p className="text-xs text-slate-600 leading-snug whitespace-pre-line">
-            {item.usage}
+            {usage}
           </p>
         </div>
 
         <div className="mt-auto bg-slate-50/50 p-3 rounded-lg border border-slate-100">
-          <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">Esempio</div>
+          <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{t('learnTeach.example')}</div>
           <div className="text-sm font-medium text-slate-800">{item.exampleRu}</div>
-          <div className="text-xs italic text-slate-500">{item.exampleIt}</div>
+          <div className="text-xs italic text-slate-500">{exampleIt}</div>
         </div>
       </motion.div>
 
@@ -265,13 +258,15 @@ const VerbCard = ({ item, colorTheme }: { item: VerbData, colorTheme: 'blue' | '
 };
 
 const LearnTeachChart = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="my-8 p-6 bg-white rounded-2xl shadow-lg border border-gray-100 max-w-5xl mx-auto">
       <h2 className="text-3xl font-serif text-center mb-2 text-gray-800 underline decoration-teal-500 underline-offset-8">
-        Imparare e Insegnare
+        {t('learnTeach.title')}
       </h2>
       <p className="text-center text-gray-500 mb-8 text-sm italic">
-        (Учиться и Учить)
+        {t('learnTeach.subtitle')}
       </p>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
@@ -280,12 +275,12 @@ const LearnTeachChart = () => {
         <div>
           <div className="mb-6 sticky top-4 z-10 bg-white pb-2 pt-2">
             <h3 className="text-xl font-bold text-blue-900 bg-blue-100/50 py-2 rounded-lg border-2 border-blue-200 text-center shadow-sm">
-              Coppie Aspettuali
+              {t('learnTeach.aspectPairs')}
             </h3>
           </div>
           <div className="space-y-4">
             {aspectPairs.map((verb) => (
-              <VerbCard key={verb.verb} item={verb} colorTheme="blue" />
+              <VerbCard key={verb.id} item={verb} colorTheme="blue" />
             ))}
           </div>
         </div>
@@ -294,12 +289,12 @@ const LearnTeachChart = () => {
         <div>
           <div className="mb-6 sticky top-4 z-10 bg-white pb-2 pt-2">
             <h3 className="text-xl font-bold text-red-900 bg-red-100/50 py-2 rounded-lg border-2 border-red-200 text-center shadow-sm">
-              Solo Imperfettivo
+              {t('learnTeach.imperfOnly')}
             </h3>
           </div>
           <div className="space-y-4">
             {imperfectiveOnly.map((verb) => (
-              <VerbCard key={verb.verb} item={verb} colorTheme="red" />
+              <VerbCard key={verb.id} item={verb} colorTheme="red" />
             ))}
           </div>
         </div>

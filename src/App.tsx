@@ -227,9 +227,9 @@ const GerundChart = () => {
               <span className="font-bold">{t('gerund.example')}: leggendo</span>
             </div>
 
-            {imperfectiveStep >= 1 && <StepCard number={1} text="3^ persona plurale presente" example="читать → читают" color="blue" />}
-            {imperfectiveStep >= 2 && <StepCard number={2} text="Tolgo -ут/-ют o -ат/-ят" example="читают → чита-" color="blue" />}
-            {imperfectiveStep >= 3 && <StepCard number={3} text="Aggiungo -я/-а o -сь/-ясь (rifl.)" example="чита- + я = читая" color="blue" />}
+            {imperfectiveStep >= 1 && <StepCard number={1} text={t('gerund.steps.imp1')} example="читать → читают" color="blue" />}
+            {imperfectiveStep >= 2 && <StepCard number={2} text={t('gerund.steps.imp2')} example="читают → чита-" color="blue" />}
+            {imperfectiveStep >= 3 && <StepCard number={3} text={t('gerund.steps.imp3')} example="чита- + я = читая" color="blue" />}
           </ParticipleBlock>
         </div>
 
@@ -248,18 +248,18 @@ const GerundChart = () => {
               <span className="font-bold">{t('gerund.example')}: avendo letto</span>
             </div>
 
-            {perfectiveStep >= 1 && <StepCard number={1} text="Dall'infinito tolgo -ть/-ти" example="прочитать → прочита-" color="red" />}
-            {perfectiveStep >= 2 && <StepCard number={2} text="Aggiungo -в" example="прочита- + в = прочитав" color="red" />}
+            {perfectiveStep >= 1 && <StepCard number={1} text={t('gerund.steps.perf1')} example="прочитать → прочита-" color="red" />}
+            {perfectiveStep >= 2 && <StepCard number={2} text={t('gerund.steps.perf2')} example="прочита- + в = прочитав" color="red" />}
             {perfectiveStep >= 3 && (
               <div className="space-y-3">
-                <StepCard number={3} text="-ши se finisce in consonante" example="принести → принесши" color="red" />
+                <StepCard number={3} text={t('gerund.steps.perf3a')} example="принести → принесши" color="red" />
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-[#0039A6] text-white p-3 rounded-lg text-sm shadow-md"
                 >
                   <span className="font-bold block mb-1">-вшись</span>
-                  per verbi riflessivi
+                  {t('gerund.steps.perf3b')}
                   <div className="text-xs text-blue-200 mt-1 italic">Es: умыться → умывшись</div>
                 </motion.div>
               </div>
@@ -411,9 +411,9 @@ const ParticipleChart = () => {
                   currentStep={activePastStep}
                   advanceStep={advanceActivePast}
                 >
-                  {activePastStep >= 1 && <StepCard number={1} text="Dall'infinito tolgo -ть" example="читать → чита-" color="blue" />}
-                  {activePastStep >= 2 && <StepCard number={2} text="Aggiungo -вший (dopo vocale)" example="чита- + вший = читавший" color="blue" />}
-                  {activePastStep >= 3 && <StepCard number={3} text="Aggiungo -ший (dopo consonante)" example="нести → несший" color="blue" />}
+                  {activePastStep >= 1 && <StepCard number={1} text={t('participle.steps.activePast1')} example="читать → чита-" color="blue" />}
+                  {activePastStep >= 2 && <StepCard number={2} text={t('participle.steps.activePast2')} example="чита- + вший = читавший" color="blue" />}
+                  {activePastStep >= 3 && <StepCard number={3} text={t('participle.steps.activePast3')} example="нести → несший" color="blue" />}
                 </ParticipleBlock>
 
                 {/* Passive Past */}
@@ -435,9 +435,9 @@ const ParticipleChart = () => {
                   </div>
 
                   {/* Steps */}
-                  {passivePastStep >= 1 && <StepCard number={1} text="Dall'infinito (solo perfettivi) tolgo -ть" example="прочитать → прочита-" color="red" />}
-                  {passivePastStep >= 2 && <StepCard number={2} text="Aggiungo -нный (verbi in -ать/-ять)" example="прочитанный" color="red" />}
-                  {passivePastStep >= 3 && <StepCard number={3} text="Aggiungo -енный (verbi in -ить/-ти)" example="построенный" color="red" />}
+                  {passivePastStep >= 1 && <StepCard number={1} text={t('participle.steps.passivePast1')} example="прочитать → прочита-" color="red" />}
+                  {passivePastStep >= 2 && <StepCard number={2} text={t('participle.steps.passivePast2')} example="прочитанный" color="red" />}
+                  {passivePastStep >= 3 && <StepCard number={3} text={t('participle.steps.passivePast3')} example="построенный" color="red" />}
                 </ParticipleBlock>
               </motion.div>
             )}
@@ -471,9 +471,9 @@ const ParticipleChart = () => {
                   currentStep={activePresentStep}
                   advanceStep={advanceActivePresent}
                 >
-                  {activePresentStep >= 1 && <StepCard number={1} text="3^ persona plurale presente" example="читать → читают" color="blue" />}
-                  {activePresentStep >= 2 && <StepCard number={2} text="Tolgo -т" example="читают → читаю-" color="blue" />}
-                  {activePresentStep >= 3 && <StepCard number={3} text="Aggiungo -щий" example="читающий (che legge)" color="blue" />}
+                  {activePresentStep >= 1 && <StepCard number={1} text={t('participle.steps.activePresent1')} example="читать → читают" color="blue" />}
+                  {activePresentStep >= 2 && <StepCard number={2} text={t('participle.steps.activePresent2')} example="читают → читаю-" color="blue" />}
+                  {activePresentStep >= 3 && <StepCard number={3} text={t('participle.steps.activePresent3')} example="читающий (che legge)" color="blue" />}
                 </ParticipleBlock>
 
                 {/* Passive Present */}
@@ -484,9 +484,9 @@ const ParticipleChart = () => {
                   currentStep={passivePresentStep}
                   advanceStep={advancePassivePresent}
                 >
-                  {passivePresentStep >= 1 && <StepCard number={1} text="1^ persona plurale presente" example="читать → читаем" color="red" />}
-                  {passivePresentStep >= 2 && <StepCard number={2} text="Aggiungo -ый (I coniug.)" example="читаемый (che è letto)" color="red" />}
-                  {passivePresentStep >= 3 && <StepCard number={3} text="Aggiungo -ий (II coniug.)" example="видимый (che è visto)" color="red" />}
+                  {passivePresentStep >= 1 && <StepCard number={1} text={t('participle.steps.passivePresent1')} example="читать → читаем" color="red" />}
+                  {passivePresentStep >= 2 && <StepCard number={2} text={t('participle.steps.passivePresent2')} example="читаемый (che è letto)" color="red" />}
+                  {passivePresentStep >= 3 && <StepCard number={3} text={t('participle.steps.passivePresent3')} example="видимый (che è visto)" color="red" />}
                 </ParticipleBlock>
               </motion.div>
             )}

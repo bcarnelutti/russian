@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Repeat, Footprints, Car, Plane, Waves, Package, Briefcase, User, ChevronDown } from 'lucide-react';
+import { useLanguage } from './LanguageContext';
 
 interface VerbPair {
   id: string;
-  italian: string;
+  // italian: string; // Removed, using translation key from id
   icon: React.ElementType;
   unidirectional: {
     infinitive: string;
@@ -21,7 +22,6 @@ interface VerbPair {
 const intransitivePairs: VerbPair[] = [
   {
     id: 'foot',
-    italian: 'Andare (a piedi)',
     icon: Footprints,
     unidirectional: {
       infinitive: 'Идти́',
@@ -36,7 +36,6 @@ const intransitivePairs: VerbPair[] = [
   },
   {
     id: 'transport',
-    italian: 'Andare (con mezzo)',
     icon: Car,
     unidirectional: {
       infinitive: 'Е́хать',
@@ -51,7 +50,6 @@ const intransitivePairs: VerbPair[] = [
   },
   {
     id: 'run',
-    italian: 'Correre',
     icon: ArrowRight,
     unidirectional: {
       infinitive: 'Бежа́ть',
@@ -66,7 +64,6 @@ const intransitivePairs: VerbPair[] = [
   },
   {
     id: 'fly',
-    italian: 'Volare',
     icon: Plane,
     unidirectional: {
       infinitive: 'Лете́ть',
@@ -81,7 +78,6 @@ const intransitivePairs: VerbPair[] = [
   },
   {
     id: 'swim',
-    italian: 'Nuotare',
     icon: Waves,
     unidirectional: {
       infinitive: 'Плыть',
@@ -99,7 +95,6 @@ const intransitivePairs: VerbPair[] = [
 const transitivePairs: VerbPair[] = [
   {
     id: 'lead',
-    italian: 'Condurre / Guidare',
     icon: User,
     unidirectional: {
       infinitive: 'Вести́',
@@ -114,7 +109,6 @@ const transitivePairs: VerbPair[] = [
   },
   {
     id: 'carry_hand',
-    italian: 'Portare (a mano)',
     icon: Package,
     unidirectional: {
       infinitive: 'Нести́',
@@ -129,7 +123,6 @@ const transitivePairs: VerbPair[] = [
   },
   {
     id: 'carry_transport',
-    italian: 'Trasportare (con mezzo)',
     icon: Briefcase,
     unidirectional: {
       infinitive: 'Везти́',
@@ -144,54 +137,58 @@ const transitivePairs: VerbPair[] = [
   },
 ];
 
-const ConjugationCard = ({ title, data, colorClass }: { title: string, data: { infinitive: string, conjugation: string[], past: string[] }, colorClass: string }) => (
-  <motion.div 
-    initial={{ opacity: 0, y: 10 }}
-    animate={{ opacity: 1, y: 0 }}
-    exit={{ opacity: 0, y: 10 }}
-    className={`p-4 rounded-xl border-2 ${colorClass} bg-white shadow-sm h-full`}
-  >
-    <h4 className="font-bold text-lg mb-2 text-center opacity-80">{title}</h4>
-    <div className="text-2xl font-black text-center mb-6 text-slate-900">{data.infinitive}</div>
-    
-    <div className="mb-6">
-      <div className="text-xs font-bold uppercase tracking-wider text-center mb-3 opacity-60">Presente</div>
-      <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-8 gap-y-1 text-sm">
-        {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
-          <div key={pronoun} className="flex justify-between border-b border-gray-100 py-1">
-            <span className="text-gray-400 font-medium mr-4">{pronoun}</span>
-            <span className="font-bold">{data.conjugation[idx]}</span>
-          </div>
-        ))}
+const ConjugationCard = ({ title, data, colorClass }: { title: string, data: { infinitive: string, conjugation: string[], past: string[] }, colorClass: string }) => {
+  const { t } = useLanguage();
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      className={`p-4 rounded-xl border-2 ${colorClass} bg-white shadow-sm h-full`}
+    >
+      <h4 className="font-bold text-lg mb-2 text-center opacity-80">{title}</h4>
+      <div className="text-2xl font-black text-center mb-6 text-slate-900">{data.infinitive}</div>
+      
+      <div className="mb-6">
+        <div className="text-xs font-bold uppercase tracking-wider text-center mb-3 opacity-60">{t('motionVerbs.present')}</div>
+        <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-8 gap-y-1 text-sm">
+          {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
+            <div key={pronoun} className="flex justify-between border-b border-gray-100 py-1">
+              <span className="text-gray-400 font-medium mr-4">{pronoun}</span>
+              <span className="font-bold">{data.conjugation[idx]}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
 
-    <div>
-      <div className="text-xs font-bold uppercase tracking-wider text-center mb-3 opacity-60">Passato</div>
-      <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-sm">
-        <div className="flex justify-between border-b border-gray-100 py-1">
-          <span className="text-gray-400 font-medium mr-4">Он</span>
-          <span className="font-bold">{data.past[0]}</span>
-        </div>
-        <div className="flex justify-between border-b border-gray-100 py-1">
-          <span className="text-gray-400 font-medium mr-4">Она</span>
-          <span className="font-bold">{data.past[1]}</span>
-        </div>
-        <div className="flex justify-between border-b border-gray-100 py-1">
-          <span className="text-gray-400 font-medium mr-4">Оно</span>
-          <span className="font-bold">{data.past[2]}</span>
-        </div>
-        <div className="flex justify-between border-b border-gray-100 py-1">
-          <span className="text-gray-400 font-medium mr-4">Они</span>
-          <span className="font-bold">{data.past[3]}</span>
+      <div>
+        <div className="text-xs font-bold uppercase tracking-wider text-center mb-3 opacity-60">{t('motionVerbs.past')}</div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-sm">
+          <div className="flex justify-between border-b border-gray-100 py-1">
+            <span className="text-gray-400 font-medium mr-4">Он</span>
+            <span className="font-bold">{data.past[0]}</span>
+          </div>
+          <div className="flex justify-between border-b border-gray-100 py-1">
+            <span className="text-gray-400 font-medium mr-4">Она</span>
+            <span className="font-bold">{data.past[1]}</span>
+          </div>
+          <div className="flex justify-between border-b border-gray-100 py-1">
+            <span className="text-gray-400 font-medium mr-4">Оно</span>
+            <span className="font-bold">{data.past[2]}</span>
+          </div>
+          <div className="flex justify-between border-b border-gray-100 py-1">
+            <span className="text-gray-400 font-medium mr-4">Они</span>
+            <span className="font-bold">{data.past[3]}</span>
+          </div>
         </div>
       </div>
-    </div>
-  </motion.div>
-);
+    </motion.div>
+  );
+};
 
 const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
   const [expandedStates, setExpandedStates] = useState<Record<string, { uni: boolean, multi: boolean }>>({});
+  const { t } = useLanguage();
 
   const toggleAspect = (pairId: string, aspect: 'uni' | 'multi') => {
     setExpandedStates(prev => {
@@ -211,6 +208,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
       {pairs.map((pair) => {
         const state = expandedStates[pair.id] || { uni: false, multi: false };
         const isAnyExpanded = state.uni || state.multi;
+        const translation = t(`motionVerbs.verbs.${pair.id}`);
 
         return (
           <div 
@@ -222,7 +220,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                 <div className="p-3 bg-slate-100 rounded-full text-slate-600">
                   <pair.icon size={24} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-800">{pair.italian}</h3>
+                <h3 className="text-xl font-bold text-gray-800">{translation}</h3>
               </div>
               
               <div className="flex items-center space-x-4 md:space-x-8">
@@ -237,7 +235,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   }`}
                 >
                   <span className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${state.uni ? 'text-blue-100' : 'text-blue-400'}`}>
-                    Unidirezionale
+                    {t('motionVerbs.unidirectional')}
                   </span>
                   <span className="text-2xl font-serif font-bold">{pair.unidirectional.infinitive}</span>
                   <ChevronDown className={`w-4 h-4 mt-1 transition-transform ${state.uni ? 'rotate-180' : ''}`} />
@@ -256,7 +254,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   }`}
                 >
                   <span className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${state.multi ? 'text-orange-100' : 'text-orange-400'}`}>
-                    Pluridirezionale
+                     {t('motionVerbs.multidirectional')}
                   </span>
                   <span className="text-2xl font-serif font-bold">{pair.multidirectional.infinitive}</span>
                   <ChevronDown className={`w-4 h-4 mt-1 transition-transform ${state.multi ? 'rotate-180' : ''}`} />
@@ -275,7 +273,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     {state.uni ? (
                       <ConjugationCard 
-                        title="Unidirezionale" 
+                        title={t('motionVerbs.unidirectional')}
                         data={pair.unidirectional} 
                         colorClass="border-blue-200 text-blue-900"
                       />
@@ -283,7 +281,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                     
                     {state.multi ? (
                       <ConjugationCard 
-                        title="Pluridirezionale" 
+                        title={t('motionVerbs.multidirectional')}
                         data={pair.multidirectional} 
                         colorClass="border-orange-200 text-orange-900"
                       />
@@ -300,36 +298,36 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
 };
 
 const MotionVerbsChart = () => {
+  const { t } = useLanguage();
+  const uniList = t('motionVerbs.uniList') as string[];
+  const multiList = t('motionVerbs.multiList') as string[];
+
   return (
     <section className="my-12 p-8 bg-white rounded-2xl shadow-xl border border-gray-100 min-h-[800px]">
       <h2 className="text-4xl font-serif text-center mb-8 text-gray-800 underline decoration-emerald-500 underline-offset-8">
-        Verbi di Moto (Глаголы движения)
+        {t('motionVerbs.title')}
       </h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 max-w-4xl mx-auto">
         <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100 shadow-sm">
           <div className="flex items-center mb-4">
             <ArrowRight className="w-8 h-8 text-blue-600 mr-3" />
-            <h3 className="text-xl font-bold text-blue-900">Unidirezionali</h3>
+            <h3 className="text-xl font-bold text-blue-900">{t('motionVerbs.unidirectional')}</h3>
           </div>
-          <p className="text-blue-800 mb-2 font-medium">Determinato / Concreto</p>
+          <p className="text-blue-800 mb-2 font-medium">{t('motionVerbs.unidirectionalDesc')}</p>
           <ul className="list-disc pl-5 text-blue-700/80 space-y-1 text-sm">
-            <li>Movimento in una direzione specifica</li>
-            <li>Azione in corso (sto andando)</li>
-            <li>Futuro pianificato</li>
+            {uniList.map((item, idx) => <li key={idx}>{item}</li>)}
           </ul>
         </div>
 
         <div className="bg-orange-50 p-6 rounded-2xl border border-orange-100 shadow-sm">
           <div className="flex items-center mb-4">
             <Repeat className="w-8 h-8 text-orange-600 mr-3" />
-            <h3 className="text-xl font-bold text-orange-900">Pluridirezionali</h3>
+            <h3 className="text-xl font-bold text-orange-900">{t('motionVerbs.multidirectional')}</h3>
           </div>
-          <p className="text-orange-800 mb-2 font-medium">Indeterminato / Astratto</p>
+          <p className="text-orange-800 mb-2 font-medium">{t('motionVerbs.multidirectionalDesc')}</p>
           <ul className="list-disc pl-5 text-orange-700/80 space-y-1 text-sm">
-            <li>Movimento in più direzioni (andata e ritorno)</li>
-            <li>Azione abituale o ripetuta</li>
-            <li>Capacità generale</li>
+             {multiList.map((item, idx) => <li key={idx}>{item}</li>)}
           </ul>
         </div>
       </div>
@@ -337,9 +335,9 @@ const MotionVerbsChart = () => {
       <div className="max-w-5xl mx-auto space-y-16">
         <div>
           <h3 className="text-2xl font-bold text-slate-800 mb-8 pl-4 border-l-4 border-emerald-500 flex items-center">
-            Intransitivi 
+            {t('motionVerbs.intransitive')}
             <span className="text-sm font-normal text-slate-500 ml-4 bg-slate-100 px-3 py-1 rounded-full italic">
-              Movimento del soggetto
+              {t('motionVerbs.intransitiveNote')}
             </span>
           </h3>
           <VerbList pairs={intransitivePairs} />
@@ -347,9 +345,9 @@ const MotionVerbsChart = () => {
 
         <div>
           <h3 className="text-2xl font-bold text-slate-800 mb-8 pl-4 border-l-4 border-purple-500 flex items-center">
-            Transitivi 
+            {t('motionVerbs.transitive')}
             <span className="text-sm font-normal text-slate-500 ml-4 bg-slate-100 px-3 py-1 rounded-full italic">
-              Movimento dell'oggetto
+              {t('motionVerbs.transitiveNote')}
             </span>
           </h3>
           <VerbList pairs={transitivePairs} />
