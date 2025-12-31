@@ -254,7 +254,7 @@ export const translations = {
       motion_verbs: "Verbs of Motion",
       motion_verbs_prepositions: "Motion Verbs + Prepositions",
       learn_teach: "To Learn & To Teach",
-      wear_verbs: "Verbs of Wearing",
+      wear_verbs: "Verbs to Wear",
       gerund: "Gerund (Деепричастие)",
       participle: "Participle (Причастие)"
     },
@@ -438,7 +438,7 @@ export const translations = {
         }
     },
     wearVerbs: {
-        title: "Verbs of Wearing",
+        title: "Verbs to Wear",
         subtitle: "To Wear, To Put On, To Dress",
         presentFuture: "Present / Future",
         past: "Past",
