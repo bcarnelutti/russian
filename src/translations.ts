@@ -14,6 +14,7 @@ export const translations = {
       motion_verbs_prepositions: "Verbi di moto + prefissi",
       learn_teach: "Imparare e insegnare",
       wear_verbs: "Verbo indossare",
+      irregular_verbs: "Verbi irregolari",
       gerund: "Gerundio (Деепричастие)",
       participle: "Participio (Причастие)"
     },
@@ -34,7 +35,7 @@ export const translations = {
         imp1: "3^ persona plurale presente",
         imp2: "Tolgo -ут/-ют o -ат/-ят",
         imp3: "Aggiungo -я/-а o -сь/-ясь (rifl.)",
-        perf1: "Dall'infinito tolgo -ть/-ти",
+        perf1: "Dall'infinito tolgo -ть/-ti",
         perf2: "Aggiungo -в",
         perf3a: "-ши se finisce in consonante",
         perf3b: "per verbi riflessivi"
@@ -122,7 +123,7 @@ export const translations = {
             masculine: "Maschile (Он)",
             neuter: "Neutro (Оно)",
             feminine: "Femminile (Она)",
-            plural: "Plurale (Они)"
+            plural: "Plural (Они)"
         },
         rowLabels: {
             noun: "Sostantivo",
@@ -240,6 +241,32 @@ export const translations = {
                 exampleIt: "Lui si toglie il cappello."
             }
         }
+    },
+    irregularVerbs: {
+        title: "Verbi irregolari",
+        subtitle: "Verbi comuni con coniugazioni imprevedibili",
+        verbs: {
+            khotet: {
+                translation: "Volere",
+                note: "Cambio di coniugazione: singolare (I) - plurale (II)"
+            },
+            moch: {
+                translation: "Potere / essere in grado",
+                note: "Alternanza consonantica г/ж. Attenzione alla 1^ sing. e 3^ pl."
+            },
+            est: {
+                translation: "Mangiare",
+                note: "Desinenze arcaiche uniche. Non confondere con 'Есть' (c'è)."
+            },
+            dat: {
+                translation: "Dare (perfettivo)",
+                note: "Desinenze arcaiche uniche. Futuro semplice."
+            },
+            zhit: {
+                translation: "Vivere",
+                note: "Inserimento della 'в' nel tema."
+            }
+        }
     }
   },
   en: {
@@ -257,6 +284,7 @@ export const translations = {
       motion_verbs_prepositions: "Verbs of motion + prepositions",
       learn_teach: "To learn & to teach",
       wear_verbs: "Verb to wear",
+      irregular_verbs: "Irregular verbs",
       gerund: "Gerund (Деепричастие)",
       participle: "Participle (Причастие)"
     },
@@ -481,6 +509,32 @@ export const translations = {
                 usage: "Remove clothes or accessories.",
                 exampleRu: "Он снимает шапку.",
                 exampleIt: "He takes off his hat."
+            }
+        }
+    },
+    irregularVerbs: {
+        title: "Irregular verbs",
+        subtitle: "Common verbs with unpredictable conjugations",
+        verbs: {
+            khotet: {
+                translation: "To want",
+                note: "Conjugation shift: singular (I) - plural (II)"
+            },
+            moch: {
+                translation: "To be able to / can",
+                note: "Consonant alternation г/ж. Watch 1st sing. and 3rd pl."
+            },
+            est: {
+                translation: "To eat",
+                note: "Unique archaic endings. Not to be confused with 'Есть' (there is)."
+            },
+            dat: {
+                translation: "To give (perfective)",
+                note: "Unique archaic endings. Simple future."
+            },
+            zhit: {
+                translation: "To live",
+                note: "Insertion of 'в' in the stem."
             }
         }
     }

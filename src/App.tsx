@@ -7,13 +7,14 @@ import MotionVerbsPrepositionsChart from './MotionVerbsPrepositionsChart';
 import CasesChart from './CasesChart';
 import LearnTeachChart from './LearnTeachChart';
 import WearVerbsChart from './WearVerbsChart';
+import IrregularVerbsChart from './IrregularVerbsChart';
 import { LanguageProvider, useLanguage } from './LanguageContext';
 
 // --- Context Definition ---
 interface ChartContextType {
   // Navigation State
-  view: 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'gerund' | 'participle';
-  setView: React.Dispatch<React.SetStateAction<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'gerund' | 'participle'>>;
+  view: 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle';
+  setView: React.Dispatch<React.SetStateAction<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'>>;
 
   // Gerund State
   imperfectiveStep: number;
@@ -44,7 +45,7 @@ interface ChartContextType {
 const ChartContext = createContext<ChartContextType | null>(null);
 
 const ChartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [view, setView] = useState<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'gerund' | 'participle'>('verbs_menu');
+  const [view, setView] = useState<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'>('verbs_menu');
   const [imperfectiveStep, setImperfectiveStep] = useState(0);
   const [perfectiveStep, setPerfectiveStep] = useState(0);
   const [presentStep, setPresentStep] = useState(0);
@@ -122,7 +123,7 @@ const LanguageSwitcher = () => {
 const Navigation = () => {
   const { view, setView } = useChartContext();
   const { t } = useLanguage();
-  const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'gerund', 'participle'].includes(view);
+  const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'irregular_verbs', 'gerund', 'participle'].includes(view);
 
   return (
     <div className="flex justify-center mb-12 space-x-6 flex-wrap gap-y-4">
@@ -169,6 +170,7 @@ const VerbsMenu = () => {
     { id: 'motion_verbs_prepositions', label: t('verbsMenu.motion_verbs_prepositions') },
     { id: 'learn_teach', label: t('verbsMenu.learn_teach') },
     { id: 'wear_verbs', label: t('verbsMenu.wear_verbs') },
+    { id: 'irregular_verbs', label: t('verbsMenu.irregular_verbs') },
     { id: 'gerund', label: t('verbsMenu.gerund') },
     { id: 'participle', label: t('verbsMenu.participle') },
   ] as const;
@@ -605,6 +607,10 @@ const MainContent = () => {
 
   if (view === 'wear_verbs') {
     return <WearVerbsChart />;
+  }
+
+  if (view === 'irregular_verbs') {
+    return <IrregularVerbsChart />;
   }
 
   return null;
