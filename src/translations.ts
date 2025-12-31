@@ -1,25 +1,25 @@
 export const translations = {
   it: {
-    title: "Studiare il Russo",
+    title: "Studiare il russo",
     subtitle: "Schede grammaticali interattive per comprendere le forme verbali e i casi russi.",
     footer: "Creato per gli studenti di lingua russa",
     nav: {
       cases: "Casi",
       pronouns: "Pronomi",
-      verbs: "Verbs",
+      verbs: "Verbi",
       back: "Indietro"
     },
     verbsMenu: {
-      motion_verbs: "Verbi di Moto",
-      motion_verbs_prepositions: "Verbi di Moto + Prefissi",
-      learn_teach: "Imparare e Insegnare",
+      motion_verbs: "Verbi di moto",
+      motion_verbs_prepositions: "Verbi di moto + prefissi",
+      learn_teach: "Imparare e insegnare",
       wear_verbs: "Verbo indossare",
       gerund: "Gerundio (Деепричастие)",
       participle: "Participio (Причастие)"
     },
     controls: {
-      expandAll: "Espandi Tutto",
-      collapseAll: "Comprimi Tutto"
+      expandAll: "Espandi tutto",
+      collapseAll: "Comprimi tutto"
     },
     gerund: {
       title: "Деепричастие (Gerundio)",
@@ -46,7 +46,7 @@ export const translations = {
       present: "Presente",
       active: "Attivo",
       passive: "Passivo",
-      shortForm: "Forma Breve (Predicato)",
+      shortForm: "Forma breve (predicato)",
       steps: {
         activePast1: "Dall'infinito tolgo -ть",
         activePast2: "Aggiungo -вший (dopo vocale)",
@@ -68,11 +68,11 @@ export const translations = {
       }
     },
     motionVerbs: {
-        title: "Verbi di Moto (Глаголы движения)",
+        title: "Verbi di moto (Глаголы движения)",
         unidirectional: "Unidirezionali",
         multidirectional: "Pluridirezionali",
-        unidirectionalDesc: "Determinato / Concreto",
-        multidirectionalDesc: "Indeterminato / Astratto",
+        unidirectionalDesc: "Determinato / concreto",
+        multidirectionalDesc: "Indeterminato / astratto",
         uniList: ["Movimento in una direzione specifica", "Azione in corso (sto andando)", "Futuro pianificato"],
         multiList: ["Movimento in più direzioni (andata e ritorno)", "Azione abituale o ripetuta", "Capacità generale"],
         intransitive: "Intransitivi",
@@ -85,7 +85,7 @@ export const translations = {
             run: "Correre",
             fly: "Volare",
             swim: "Nuotare",
-            lead: "Condurre / Guidare",
+            lead: "Condurre / guidare",
             carry_hand: "Portare (a mano)",
             carry_transport: "Trasportare (con mezzo)"
         },
@@ -93,9 +93,9 @@ export const translations = {
         past: "Passato"
     },
     motionPrepositions: {
-        title: "Verbi di Moto con Prefissi",
+        title: "Verbi di moto con prefissi",
         description: "L'aggiunta di prefissi ai verbi di moto modifica il loro significato spaziale e crea nuove coppie aspettuali (Imperfettivo / Perfettivo).",
-        formation: "Nota sulla Formazione",
+        formation: "Nota sulla formazione",
         imperfectiveLabel: "Imperfettivo",
         perfectiveLabel: "Perfettivo",
         imperfectiveFormula: "Prefisso + Pluridirezionale",
@@ -110,13 +110,13 @@ export const translations = {
             do: { meaning: "Raggiungere", desc: "Arrivare fino a un limite" },
             pere: { meaning: "Attraversare", desc: "Da una parte all'altra" },
             pro: { meaning: "Passare", desc: "Attraverso o oltre qualcosa" },
-            za: { meaning: "Passare da / Dietro", desc: "Entrare brevemente o andare dietro" },
+            za: { meaning: "Passare da / dietro", desc: "Entrare brevemente o andare dietro" },
             ob: { meaning: "Aggirare", desc: "Movimento intorno a qualcosa" }
         }
     },
     cases: {
-        title: "Declinazione dei Casi",
-        subtitle: "Tabella riassuntiva delle desinenze per Aggettivi e Sostantivi",
+        title: "Declinazione dei casi",
+        subtitle: "Tabella riassuntiva delle desinenze per aggettivi e sostantivi",
         columns: {
             case: "Caso",
             masculine: "Maschile (Он)",
@@ -130,42 +130,44 @@ export const translations = {
         },
         list: {
             nominative: { name: "Nominativo", desc: "Soggetto" },
-            genitive: { name: "Genitive", desc: "Possesso, Negazione, Di..." },
-            dative: { name: "Dativo", desc: "Oggetto indiretto (a...), Moto verso persona" },
-            accusative: { name: "Accusativo", desc: "Oggetto diretto, Moto a luogo" },
-            instrumental: { name: "Strumentale", desc: "Mezzo/Strumento, Con..." },
-            prepositional: { name: "Prepositivo", desc: "Stato in luogo, Argomento" }
+            genitive: { name: "Genitivo", desc: "Possesso, negazione, di..." },
+            dative: { name: "Dativo", desc: "Oggetto indiretto (a...), moto verso persona" },
+            accusative: { name: "Accusativo", desc: "Oggetto diretto, moto a luogo" },
+            instrumental: { name: "Strumentale", desc: "Mezzo/strumento, con..." },
+            prepositional: { name: "Prepositivo", desc: "Stato in luogo, argomento" }
         },
         notesTitle: "Note:",
         notes: [
-            "<strong>Animato vs Inanimato:</strong> All'Accusativo, per maschile singolare e tutto il plurale, gli esseri viventi (animati) prendono la forma del <strong>Genitivo</strong>, mentre gli oggetti (inanimati) prendono la forma del <strong>Nominativo</strong>.",
-            "<strong>Desinenze deboli (Soft):</strong> Le varianti (es. -ий, -ее, -я) si usano dopo consonanti deboli o sibilanti (ж, ш, ч, щ) e 'ц' secondo le regole ortografiche."
+            "<strong>Animato vs inanimato:</strong> All'Accusativo, per maschile singolare e tutto il plurale, gli esseri viventi (animati) prendono la forma del <strong>Genitivo</strong>, mentre gli oggetti (inanimati) prendono la forma del <strong>Nominativo</strong>.",
+            "<strong>Desinenze deboli (soft):</strong> Le varianti (es. -ий, -ее, -я) si usano dopo consonanti deboli o sibilanti (ж, ш, ч, щ) e 'ц' secondo le regole ortografiche."
         ]
     },
     pronouns: {
-        personalTitle: "Pronomi Personali (Личные местоимения)",
+        personalTitle: "Pronomi personali (Личные местоимения)",
         relativeTitle: "Местоимение \"Который\" (Il pronome relativo \"che/il quale\")",
-        noteH: "Nota sulla \"Н\" iniziale:",
+        noteH: "Nota sulla \"н\" iniziale:",
         noteHText: "Quando i pronomi di 3ª persona sono usati dopo una preposizione, aggiungono una <strong>н</strong> iniziale.<br/>Es: <em>Я вижу <strong>его</strong></em> (Lo vedo - senza preposizione) vs <em>Я иду <strong>к нему</strong></em> (Vado da lui - con preposizione).",
-        grammarNotesTitle: "Note Grammaticali",
+        grammarNotesTitle: "Note grammaticali",
         grammarNotes: [
             "<strong>Который</strong> si comporta come un aggettivo forte.",
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
-            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimato = Nominativo (который / которые)</li><li>Animato = Genitivo (которого / которых)</li></ul>"
+            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimato = Nominativo (который / которые)</li>
+<li>Animato = Genitivo (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
-        title: "Imparare e Insegnare",
+        title: "Imparare e insegnare",
         subtitle: "(Учиться и Учить)",
-        aspectPairs: "Coppie Aspettuali",
-        imperfOnly: "Solo Imperfettivo",
-        presentFuture: "Presente / Futuro",
+        aspectPairs: "Coppie aspettuali",
+        imperfOnly: "Solo imperfettivo",
+        presentFuture: "Presente / futuro",
         past: "Passato",
         example: "Esempio",
         verbs: {
             uchit_vyuchit: {
-                translation: "Imparare / Studiare (specifico)",
+                translation: "Imparare / studiare (specifico)",
                 usage: "Accusativo (что?). Studio di una materia o imparare a memoria (poesie, parole).",
                 exampleIt: "Imparo nuove parole ogni giorno."
             },
@@ -198,23 +200,23 @@ export const translations = {
     },
     wearVerbs: {
         title: "Verbo indossare",
-        subtitle: "Indossare, Mettere, Vestirsi",
-        presentFuture: "Presente / Futuro",
+        subtitle: "Indossare, mettere, vestirsi",
+        presentFuture: "Presente / futuro",
         past: "Passato",
         example: "Esempio",
-        imperfOnly: "Solo Imperfettivo",
-        mnemonicsTitle: "Regola Mnemonica",
+        imperfOnly: "Solo imperfettivo",
+        mnemonicsTitle: "Regola mnemonica",
         mnemonicsText: "Надеть одежду, одеть Надежду",
-        mnemonicsDesc: "Mettere i vestiti (su se stessi/oggetto), Vestire Nadezhda (qualcun altro)",
+        mnemonicsDesc: "Mettere i vestiti (su se stessi/oggetto), vestire Nadezhda (qualcun altro)",
         verbs: {
             nosit: {
-                translation: "Indossare / Portare",
+                translation: "Indossare / portare",
                 usage: "Stato generale (avere addosso). Usato per vestiti, occhiali, barba, capelli lunghi.",
                 exampleRu: "Она носит очки.",
                 exampleIt: "Lei porta gli occhiali."
             },
             nadevat: {
-                translation: "Mettere / Indossare",
+                translation: "Mettere / indossare",
                 usage: "Mettere qualcosa su se stessi o su qualcos'altro (oggetto inanimato). Contrario di Снимать.",
                 exampleRu: "Я надеваю пальто.",
                 exampleIt: "Mi metto il cappotto."
@@ -251,16 +253,16 @@ export const translations = {
       back: "Back"
     },
     verbsMenu: {
-      motion_verbs: "Verbs of Motion",
-      motion_verbs_prepositions: "Motion Verbs + Prepositions",
-      learn_teach: "To Learn & To Teach",
-      wear_verbs: "Verb to Wear",
+      motion_verbs: "Verbs of motion",
+      motion_verbs_prepositions: "Verbs of motion + prepositions",
+      learn_teach: "To learn & to teach",
+      wear_verbs: "Verb to wear",
       gerund: "Gerund (Деепричастие)",
       participle: "Participle (Причастие)"
     },
     controls: {
-      expandAll: "Expand All",
-      collapseAll: "Collapse All"
+      expandAll: "Expand all",
+      collapseAll: "Collapse all"
     },
     gerund: {
       title: "Деепричастие (Gerund)",
@@ -287,7 +289,7 @@ export const translations = {
       present: "Present",
       active: "Active",
       passive: "Passive",
-      shortForm: "Short Form (Predicate)",
+      shortForm: "Short form (predicate)",
       steps: {
         activePast1: "From infinitive remove -ть",
         activePast2: "Add -вший (after vowel)",
@@ -309,11 +311,11 @@ export const translations = {
       }
     },
     motionVerbs: {
-        title: "Verbs of Motion (Глаголы движения)",
+        title: "Verbs of motion (Глаголы движения)",
         unidirectional: "Unidirectional",
         multidirectional: "Multidirectional",
-        unidirectionalDesc: "Determined / Concrete",
-        multidirectionalDesc: "Indetermined / Abstract",
+        unidirectionalDesc: "Determined / concrete",
+        multidirectionalDesc: "Indetermined / abstract",
         uniList: ["Movement in a specific direction", "Action in progress (I am going)", "Planned future"],
         multiList: ["Movement in multiple directions (round trip)", "Habitual or repeated action", "General ability"],
         intransitive: "Intransitive",
@@ -326,7 +328,7 @@ export const translations = {
             run: "Run",
             fly: "Fly",
             swim: "Swim",
-            lead: "Lead / Drive",
+            lead: "Lead / drive",
             carry_hand: "Carry (by hand)",
             carry_transport: "Transport (by vehicle)"
         },
@@ -334,9 +336,9 @@ export const translations = {
         past: "Past"
     },
     motionPrepositions: {
-        title: "Verbs of Motion with Prepositions",
+        title: "Verbs of motion with prepositions",
         description: "Adding prefixes to verbs of motion modifies their spatial meaning and creates new aspectual pairs (Imperfective / Perfective).",
-        formation: "Note on Formation",
+        formation: "Note on formation",
         imperfectiveLabel: "Imperfective",
         perfectiveLabel: "Perfective",
         imperfectiveFormula: "Prefix + Multidirectional",
@@ -351,13 +353,13 @@ export const translations = {
             do: { meaning: "Reach", desc: "Reach a limit" },
             pere: { meaning: "Cross", desc: "From one side to the other" },
             pro: { meaning: "Pass", desc: "Through or past something" },
-            za: { meaning: "Drop by / Go behind", desc: "Enter briefly or go behind" },
+            za: { meaning: "Drop by / go behind", desc: "Enter briefly or go behind" },
             ob: { meaning: "Go around", desc: "Movement around something" }
         }
     },
     cases: {
-        title: "Declension of Cases",
-        subtitle: "Summary table of endings for Adjectives and Nouns",
+        title: "Declension of cases",
+        subtitle: "Summary table of endings for adjectives and nouns",
         columns: {
             case: "Case",
             masculine: "Masculine (Он)",
@@ -371,109 +373,111 @@ export const translations = {
         },
         list: {
             nominative: { name: "Nominative", desc: "Subject" },
-            genitive: { name: "Genitive", desc: "Possession, Negation, Of..." },
-            dative: { name: "Dative", desc: "Indirect object (to...), Movement towards person" },
-            accusative: { name: "Accusative", desc: "Direct object, Movement to a place" },
-            instrumental: { name: "Instrumental", desc: "Means/Instrument, With..." },
-            prepositional: { name: "Prepositional", desc: "Location (at/in), Topic (about)" }
+            genitive: { name: "Genitive", desc: "Possession, negation, of..." },
+            dative: { name: "Dative", desc: "Indirect object (to...), movement towards person" },
+            accusative: { name: "Accusative", desc: "Direct object, movement to a place" },
+            instrumental: { name: "Instrumental", desc: "Means/instrument, with..." },
+            prepositional: { name: "Prepositional", desc: "Location (at/in), topic (about)" }
         },
         notesTitle: "Notes:",
         notes: [
-            "<strong>Animate vs Inanimate:</strong> In the Accusative, for masculine singular and all plural, living beings (animate) take the <strong>Genitive</strong> form, while objects (inanimate) take the <strong>Nominative</strong> form.",
-            "<strong>Soft Endings:</strong> Variants (e.g., -ий, -ее, -я) are used after soft consonants or sibilants (ж, ш, ч, щ) and 'ц' according to spelling rules."
+            "<strong>Animate vs inanimate:</strong> In the Accusative, for masculine singular and all plural, living beings (animate) take the <strong>Genitive</strong> form, while objects (inanimate) take the <strong>Nominative</strong> form.",
+            "<strong>Soft endings:</strong> Variants (e.g., -ий, -ее, -я) are used after soft consonants or sibilants (ж, ш, ч, щ) and 'ц' according to spelling rules."
         ]
     },
     pronouns: {
-        personalTitle: "Personal Pronouns (Личные местоимения)",
+        personalTitle: "Personal pronouns (Личные местоимения)",
         relativeTitle: "Pronoun \"Который\" (Relative pronoun \"which/who\")",
         noteH: "Note on initial \"Н\":",
         noteHText: "When 3rd person pronouns are used after a preposition, they add an initial <strong>н</strong>.<br/>Ex: <em>Я вижу <strong>его</strong></em> (I see him - no preposition) vs <em>Я иду <strong>к нему</strong></em> (I go to him - with preposition).",
-        grammarNotesTitle: "Grammar Notes",
+        grammarNotesTitle: "Grammar notes",
         grammarNotes: [
             "<strong>Который</strong> behaves like a hard adjective.",
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
-            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimate = Nominative (который / которые)</li><li>Animate = Genitive (которого / которых)</li></ul>"
+            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimate = Nominative (который / которые)</li>
+<li>Animate = Genitive (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
-        title: "To Learn and To Teach",
+        title: "To learn and to teach",
         subtitle: "(Учиться и Учить)",
-        aspectPairs: "Aspectual Pairs",
-        imperfOnly: "Imperfective Only",
-        presentFuture: "Present / Future",
+        aspectPairs: "Aspectual pairs",
+        imperfOnly: "Imperfective only",
+        presentFuture: "Present / future",
         past: "Past",
         example: "Example",
         verbs: {
             uchit_vyuchit: {
-                translation: "To Learn / To Study (specific)",
+                translation: "To learn / to study (specific)",
                 usage: "Accusative (что?). Study of a subject or memorizing (poems, words).",
                 exampleIt: "I learn new words every day."
             },
             izuchat_izuchit: {
-                translation: "To Study (in depth)",
+                translation: "To study (in depth)",
                 usage: "Accusative (что?). Deep, academic study. More formal than учить.",
                 exampleIt: "Scientists study space."
             },
             uchit_nauchit: {
-                translation: "To Teach (someone)",
+                translation: "To teach (someone)",
                 usage: "Accusative (кого? - pers.) + Dative (чему? - subject) OR Infinitive.",
                 exampleIt: "The father teaches his son to swim."
             },
             uchitsya: {
-                translation: "To Study (be a student)",
+                translation: "To study (be a student)",
                 usage: "1. Place (где?): univ/school. 2. Manner (как?): well/badly. 3. + Inf: Learn to.",
                 exampleIt: "My brother studies at the university."
             },
             zanimatsya: {
-                translation: "To Study (do homework/practice)",
+                translation: "To study (do homework/practice)",
                 usage: "1. Study with books. 2. Instrumental (чем?): Practice sport/music.",
                 exampleIt: "I study in the library every evening."
             },
             prepodavat: {
-                translation: "To Teach (profession)",
+                translation: "To teach (profession)",
                 usage: "Accusative (что? - subject) or without object. Activity of a lecturer.",
                 exampleIt: "She teaches Russian at school."
             }
         }
     },
     wearVerbs: {
-        title: "Verb to Wear",
-        subtitle: "To Wear, To Put On, To Dress",
-        presentFuture: "Present / Future",
+        title: "Verb to wear",
+        subtitle: "To wear, to put on, to dress",
+        presentFuture: "Present / future",
         past: "Past",
         example: "Example",
-        imperfOnly: "Imperfective Only",
-        mnemonicsTitle: "Mnemonic Rule",
+        imperfOnly: "Imperfective only",
+        mnemonicsTitle: "Mnemonic rule",
         mnemonicsText: "Надеть одежду, одеть Надежду",
-        mnemonicsDesc: "Put on clothes (on oneself/object), Dress Nadezhda (someone else)",
+        mnemonicsDesc: "Put on clothes (on oneself/object), dress Nadezhda (someone else)",
         verbs: {
             nosit: {
-                translation: "To Wear / To Carry",
+                translation: "To wear / to carry",
                 usage: "General state (having on). Used for clothes, glasses, beard, long hair.",
                 exampleRu: "Она носит очки.",
                 exampleIt: "She wears glasses."
             },
             nadevat: {
-                translation: "To Put On",
+                translation: "To put on",
                 usage: "Put something on oneself or on something else (inanimate object). Opposite of Снимать.",
                 exampleRu: "Я надеваю пальто.",
                 exampleIt: "I put on my coat."
             },
             odevat: {
-                translation: "To Dress (someone)",
+                translation: "To dress (someone)",
                 usage: "Dress someone else (person or animated/humanized object). Opposite of Раздевать.",
                 exampleRu: "Мама одевает дочку.",
                 exampleIt: "Mom dresses her daughter."
             },
             odevatsya: {
-                translation: "To Get Dressed",
+                translation: "To get dressed",
                 usage: "Dress oneself (reflexive). General action of getting ready.",
                 exampleRu: "Я быстро одеваюсь утром.",
                 exampleIt: "I get dressed quickly in the morning."
             },
             snimat: {
-                translation: "To Take Off",
+                translation: "To take off",
                 usage: "Remove clothes or accessories.",
                 exampleRu: "Он снимает шапку.",
                 exampleIt: "He takes off his hat."
