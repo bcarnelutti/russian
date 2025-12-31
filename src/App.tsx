@@ -170,9 +170,9 @@ const VerbsMenu = () => {
     { id: 'motion_verbs_prepositions', label: t('verbsMenu.motion_verbs_prepositions') },
     { id: 'learn_teach', label: t('verbsMenu.learn_teach') },
     { id: 'wear_verbs', label: t('verbsMenu.wear_verbs') },
-    { id: 'irregular_verbs', label: t('verbsMenu.irregular_verbs') },
     { id: 'gerund', label: t('verbsMenu.gerund') },
     { id: 'participle', label: t('verbsMenu.participle') },
+    { id: 'irregular_verbs', label: t('verbsMenu.irregular_verbs') },
   ] as const;
 
   return (
@@ -183,9 +183,13 @@ const VerbsMenu = () => {
           onClick={() => setView(item.id)}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="bg-white p-8 rounded-2xl shadow-md border border-slate-100 hover:shadow-xl transition-all text-left group"
+          className={`bg-white p-8 rounded-2xl shadow-md border border-slate-100 hover:shadow-xl transition-all text-left group ${
+            item.id === 'irregular_verbs' ? 'md:col-span-2 bg-amber-50/50 border-amber-100' : ''
+          }`}
         >
-          <h3 className="text-xl font-bold text-slate-800 group-hover:text-indigo-600 transition-colors">
+          <h3 className={`text-xl font-bold transition-colors ${
+            item.id === 'irregular_verbs' ? 'text-amber-900 group-hover:text-amber-700' : 'text-slate-800 group-hover:text-indigo-600'
+          }`}>
             {item.label}
           </h3>
         </motion.button>
