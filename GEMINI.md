@@ -10,6 +10,7 @@ This is a React application built with TypeScript and Vite, designed to help stu
 *   **Verbs of Motion (Глаголы движения):** Prefixed and unprefixed forms with prepositions.
 *   **Pronouns (Местоимения):** Personal, possessive, and demonstrative pronoun declensions.
 *   **Learn/Teach (Учить/Учиться):** Differences in usage.
+*   **Language Support:** Switchable between Italian and English.
 
 The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics.
 
@@ -21,11 +22,15 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 *   **Styling:** Tailwind CSS v4
 *   **Animation:** Framer Motion
 *   **Icons:** Lucide React
-*   **State Management:** React Context API (`ChartContext`) is used to manage the expansion state of the interactive charts globally.
+*   **State Management:** 
+    *   `ChartContext`: Manages expansion/navigation state.
+    *   `LanguageContext`: Manages current language state (IT/EN).
 
 ## Key Files
 
 *   `src/App.tsx`: Main entry point for the UI components.
+*   `src/LanguageContext.tsx`: Context provider for language state and translation hook.
+*   `src/translations.ts`: Dictionary for Italian and English text.
 *   `src/CasesChart.tsx`: Logic and layout for Russian case endings.
 *   `src/MotionVerbsChart.tsx` & `src/MotionVerbsPrepositionsChart.tsx`: Visualizations for movement verbs.
 *   `src/PronounChart.tsx`: Declension tables for pronouns.

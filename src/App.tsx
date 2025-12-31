@@ -1,10 +1,12 @@
 import { useState, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Globe } from 'lucide-react';
 import PronounChart from './PronounChart';
 import MotionVerbsChart from './MotionVerbsChart';
 import MotionVerbsPrepositionsChart from './MotionVerbsPrepositionsChart';
 import CasesChart from './CasesChart';
 import LearnTeachChart from './LearnTeachChart';
+import { LanguageProvider, useLanguage } from './LanguageContext';
 
 // --- Context Definition ---
 interface ChartContextType {
@@ -102,9 +104,23 @@ const useChartContext = () => {
 
 // --- Components ---
 
+const LanguageSwitcher = () => {
+  const { language, setLanguage } = useLanguage();
+
+  return (
+    <button
+      onClick={() => setLanguage(language === 'it' ? 'en' : 'it')}
+      className="flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-md text-slate-600 hover:text-indigo-600 font-medium border border-slate-100 transition-all hover:shadow-lg"
+    >
+      <Globe size={18} />
+      <span>{language === 'it' ? 'IT' : 'EN'}</span>
+    </button>
+  );
+};
+
 const Navigation = () => {
   const { view, setView } = useChartContext();
-
+  const { t } = useLanguage();
   const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'gerund', 'participle'].includes(view);
 
   return (
@@ -117,7 +133,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        Casi
+        {t('nav.cases')}
       </button>
       <button
         onClick={() => setView('pronouns')}
@@ -127,7 +143,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        Pronomi
+        {t('nav.pronouns')}
       </button>
       <button
         onClick={() => setView('verbs_menu')}
@@ -137,7 +153,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        Verbi
+        {t('nav.verbs')}
       </button>
     </div>
   );
@@ -145,13 +161,14 @@ const Navigation = () => {
 
 const VerbsMenu = () => {
   const { setView } = useChartContext();
+  const { t } = useLanguage();
 
   const menuItems = [
-    { id: 'motion_verbs', label: 'Verbi di Moto' },
-    { id: 'motion_verbs_prepositions', label: 'Verbi di Moto + Prefissi' },
-    { id: 'learn_teach', label: 'Imparare e Insegnare' },
-    { id: 'gerund', label: 'Gerundio (Деепричастие)' },
-    { id: 'participle', label: 'Participio (Причастие)' },
+    { id: 'motion_verbs', label: t('verbsMenu.motion_verbs') },
+    { id: 'motion_verbs_prepositions', label: t('verbsMenu.motion_verbs_prepositions') },
+    { id: 'learn_teach', label: t('verbsMenu.learn_teach') },
+    { id: 'gerund', label: t('verbsMenu.gerund') },
+    { id: 'participle', label: t('verbsMenu.participle') },
   ] as const;
 
   return (
@@ -175,6 +192,7 @@ const VerbsMenu = () => {
 
 const GerundChart = () => {
   const { imperfectiveStep, setImperfectiveStep, perfectiveStep, setPerfectiveStep } = useChartContext();
+  const { t } = useLanguage();
 
   const advanceImperfective = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -188,24 +206,25 @@ const GerundChart = () => {
 
   return (
     <section className="my-12 p-8 bg-white rounded-2xl shadow-xl border border-gray-100 min-h-[400px]">
-      <h2 className="text-4xl font-serif text-center mb-12 text-gray-800 underline decoration-red-500 underline-offset-8">Деепричастие (Gerundio)</h2>
+      <h2 className="text-4xl font-serif text-center mb-12 text-gray-800 underline decoration-red-500 underline-offset-8">
+        {t('gerund.title')}
+      </h2>
       
       <div className="flex flex-col md:flex-row gap-8 items-start justify-center max-w-5xl mx-auto">
         
         {/* Imperfective Block */}
         <div className="flex-1 w-full">
           <ParticipleBlock 
-            title="Imperfettivo" 
-            subtitle="Несовершенный" 
+            title={t('gerund.imperfective')}
+            subtitle={t('gerund.imperfectiveSubtitle')}
             colorTheme="blue" 
-            steps={3}
             currentStep={imperfectiveStep}
             advanceStep={advanceImperfective}
           >
             <div className="text-center text-sm italic text-slate-500 mb-4 bg-white/50 p-2 rounded">
-              (azione contemporanea a quella principale)
+              ({t('gerund.imperfectiveDesc')})
               <br/>
-              <span className="font-bold">Es: leggendo</span>
+              <span className="font-bold">{t('gerund.example')}: leggendo</span>
             </div>
 
             {imperfectiveStep >= 1 && <StepCard number={1} text="3^ persona plurale presente" example="читать → читают" color="blue" />}
@@ -217,17 +236,16 @@ const GerundChart = () => {
         {/* Perfective Block */}
         <div className="flex-1 w-full">
           <ParticipleBlock 
-            title="Perfettivo" 
-            subtitle="Совершенный" 
+            title={t('gerund.perfective')}
+            subtitle={t('gerund.perfectiveSubtitle')}
             colorTheme="red" 
-            steps={3}
             currentStep={perfectiveStep}
             advanceStep={advancePerfective}
           >
              <div className="text-center text-sm italic text-slate-500 mb-4 bg-white/50 p-2 rounded">
-              (azione precedente a quella principale)
+              ({t('gerund.perfectiveDesc')})
               <br/>
-              <span className="font-bold">Es: avendo letto</span>
+              <span className="font-bold">{t('gerund.example')}: avendo letto</span>
             </div>
 
             {perfectiveStep >= 1 && <StepCard number={1} text="Dall'infinito tolgo -ть/-ти" example="прочитать → прочита-" color="red" />}
@@ -330,6 +348,7 @@ const ParticipleChart = () => {
     activePastStep, setActivePastStep,
     passivePastStep, setPassivePastStep
   } = useChartContext();
+  const { t } = useLanguage();
 
   const togglePresent = () => setPresentStep(prev => prev === 0 ? 1 : 0);
   const togglePast = () => setPastStep(prev => prev === 0 ? 1 : 0);
@@ -360,7 +379,9 @@ const ParticipleChart = () => {
 
   return (
     <section className="my-12 p-8 bg-white rounded-2xl shadow-xl border border-gray-100 min-h-[600px]">
-      <h2 className="text-4xl font-serif text-center mb-12 text-gray-800 underline decoration-blue-500 underline-offset-8">Причастие (Participio)</h2>
+      <h2 className="text-4xl font-serif text-center mb-12 text-gray-800 underline decoration-blue-500 underline-offset-8">
+        {t('participle.title')}
+      </h2>
       
       <div className="flex flex-col md:flex-row gap-8 items-start justify-center max-w-7xl mx-auto">
         
@@ -370,7 +391,7 @@ const ParticipleChart = () => {
             onClick={togglePast}
             className={`cursor-pointer p-4 rounded-xl border-2 text-center mb-8 transition-colors ${pastStep > 0 ? 'bg-[#D52B1E] text-white border-red-800 shadow-md' : 'bg-white text-red-600 border-red-200 hover:bg-red-50'}`}
           >
-            <h3 className="text-2xl font-bold">Прошедшее время</h3>
+            <h3 className="text-2xl font-bold">{t('participle.past')}</h3>
             <p className="text-sm opacity-90 italic">Tempo Passato</p>
           </motion.div>
 
@@ -384,10 +405,9 @@ const ParticipleChart = () => {
               >
                 {/* Active Past */}
                 <ParticipleBlock 
-                  title="Attivo" 
+                  title={t('participle.active')}
                   subtitle="Действительное" 
                   colorTheme="blue" 
-                  steps={3}
                   currentStep={activePastStep}
                   advanceStep={advanceActivePast}
                 >
@@ -398,16 +418,15 @@ const ParticipleChart = () => {
 
                 {/* Passive Past */}
                 <ParticipleBlock 
-                  title="Passivo" 
+                  title={t('participle.passive')}
                   subtitle="Страдательное" 
                   colorTheme="red" 
-                  steps={3}
                   currentStep={passivePastStep}
                   advanceStep={advancePassivePast}
                 >
                   {/* Short Form Box */}
                   <div className="bg-white p-3 rounded-lg border border-red-100 mb-2">
-                    <div className="text-xs font-bold text-red-800 uppercase mb-1">Forma Breve (Predicato)</div>
+                    <div className="text-xs font-bold text-red-800 uppercase mb-1">{t('participle.shortForm')}</div>
                     <div className="text-xs text-slate-600 mb-1">"Il libro è letto"</div>
                     <div className="grid grid-cols-2 gap-1 text-[10px] font-mono text-red-900 bg-red-50 p-2 rounded">
                       <div>-н / -ен</div><div>-на / -ена</div>
@@ -432,7 +451,7 @@ const ParticipleChart = () => {
             onClick={togglePresent}
             className={`cursor-pointer p-4 rounded-xl border-2 text-center mb-8 transition-colors ${presentStep > 0 ? 'bg-blue-600 text-white border-blue-800 shadow-md' : 'bg-white text-blue-600 border-blue-200 hover:bg-blue-50'}`}
           >
-            <h3 className="text-2xl font-bold">Настоящее время</h3>
+            <h3 className="text-2xl font-bold">{t('participle.present')}</h3>
             <p className="text-sm opacity-90 italic">Tempo Presente</p>
           </motion.div>
 
@@ -446,10 +465,9 @@ const ParticipleChart = () => {
               >
                 {/* Active Present */}
                 <ParticipleBlock 
-                  title="Attivo" 
+                  title={t('participle.active')}
                   subtitle="Действительное" 
                   colorTheme="blue" 
-                  steps={3}
                   currentStep={activePresentStep}
                   advanceStep={advanceActivePresent}
                 >
@@ -460,10 +478,9 @@ const ParticipleChart = () => {
 
                 {/* Passive Present */}
                 <ParticipleBlock 
-                  title="Passivo" 
+                  title={t('participle.passive')}
                   subtitle="Страдательное" 
                   colorTheme="red" 
-                  steps={3}
                   currentStep={passivePresentStep}
                   advanceStep={advancePassivePresent}
                 >
@@ -483,53 +500,71 @@ const ParticipleChart = () => {
 
 const ControlPanel = () => {
   const { expandAll, collapseAll, isAllExpanded, view } = useChartContext();
+  const { t } = useLanguage();
   
   if (!['gerund', 'participle'].includes(view)) return null;
 
   return (
-    <div className="fixed top-8 right-8 z-[100]">
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={isAllExpanded ? collapseAll : expandAll}
-        className={`px-6 py-3 rounded-full font-bold shadow-lg transition-all border-2 ${
-          isAllExpanded 
-            ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-100' 
-            : 'bg-indigo-600 text-white border-indigo-700 hover:bg-indigo-700'
-        }`}
-      >
-        {isAllExpanded ? 'Collapse All' : 'Expand All'}
-      </motion.button>
-    </div>
+    <motion.button
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={isAllExpanded ? collapseAll : expandAll}
+      className={`px-6 py-3 rounded-full font-bold shadow-lg transition-all border-2 ${
+        isAllExpanded 
+          ? 'bg-red-50 text-red-600 border-red-200 hover:bg-red-100' 
+          : 'bg-indigo-600 text-white border-indigo-700 hover:bg-indigo-700'
+      }`}
+    >
+      {isAllExpanded ? t('controls.collapseAll') : t('controls.expandAll')}
+    </motion.button>
   );
 };
 
+const HeaderControls = () => {
+    return (
+        <div className="fixed top-8 right-8 z-[100] flex flex-col gap-4 items-end">
+            <LanguageSwitcher />
+            <ControlPanel />
+        </div>
+    )
+}
+
 function App() {
   return (
-    <ChartProvider>
-      <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-        <ControlPanel />
-        <div className="max-w-7xl mx-auto">
-          <header className="text-center mb-16">
-            <h1 className="text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-              Studiare il Russo
-            </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
-              Schede grammaticali interattive per comprendere le forme verbali e i casi russi.
-            </p>
-            <Navigation />
-          </header>
-
-          <MainContent />
-          
-          <footer className="mt-24 text-center text-slate-400 text-sm">
-            Creato per gli studenti di lingua russa
-          </footer>
-        </div>
-      </div>
-    </ChartProvider>
+    <LanguageProvider>
+      <ChartProvider>
+        <AppContent />
+      </ChartProvider>
+    </LanguageProvider>
   );
 }
+
+const AppContent = () => {
+  const { t } = useLanguage();
+
+  return (
+    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <HeaderControls />
+      <div className="max-w-7xl mx-auto">
+        <header className="text-center mb-16">
+          <h1 className="text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+            {t('title')}
+          </h1>
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
+            {t('subtitle')}
+          </p>
+          <Navigation />
+        </header>
+
+        <MainContent />
+        
+        <footer className="mt-24 text-center text-slate-400 text-sm">
+          {t('footer')}
+        </footer>
+      </div>
+    </div>
+  );
+};
 
 const MainContent = () => {
   const { view } = useChartContext();
