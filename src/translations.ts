@@ -13,7 +13,7 @@ export const translations = {
       motion_verbs: "Verbi di Moto",
       motion_verbs_prepositions: "Verbi di Moto + Prefissi",
       learn_teach: "Imparare e Insegnare",
-      wear_verbs: "Verbi di Vestirsi",
+      wear_verbs: "Verbo indossare",
       gerund: "Gerundio (Деепричастие)",
       participle: "Participio (Причастие)"
     },
@@ -197,7 +197,7 @@ export const translations = {
         }
     },
     wearVerbs: {
-        title: "Verbi di Vestirsi",
+        title: "Verbo indossare",
         subtitle: "Indossare, Mettere, Vestirsi",
         presentFuture: "Presente / Futuro",
         past: "Passato",
