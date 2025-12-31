@@ -13,6 +13,7 @@ export const translations = {
       motion_verbs: "Verbi di Moto",
       motion_verbs_prepositions: "Verbi di Moto + Prefissi",
       learn_teach: "Imparare e Insegnare",
+      wear_verbs: "Verbi di Vestirsi",
       gerund: "Gerundio (Деепричастие)",
       participle: "Participio (Причастие)"
     },
@@ -129,7 +130,7 @@ export const translations = {
         },
         list: {
             nominative: { name: "Nominativo", desc: "Soggetto" },
-            genitive: { name: "Genitivo", desc: "Possesso, Negazione, Di..." },
+            genitive: { name: "Genitive", desc: "Possesso, Negazione, Di..." },
             dative: { name: "Dativo", desc: "Oggetto indiretto (a...), Moto verso persona" },
             accusative: { name: "Accusativo", desc: "Oggetto diretto, Moto a luogo" },
             instrumental: { name: "Strumentale", desc: "Mezzo/Strumento, Con..." },
@@ -152,9 +153,9 @@ export const translations = {
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
             "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
-                <li>Inanimato = Nominativo (который / которые)</li>
-                <li>Animato = Genitivo (которого / которых)</li>
-            </ul>"
+<li>Inanimato = Nominativo (который / которые)</li>
+<li>Animato = Genitivo (которого / которых)</li>
+</ul>"
         ]
     },
     learnTeach: {
@@ -197,6 +198,49 @@ export const translations = {
                 exampleIt: "Lei insegna russo a scuola."
             }
         }
+    },
+    wearVerbs: {
+        title: "Verbi di Vestirsi",
+        subtitle: "Indossare, Mettere, Vestirsi",
+        presentFuture: "Presente / Futuro",
+        past: "Passato",
+        example: "Esempio",
+        imperfOnly: "Solo Imperfettivo",
+        mnemonicsTitle: "Regola Mnemonica",
+        mnemonicsText: "Надеть одежду, одеть Надежду",
+        mnemonicsDesc: "Mettere i vestiti (su se stessi/oggetto), Vestire Nadezhda (qualcun altro)",
+        verbs: {
+            nosit: {
+                translation: "Indossare / Portare",
+                usage: "Stato generale (avere addosso). Usato per vestiti, occhiali, barba, capelli lunghi.",
+                exampleRu: "Она носит очки.",
+                exampleIt: "Lei porta gli occhiali."
+            },
+            nadevat: {
+                translation: "Mettere / Indossare",
+                usage: "Mettere qualcosa su se stessi o su qualcos'altro (oggetto inanimato). Contrario di Снимать.",
+                exampleRu: "Я надеваю пальто.",
+                exampleIt: "Mi metto il cappotto."
+            },
+            odevat: {
+                translation: "Vestire (qualcuno)",
+                usage: "Vestire qualcun altro (persona o oggetto animato/umanizzato). Contrario di Раздевать.",
+                exampleRu: "Мама одевает дочку.",
+                exampleIt: "La mamma veste la figlia."
+            },
+            odevatsya: {
+                translation: "Vestirsi",
+                usage: "Vestire se stessi (riflessivo). Azione generale di prepararsi.",
+                exampleRu: "Я быстро одеваюсь утром.",
+                exampleIt: "Mi vesto velocemente la mattina."
+            },
+            snimat: {
+                translation: "Togliere",
+                usage: "Togliere vestiti o accessori.",
+                exampleRu: "Он снимает шапку.",
+                exampleIt: "Lui si toglie il cappello."
+            }
+        }
     }
   },
   en: {
@@ -213,6 +257,7 @@ export const translations = {
       motion_verbs: "Verbs of Motion",
       motion_verbs_prepositions: "Motion Verbs + Prepositions",
       learn_teach: "To Learn & To Teach",
+      wear_verbs: "Verbs of Wearing",
       gerund: "Gerund (Деепричастие)",
       participle: "Participle (Причастие)"
     },
@@ -352,9 +397,9 @@ export const translations = {
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
             "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
-                <li>Inanimate = Nominative (который / которые)</li>
-                <li>Animate = Genitive (которого / которых)</li>
-            </ul>"
+<li>Inanimate = Nominative (который / которые)</li>
+<li>Animate = Genitive (которого / которых)</li>
+</ul>"
         ]
     },
     learnTeach: {
@@ -395,6 +440,49 @@ export const translations = {
                 translation: "To Teach (profession)",
                 usage: "Accusative (что? - subject) or without object. Activity of a lecturer.",
                 exampleIt: "She teaches Russian at school."
+            }
+        }
+    },
+    wearVerbs: {
+        title: "Verbs of Wearing",
+        subtitle: "To Wear, To Put On, To Dress",
+        presentFuture: "Present / Future",
+        past: "Past",
+        example: "Example",
+        imperfOnly: "Imperfective Only",
+        mnemonicsTitle: "Mnemonic Rule",
+        mnemonicsText: "Надеть одежду, одеть Надежду",
+        mnemonicsDesc: "Put on clothes (on oneself/object), Dress Nadezhda (someone else)",
+        verbs: {
+            nosit: {
+                translation: "To Wear / To Carry",
+                usage: "General state (having on). Used for clothes, glasses, beard, long hair.",
+                exampleRu: "Она носит очки.",
+                exampleIt: "She wears glasses."
+            },
+            nadevat: {
+                translation: "To Put On",
+                usage: "Put something on oneself or on something else (inanimate object). Opposite of Снимать.",
+                exampleRu: "Я надеваю пальто.",
+                exampleIt: "I put on my coat."
+            },
+            odevat: {
+                translation: "To Dress (someone)",
+                usage: "Dress someone else (person or animated/humanized object). Opposite of Раздевать.",
+                exampleRu: "Мама одевает дочку.",
+                exampleIt: "Mom dresses her daughter."
+            },
+            odevatsya: {
+                translation: "To Get Dressed",
+                usage: "Dress oneself (reflexive). General action of getting ready.",
+                exampleRu: "Я быстро одеваюсь утром.",
+                exampleIt: "I get dressed quickly in the morning."
+            },
+            snimat: {
+                translation: "To Take Off",
+                usage: "Remove clothes or accessories.",
+                exampleRu: "Он снимает шапку.",
+                exampleIt: "He takes off his hat."
             }
         }
     }
