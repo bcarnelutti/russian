@@ -152,10 +152,7 @@ export const translations = {
             "<strong>Который</strong> si comporta come un aggettivo forte.",
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
-            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
-<li>Inanimato = Nominativo (который / которые)</li>
-<li>Animato = Genitivo (которого / которых)</li>
-</ul>"
+            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimato = Nominativo (который / которые)</li><li>Animato = Genitivo (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -396,10 +393,7 @@ export const translations = {
             "<strong>Который</strong> behaves like a hard adjective.",
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
-            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
-<li>Inanimate = Nominative (который / которые)</li>
-<li>Animate = Genitive (которого / которых)</li>
-</ul>"
+            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimate = Nominative (который / которые)</li><li>Animate = Genitive (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
