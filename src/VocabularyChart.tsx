@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion';
-import { vocabularyData } from './vocabularyData';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { vocabularyData, VocabItem } from './vocabularyData';
 import { useLanguage } from './LanguageContext';
-import { Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift } from 'lucide-react';
+import { getDeclension, CASES, DeclensionResult } from './utils/declension';
+import { Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift, X } from 'lucide-react';
 
 interface VocabularyChartProps {
   topic: keyof typeof vocabularyData;
@@ -29,15 +31,18 @@ const colors: Record<string, string> = {
 
 const VocabularyChart = ({ topic }: VocabularyChartProps) => {
   const { t } = useLanguage();
-  const items = vocabularyData[topic];
+  const [selectedWord, setSelectedWord] = useState<VocabItem | null>(null);
+  
+  // Sort items alphabetically by Russian name
+  const items = [...vocabularyData[topic]].sort((a, b) => a.ru.localeCompare(b.ru));
+  
   const Icon = icons[topic] || User;
   const colorClass = colors[topic] || 'text-slate-600 bg-slate-50 border-slate-100';
 
-  // Extract base color name for dynamic usage if needed, or just use specific classes
-  // Simple styling for now
+  const declension: DeclensionResult | null = selectedWord ? getDeclension(selectedWord) : null;
 
   return (
-    <section className="my-8 max-w-4xl mx-auto">
+    <section className="my-8 max-w-4xl mx-auto relative">
       <div className={`p-8 rounded-2xl border-2 shadow-sm mb-8 flex items-center justify-center gap-4 ${colorClass}`}>
         <Icon size={40} />
         <h2 className="text-4xl font-serif font-bold">
@@ -49,16 +54,82 @@ const VocabularyChart = ({ topic }: VocabularyChartProps) => {
         {items.map((item, index) => (
           <motion.div
             key={item.id}
+            onClick={() => setSelectedWord(item)}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.05 }}
-            className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer group"
           >
-            <span className="text-xl font-bold text-slate-800 mb-1">{item.ru}</span>
+            <span className="text-xl font-bold text-slate-800 mb-1 group-hover:text-indigo-600 transition-colors">{item.ru}</span>
             <span className="text-sm text-slate-500 font-medium">{t(`vocabulary.${topic}.${item.id}`)}</span>
           </motion.div>
         ))}
       </div>
+
+      {/* Declension Modal */}
+      <AnimatePresence>
+        {selectedWord && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/20 backdrop-blur-sm"
+            onClick={() => setSelectedWord(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center sticky top-0 z-10">
+                <div>
+                  <h3 className="text-3xl font-black text-slate-800">{selectedWord.ru}</h3>
+                  <p className="text-slate-500 font-medium">{t(`vocabulary.${topic}.${selectedWord.id}`)}</p>
+                </div>
+                <button 
+                  onClick={() => setSelectedWord(null)}
+                  className="p-2 hover:bg-slate-200 rounded-full transition-colors"
+                >
+                  <X size={24} className="text-slate-500" />
+                </button>
+              </div>
+
+              <div className="p-6">
+                {declension ? (
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-sm">
+                      <thead>
+                        <tr className="border-b-2 border-slate-100 text-slate-400 uppercase tracking-wider text-xs">
+                          <th className="pb-3 pl-2">Caso</th>
+                          <th className="pb-3">Singolare</th>
+                          <th className="pb-3">Plurale</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-50">
+                        {CASES.map((caseName, idx) => (
+                          <tr key={caseName} className="hover:bg-slate-50 transition-colors">
+                            <td className="py-3 pl-2 font-medium text-slate-500">{caseName}</td>
+                            <td className="py-3 font-bold text-indigo-900">{declension.singular[idx]}</td>
+                            <td className="py-3 font-bold text-emerald-900">{declension.plural[idx]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                ) : (
+                  <div className="text-center py-8 text-slate-400 italic">
+                    Declension not available for this word (indeclinable or phrase).
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
