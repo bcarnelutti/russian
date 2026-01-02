@@ -1,6 +1,6 @@
 import { useState, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe, Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift } from 'lucide-react';
+import { Globe, Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift, Dumbbell } from 'lucide-react';
 import PronounChart from './PronounChart';
 import MotionVerbsChart from './MotionVerbsChart';
 import MotionVerbsPrepositionsChart from './MotionVerbsPrepositionsChart';
@@ -14,7 +14,7 @@ import { LanguageProvider, useLanguage } from './LanguageContext';
 // --- Context Definition ---
 type ViewState = 
   | 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'
-  | 'vocabulary_menu' | 'vocab_clothing' | 'vocab_health' | 'vocab_travel' | 'vocab_education' | 'vocab_body' | 'vocab_nature' | 'vocab_celebrations';
+  | 'vocabulary_menu' | 'vocab_clothing' | 'vocab_health' | 'vocab_travel' | 'vocab_education' | 'vocab_body' | 'vocab_nature' | 'vocab_celebrations' | 'vocab_sports';
 
 interface ChartContextType {
   // Navigation State
@@ -129,7 +129,7 @@ const Navigation = () => {
   const { view, setView } = useChartContext();
   const { t } = useLanguage();
   const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'irregular_verbs', 'gerund', 'participle'].includes(view);
-  const isVocabActive = ['vocabulary_menu', 'vocab_clothing', 'vocab_health', 'vocab_travel', 'vocab_education', 'vocab_body', 'vocab_nature', 'vocab_celebrations'].includes(view);
+  const isVocabActive = ['vocabulary_menu', 'vocab_clothing', 'vocab_health', 'vocab_travel', 'vocab_education', 'vocab_body', 'vocab_nature', 'vocab_celebrations', 'vocab_sports'].includes(view);
 
   return (
     <div className="flex justify-center mb-12 space-x-6 flex-wrap gap-y-4">
@@ -226,6 +226,7 @@ const VocabularyMenu = () => {
     { id: 'vocab_body', label: t('vocabularyMenu.body'), icon: User, color: 'text-orange-600' },
     { id: 'vocab_nature', label: t('vocabularyMenu.nature'), icon: Trees, color: 'text-emerald-600' },
     { id: 'vocab_celebrations', label: t('vocabularyMenu.celebrations'), icon: Gift, color: 'text-purple-600' },
+    { id: 'vocab_sports', label: t('vocabularyMenu.sports'), icon: Dumbbell, color: 'text-blue-600' },
   ] as const;
 
   return (
@@ -699,6 +700,10 @@ const MainContent = () => {
 
   if (view === 'vocab_celebrations') {
     return <VocabularyChart topic="celebrations" />;
+  }
+
+  if (view === 'vocab_sports') {
+    return <VocabularyChart topic="sports" />;
   }
 
   return null;
