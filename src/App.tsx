@@ -1,6 +1,6 @@
 import { useState, createContext, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Globe } from 'lucide-react';
+import { Globe, Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift } from 'lucide-react';
 import PronounChart from './PronounChart';
 import MotionVerbsChart from './MotionVerbsChart';
 import MotionVerbsPrepositionsChart from './MotionVerbsPrepositionsChart';
@@ -8,13 +8,18 @@ import CasesChart from './CasesChart';
 import LearnTeachChart from './LearnTeachChart';
 import WearVerbsChart from './WearVerbsChart';
 import IrregularVerbsChart from './IrregularVerbsChart';
+import VocabularyChart from './VocabularyChart';
 import { LanguageProvider, useLanguage } from './LanguageContext';
 
 // --- Context Definition ---
+type ViewState = 
+  | 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'
+  | 'vocabulary_menu' | 'vocab_clothing' | 'vocab_health' | 'vocab_travel' | 'vocab_education' | 'vocab_body' | 'vocab_nature' | 'vocab_celebrations';
+
 interface ChartContextType {
   // Navigation State
-  view: 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle';
-  setView: React.Dispatch<React.SetStateAction<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'>>;
+  view: ViewState;
+  setView: React.Dispatch<React.SetStateAction<ViewState>>;
 
   // Gerund State
   imperfectiveStep: number;
@@ -45,7 +50,7 @@ interface ChartContextType {
 const ChartContext = createContext<ChartContextType | null>(null);
 
 const ChartProvider = ({ children }: { children: React.ReactNode }) => {
-  const [view, setView] = useState<'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'>('verbs_menu');
+  const [view, setView] = useState<ViewState>('verbs_menu');
   const [imperfectiveStep, setImperfectiveStep] = useState(0);
   const [perfectiveStep, setPerfectiveStep] = useState(0);
   const [presentStep, setPresentStep] = useState(0);
@@ -124,6 +129,7 @@ const Navigation = () => {
   const { view, setView } = useChartContext();
   const { t } = useLanguage();
   const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'irregular_verbs', 'gerund', 'participle'].includes(view);
+  const isVocabActive = ['vocabulary_menu', 'vocab_clothing', 'vocab_health', 'vocab_travel', 'vocab_education', 'vocab_body', 'vocab_nature', 'vocab_celebrations'].includes(view);
 
   return (
     <div className="flex justify-center mb-12 space-x-6 flex-wrap gap-y-4">
@@ -157,6 +163,16 @@ const Navigation = () => {
       >
         {t('nav.verbs')}
       </button>
+      <button
+        onClick={() => setView('vocabulary_menu')}
+        className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${
+          isVocabActive
+            ? 'bg-indigo-600 text-white shadow-lg scale-105'
+            : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
+        }`}
+      >
+        {t('nav.vocabulary')}
+      </button>
     </div>
   );
 };
@@ -180,7 +196,7 @@ const VerbsMenu = () => {
       {menuItems.map((item) => (
         <motion.button
           key={item.id}
-          onClick={() => setView(item.id)}
+          onClick={() => setView(item.id as ViewState)}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           className={`bg-white p-8 rounded-2xl shadow-md border border-slate-100 hover:shadow-xl transition-all text-left group ${
@@ -190,6 +206,42 @@ const VerbsMenu = () => {
           <h3 className={`text-xl font-bold transition-colors ${
             item.id === 'irregular_verbs' ? 'text-amber-900 group-hover:text-amber-700' : 'text-slate-800 group-hover:text-indigo-600'
           }`}>
+            {item.label}
+          </h3>
+        </motion.button>
+      ))}
+    </div>
+  );
+};
+
+const VocabularyMenu = () => {
+  const { setView } = useChartContext();
+  const { t } = useLanguage();
+
+  const menuItems = [
+    { id: 'vocab_clothing', label: t('vocabularyMenu.clothing'), icon: Shirt, color: 'text-pink-600' },
+    { id: 'vocab_health', label: t('vocabularyMenu.health'), icon: Stethoscope, color: 'text-red-600' },
+    { id: 'vocab_travel', label: t('vocabularyMenu.travel'), icon: Plane, color: 'text-sky-600' },
+    { id: 'vocab_education', label: t('vocabularyMenu.education'), icon: GraduationCap, color: 'text-indigo-600' },
+    { id: 'vocab_body', label: t('vocabularyMenu.body'), icon: User, color: 'text-orange-600' },
+    { id: 'vocab_nature', label: t('vocabularyMenu.nature'), icon: Trees, color: 'text-emerald-600' },
+    { id: 'vocab_celebrations', label: t('vocabularyMenu.celebrations'), icon: Gift, color: 'text-purple-600' },
+  ] as const;
+
+  return (
+    <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
+      {menuItems.map((item) => (
+        <motion.button
+          key={item.id}
+          onClick={() => setView(item.id as ViewState)}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="bg-white p-6 rounded-2xl shadow-md border border-slate-100 hover:shadow-xl transition-all flex flex-col items-center gap-4 group"
+        >
+          <div className={`p-4 rounded-full bg-slate-50 group-hover:bg-slate-100 transition-colors ${item.color}`}>
+             <item.icon size={32} />
+          </div>
+          <h3 className="text-xl font-bold text-slate-800">
             {item.label}
           </h3>
         </motion.button>
@@ -615,6 +667,38 @@ const MainContent = () => {
 
   if (view === 'irregular_verbs') {
     return <IrregularVerbsChart />;
+  }
+
+  if (view === 'vocabulary_menu') {
+    return <VocabularyMenu />;
+  }
+
+  if (view === 'vocab_clothing') {
+    return <VocabularyChart topic="clothing" />;
+  }
+
+  if (view === 'vocab_health') {
+    return <VocabularyChart topic="health" />;
+  }
+
+  if (view === 'vocab_travel') {
+    return <VocabularyChart topic="travel" />;
+  }
+
+  if (view === 'vocab_education') {
+    return <VocabularyChart topic="education" />;
+  }
+
+  if (view === 'vocab_body') {
+    return <VocabularyChart topic="body" />;
+  }
+
+  if (view === 'vocab_nature') {
+    return <VocabularyChart topic="nature" />;
+  }
+
+  if (view === 'vocab_celebrations') {
+    return <VocabularyChart topic="celebrations" />;
   }
 
   return null;

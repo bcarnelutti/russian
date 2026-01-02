@@ -7,6 +7,7 @@ export const translations = {
       cases: "Casi",
       pronouns: "Pronomi",
       verbs: "Verbi",
+      vocabulary: "Vocabolario",
       back: "Indietro"
     },
     verbsMenu: {
@@ -17,6 +18,15 @@ export const translations = {
       irregular_verbs: "Verbi irregolari",
       gerund: "Gerundio (Деепричастие)",
       participle: "Participio (Причастие)"
+    },
+    vocabularyMenu: {
+      clothing: "Abbigliamento",
+      health: "Salute",
+      travel: "Viaggi",
+      education: "Istruzione",
+      body: "Il corpo",
+      nature: "Natura",
+      celebrations: "Feste"
     },
     controls: {
       expandAll: "Espandi tutto",
@@ -35,7 +45,7 @@ export const translations = {
         imp1: "3^ persona plurale presente",
         imp2: "Tolgo -ут/-ют o -ат/-ят",
         imp3: "Aggiungo -я/-а o -сь/-ясь (rifl.)",
-        perf1: "Dall'infinito tolgo -ть/-ti",
+        perf1: "Dall'infinito tolgo -ть/-ти",
         perf2: "Aggiungo -в",
         perf3a: "-ши se finisce in consonante",
         perf3b: "per verbi riflessivi"
@@ -153,7 +163,9 @@ export const translations = {
             "<strong>Который</strong> si comporta come un aggettivo forte.",
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
-            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimato = Nominativo (который / которые)</li><li>Animato = Genitivo (которого / которых)</li></ul>"
+            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimato = Nominativo (который / которые)</li>
+<li>Animato = Genitivo (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -265,6 +277,124 @@ export const translations = {
                 note: "Inserimento della 'в' nel tema."
             }
         }
+    },
+    vocabulary: {
+        clothing: {
+            shirt: "Camicia",
+            tshirt: "Maglietta",
+            pants: "Pantaloni",
+            jeans: "Jeans",
+            dress: "Vestito",
+            skirt: "Gonna",
+            sweater: "Maglione",
+            jacket: "Giacca",
+            coat: "Cappotto",
+            shoes: "Scarpe",
+            boots: "Stivali",
+            sneakers: "Scarpe da ginnastica",
+            hat: "Cappello",
+            scarf: "Sciarpa",
+            gloves: "Guanti",
+            socks: "Calzini"
+        },
+        health: {
+            doctor: "Medico",
+            hospital: "Ospedale",
+            pharmacy: "Farmacia",
+            medicine: "Medicina",
+            pain: "Dolore",
+            temperature: "Temperatura",
+            fever: "Febbre",
+            cold: "Raffreddore",
+            cough: "Tosse",
+            headache: "Mal di testa",
+            ambulance: "Ambulanza",
+            help_me: "Aiutatemi",
+            i_feel_bad: "Mi sento male"
+        },
+        travel: {
+            ticket: "Biglietto",
+            passport: "Passaporto",
+            luggage: "Bagaglio",
+            suitcase: "Valigia",
+            train: "Treno",
+            plane: "Aereo",
+            station: "Stazione",
+            airport: "Aeroporto",
+            platform: "Binario",
+            gate: "Gate / Uscita",
+            departure: "Partenza",
+            arrival: "Arrivo",
+            customs: "Dogana",
+            visa: "Visto",
+            seat: "Posto"
+        },
+        education: {
+            school: "Scuola",
+            university: "Università",
+            student: "Studente",
+            teacher: "Insegnante",
+            professor: "Professore",
+            book: "Libro",
+            textbook: "Manuale",
+            notebook: "Quaderno",
+            pen: "Penna",
+            exam: "Esame",
+            lesson: "Lezione",
+            homework: "Compiti",
+            grade: "Voto",
+            library: "Biblioteca"
+        },
+        body: {
+            body: "Corpo",
+            head: "Testa",
+            face: "Viso",
+            eye: "Occhio",
+            eyes: "Occhi",
+            nose: "Naso",
+            mouth: "Bocca",
+            ear: "Orecchio",
+            ears: "Orecchie",
+            hair: "Capelli",
+            arm_hand: "Braccio / Mano",
+            leg_foot: "Gamba / Piede",
+            finger: "Dito",
+            stomach: "Pancia",
+            heart: "Cuore",
+            back: "Schiena"
+        },
+        nature: {
+            nature: "Natura",
+            sun: "Sole",
+            moon: "Luna",
+            sky: "Cielo",
+            star: "Stella",
+            cloud: "Nuvola",
+            rain: "Pioggia",
+            snow: "Neve",
+            wind: "Vento",
+            tree: "Albero",
+            flower: "Fiore",
+            forest: "Foresta",
+            river: "Fiume",
+            sea: "Mare",
+            mountain: "Montagna"
+        },
+        celebrations: {
+            holiday: "Festa",
+            birthday: "Compleanno",
+            new_year: "Capodanno",
+            christmas: "Natale",
+            easter: "Pasqua",
+            gift: "Regalo",
+            party: "Festa / Party",
+            guest: "Ospite",
+            cake: "Torta",
+            flowers: "Fiori",
+            card: "Cartolina",
+            congratulations: "Congratulazioni",
+            cheers: "Cin cin / Alla salute"
+        }
     }
   },
   en: {
@@ -275,6 +405,7 @@ export const translations = {
       cases: "Cases",
       pronouns: "Pronouns",
       verbs: "Verbs",
+      vocabulary: "Vocabulary",
       back: "Back"
     },
     verbsMenu: {
@@ -285,6 +416,15 @@ export const translations = {
       irregular_verbs: "Irregular verbs",
       gerund: "Gerund (Деепричастие)",
       participle: "Participle (Причастие)"
+    },
+    vocabularyMenu: {
+      clothing: "Clothing",
+      health: "Health",
+      travel: "Travel",
+      education: "Education",
+      body: "The body",
+      nature: "Nature",
+      celebrations: "Celebrations"
     },
     controls: {
       expandAll: "Expand all",
@@ -421,7 +561,9 @@ export const translations = {
             "<strong>Который</strong> behaves like a hard adjective.",
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
-            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimate = Nominative (который / которые)</li><li>Animate = Genitive (которого / которых)</li></ul>"
+            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimate = Nominative (который / которые)</li>
+<li>Animate = Genitive (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -532,6 +674,124 @@ export const translations = {
                 translation: "To live",
                 note: "Insertion of 'в' in the stem."
             }
+        }
+    },
+    vocabulary: {
+        clothing: {
+            shirt: "Shirt",
+            tshirt: "T-shirt",
+            pants: "Pants",
+            jeans: "Jeans",
+            dress: "Dress",
+            skirt: "Skirt",
+            sweater: "Sweater",
+            jacket: "Jacket",
+            coat: "Coat",
+            shoes: "Shoes",
+            boots: "Boots",
+            sneakers: "Sneakers",
+            hat: "Hat",
+            scarf: "Scarf",
+            gloves: "Gloves",
+            socks: "Socks"
+        },
+        health: {
+            doctor: "Doctor",
+            hospital: "Hospital",
+            pharmacy: "Pharmacy",
+            medicine: "Medicine",
+            pain: "Pain",
+            temperature: "Temperature",
+            fever: "Fever",
+            cold: "Cold",
+            cough: "Cough",
+            headache: "Headache",
+            ambulance: "Ambulance",
+            help_me: "Help me",
+            i_feel_bad: "I feel bad"
+        },
+        travel: {
+            ticket: "Ticket",
+            passport: "Passport",
+            luggage: "Luggage",
+            suitcase: "Suitcase",
+            train: "Train",
+            plane: "Plane",
+            station: "Station",
+            airport: "Airport",
+            platform: "Platform",
+            gate: "Gate",
+            departure: "Departure",
+            arrival: "Arrival",
+            customs: "Customs",
+            visa: "Visa",
+            seat: "Seat"
+        },
+        education: {
+            school: "School",
+            university: "University",
+            student: "Student",
+            teacher: "Teacher",
+            professor: "Professor",
+            book: "Book",
+            textbook: "Textbook",
+            notebook: "Notebook",
+            pen: "Pen",
+            exam: "Exam",
+            lesson: "Lesson",
+            homework: "Homework",
+            grade: "Grade",
+            library: "Library"
+        },
+        body: {
+            body: "Body",
+            head: "Head",
+            face: "Face",
+            eye: "Eye",
+            eyes: "Eyes",
+            nose: "Nose",
+            mouth: "Mouth",
+            ear: "Ear",
+            ears: "Ears",
+            hair: "Hair",
+            arm_hand: "Arm / Hand",
+            leg_foot: "Leg / Foot",
+            finger: "Finger",
+            stomach: "Stomach",
+            heart: "Heart",
+            back: "Back"
+        },
+        nature: {
+            nature: "Nature",
+            sun: "Sun",
+            moon: "Moon",
+            sky: "Sky",
+            star: "Star",
+            cloud: "Cloud",
+            rain: "Rain",
+            snow: "Snow",
+            wind: "Wind",
+            tree: "Tree",
+            flower: "Flower",
+            forest: "Forest",
+            river: "River",
+            sea: "Sea",
+            mountain: "Mountain"
+        },
+        celebrations: {
+            holiday: "Holiday",
+            birthday: "Birthday",
+            new_year: "New Year",
+            christmas: "Christmas",
+            easter: "Easter",
+            gift: "Gift",
+            party: "Party",
+            guest: "Guest",
+            cake: "Cake",
+            flowers: "Flowers",
+            card: "Card",
+            congratulations: "Congratulations",
+            cheers: "Cheers"
         }
     }
   }
