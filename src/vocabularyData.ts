@@ -21,12 +21,17 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'jacket', ru: 'Куртка', gender: 'f' },
     { id: 'coat', ru: 'Пальто', gender: 'n', indeclinable: true },
     { id: 'shoes', ru: 'Обувь', gender: 'f' },
-    { id: 'boots', ru: 'Ботинки', gender: 'm', baseRu: 'Ботинок', special: 'fleeting_vowel' }, // Botinok -> Botinka
+    { id: 'boots', ru: 'Ботинки', gender: 'm', baseRu: 'Ботинок', special: 'fleeting_vowel' },
     { id: 'sneakers', ru: 'Кроссовки', gender: 'f', baseRu: 'Кроссовка' },
     { id: 'hat', ru: 'Шапка', gender: 'f' },
     { id: 'scarf', ru: 'Шарф', gender: 'm' },
     { id: 'gloves', ru: 'Перчатки', gender: 'f', baseRu: 'Перчатка' },
-    { id: 'socks', ru: 'Носки', gender: 'm', baseRu: 'Носок', special: 'fleeting_vowel' } // Nosok -> Noska. Gen pl Noskov? No, Nosok.
+    { id: 'socks', ru: 'Носки', gender: 'm', baseRu: 'Носок', special: 'fleeting_vowel' },
+    // Verbs
+    { id: 'v_wear', ru: 'Носить', noDeclension: true },
+    { id: 'v_buy', ru: 'Покупать', noDeclension: true },
+    { id: 'v_try_on', ru: 'Мерить', noDeclension: true },
+    { id: 'v_wash', ru: 'Стирать', noDeclension: true }
   ],
   health: [
     { id: 'doctor', ru: 'Врач', gender: 'm', animate: true },
@@ -41,7 +46,12 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'headache', ru: 'Головная боль', noDeclension: true },
     { id: 'ambulance', ru: 'Скорая помощь', noDeclension: true },
     { id: 'help_me', ru: 'Помогите мне', noDeclension: true },
-    { id: 'i_feel_bad', ru: 'Я плохо себя чувствую', noDeclension: true }
+    { id: 'i_feel_bad', ru: 'Я плохо себя чувствую', noDeclension: true },
+    // Verbs
+    { id: 'v_treat', ru: 'Лечить', noDeclension: true },
+    { id: 'v_hurt', ru: 'Болеть', noDeclension: true },
+    { id: 'v_recover', ru: 'Выздоравливать', noDeclension: true },
+    { id: 'v_call_doc', ru: 'Вызывать', noDeclension: true }
   ],
   travel: [
     { id: 'ticket', ru: 'Билет', gender: 'm' },
@@ -58,7 +68,13 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'arrival', ru: 'Прибытие', gender: 'n' },
     { id: 'customs', ru: 'Таможня', gender: 'f' },
     { id: 'visa', ru: 'Виза', gender: 'f' },
-    { id: 'seat', ru: 'Место', gender: 'n' }
+    { id: 'seat', ru: 'Место', gender: 'n' },
+    // Verbs
+    { id: 'v_travel', ru: 'Путешествовать', noDeclension: true },
+    { id: 'v_fly', ru: 'Летать', noDeclension: true },
+    { id: 'v_arrive', ru: 'Приезжать', noDeclension: true },
+    { id: 'v_depart', ru: 'Уезжать', noDeclension: true },
+    { id: 'v_book', ru: 'Бронировать', noDeclension: true }
   ],
   education: [
     { id: 'school', ru: 'Школа', gender: 'f' },
@@ -74,25 +90,36 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'lesson', ru: 'Урок', gender: 'm' },
     { id: 'homework', ru: 'Домашнее задание', noDeclension: true },
     { id: 'grade', ru: 'Оценка', gender: 'f' },
-    { id: 'library', ru: 'Библиотека', gender: 'f' }
+    { id: 'library', ru: 'Библиотека', gender: 'f' },
+    // Verbs
+    { id: 'v_read', ru: 'Читать', noDeclension: true },
+    { id: 'v_write', ru: 'Писать', noDeclension: true },
+    { id: 'v_listen', ru: 'Слушать', noDeclension: true },
+    { id: 'v_understand', ru: 'Понимать', noDeclension: true },
+    { id: 'v_ask', ru: 'Спрашивать', noDeclension: true }
   ],
   body: [
     { id: 'body', ru: 'Тело', gender: 'n' },
     { id: 'head', ru: 'Голова', gender: 'f' },
     { id: 'face', ru: 'Лицо', gender: 'n' },
     { id: 'eye', ru: 'Глаз', gender: 'm' },
-    { id: 'eyes', ru: 'Глаза', gender: 'm', baseRu: 'Глаз' }, // Irreg pl
+    { id: 'eyes', ru: 'Глаза', gender: 'm', baseRu: 'Глаз' },
     { id: 'nose', ru: 'Нос', gender: 'm' },
     { id: 'mouth', ru: 'Рот', gender: 'm', special: 'fleeting_vowel' },
     { id: 'ear', ru: 'Ухо', gender: 'n' },
-    { id: 'ears', ru: 'Уши', gender: 'n', baseRu: 'Ухо' }, // Irreg pl
+    { id: 'ears', ru: 'Уши', gender: 'n', baseRu: 'Ухо' },
     { id: 'hair', ru: 'Волосы', gender: 'm', baseRu: 'Волос' },
     { id: 'arm_hand', ru: 'Рука', gender: 'f' },
     { id: 'leg_foot', ru: 'Нога', gender: 'f' },
     { id: 'finger', ru: 'Палец', gender: 'm', special: 'fleeting_vowel' },
     { id: 'stomach', ru: 'Живот', gender: 'm' },
     { id: 'heart', ru: 'Сердце', gender: 'n' },
-    { id: 'back', ru: 'Спина', gender: 'f' }
+    { id: 'back', ru: 'Спина', gender: 'f' },
+    // Verbs
+    { id: 'v_see', ru: 'Видеть', noDeclension: true },
+    { id: 'v_hear', ru: 'Слышать', noDeclension: true },
+    { id: 'v_breathe', ru: 'Дышать', noDeclension: true },
+    { id: 'v_touch', ru: 'Трогать', noDeclension: true }
   ],
   nature: [
     { id: 'nature', ru: 'Природа', gender: 'f' },
@@ -109,7 +136,11 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'forest', ru: 'Лес', gender: 'm' },
     { id: 'river', ru: 'Река', gender: 'f' },
     { id: 'sea', ru: 'Море', gender: 'n' },
-    { id: 'mountain', ru: 'Гора', gender: 'f' }
+    { id: 'mountain', ru: 'Гора', gender: 'f' },
+    // Verbs
+    { id: 'v_grow', ru: 'Расти', noDeclension: true },
+    { id: 'v_shine', ru: 'Светить', noDeclension: true },
+    { id: 'v_bloom', ru: 'Цвести', noDeclension: true }
   ],
   celebrations: [
     { id: 'holiday', ru: 'Праздник', gender: 'm' },
@@ -124,6 +155,12 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'flowers', ru: 'Цветы', gender: 'm', baseRu: 'Цветок', special: 'fleeting_vowel' },
     { id: 'card', ru: 'Открытка', gender: 'f' },
     { id: 'congratulations', ru: 'Поздравляю', noDeclension: true },
-    { id: 'cheers', ru: 'За здоровье', noDeclension: true }
+    { id: 'cheers', ru: 'За здоровье', noDeclension: true },
+    // Verbs
+    { id: 'v_celebrate', ru: 'Праздновать', noDeclension: true },
+    { id: 'v_congratulate', ru: 'Поздравлять', noDeclension: true },
+    { id: 'v_wish', ru: 'Желать', noDeclension: true },
+    { id: 'v_give_gift', ru: 'Дарить', noDeclension: true },
+    { id: 'v_invite', ru: 'Приглашать', noDeclension: true }
   ]
 };

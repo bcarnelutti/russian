@@ -163,7 +163,9 @@ export const translations = {
             "<strong>Который</strong> si comporta come un aggettivo forte.",
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
-            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimato = Nominativo (который / которые)</li><li>Animato = Genitivo (которого / которых)</li></ul>"
+            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimato = Nominativo (который / которые)</li>
+<li>Animato = Genitivo (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -293,7 +295,11 @@ export const translations = {
             hat: "Cappello",
             scarf: "Sciarpa",
             gloves: "Guanti",
-            socks: "Calzini"
+            socks: "Calzini",
+            v_wear: "Indossare",
+            v_buy: "Comprare",
+            v_try_on: "Misurare",
+            v_wash: "Lavare"
         },
         health: {
             doctor: "Medico",
@@ -308,7 +314,11 @@ export const translations = {
             headache: "Mal di testa",
             ambulance: "Ambulanza",
             help_me: "Aiutatemi",
-            i_feel_bad: "Mi sento male"
+            i_feel_bad: "Mi sento male",
+            v_treat: "Curare",
+            v_hurt: "Fare male",
+            v_recover: "Guarire",
+            v_call_doc: "Chiamare (medico)"
         },
         travel: {
             ticket: "Biglietto",
@@ -325,7 +335,12 @@ export const translations = {
             arrival: "Arrivo",
             customs: "Dogana",
             visa: "Visto",
-            seat: "Posto"
+            seat: "Posto",
+            v_travel: "Viaggiare",
+            v_fly: "Volare",
+            v_arrive: "Arrivare",
+            v_depart: "Partire",
+            v_book: "Prenotare"
         },
         education: {
             school: "Scuola",
@@ -341,7 +356,12 @@ export const translations = {
             lesson: "Lezione",
             homework: "Compiti",
             grade: "Voto",
-            library: "Biblioteca"
+            library: "Biblioteca",
+            v_read: "Leggere",
+            v_write: "Scrivere",
+            v_listen: "Ascoltare",
+            v_understand: "Capire",
+            v_ask: "Chiedere"
         },
         body: {
             body: "Corpo",
@@ -359,7 +379,11 @@ export const translations = {
             finger: "Dito",
             stomach: "Pancia",
             heart: "Cuore",
-            back: "Schiena"
+            back: "Schiena",
+            v_see: "Vedere",
+            v_hear: "Sentire",
+            v_breathe: "Respirare",
+            v_touch: "Toccare"
         },
         nature: {
             nature: "Natura",
@@ -376,7 +400,10 @@ export const translations = {
             forest: "Foresta",
             river: "Fiume",
             sea: "Mare",
-            mountain: "Montagna"
+            mountain: "Montagna",
+            v_grow: "Crescere",
+            v_shine: "Splendere",
+            v_bloom: "Fiorire"
         },
         celebrations: {
             holiday: "Festa",
@@ -391,7 +418,12 @@ export const translations = {
             flowers: "Fiori",
             card: "Cartolina",
             congratulations: "Congratulazioni",
-            cheers: "Cin cin / Alla salute"
+            cheers: "Cin cin / Alla salute",
+            v_celebrate: "Festeggiare",
+            v_congratulate: "Congratularsi",
+            v_wish: "Augurare",
+            v_give_gift: "Regalare",
+            v_invite: "Invitare"
         }
     }
   },
@@ -559,7 +591,9 @@ export const translations = {
             "<strong>Который</strong> behaves like a hard adjective.",
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
-            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimate = Nominative (который / которые)</li><li>Animate = Genitive (которого / которых)</li></ul>"
+            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimate = Nominative (который / которые)</li>
+<li>Animate = Genitive (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -689,7 +723,11 @@ export const translations = {
             hat: "Hat",
             scarf: "Scarf",
             gloves: "Gloves",
-            socks: "Socks"
+            socks: "Socks",
+            v_wear: "To wear",
+            v_buy: "To buy",
+            v_try_on: "To try on",
+            v_wash: "To wash"
         },
         health: {
             doctor: "Doctor",
@@ -704,7 +742,11 @@ export const translations = {
             headache: "Headache",
             ambulance: "Ambulance",
             help_me: "Help me",
-            i_feel_bad: "I feel bad"
+            i_feel_bad: "I feel bad",
+            v_treat: "To treat",
+            v_hurt: "To hurt",
+            v_recover: "To recover",
+            v_call_doc: "To call (doctor)"
         },
         travel: {
             ticket: "Ticket",
@@ -721,7 +763,12 @@ export const translations = {
             arrival: "Arrival",
             customs: "Customs",
             visa: "Visa",
-            seat: "Seat"
+            seat: "Seat",
+            v_travel: "To travel",
+            v_fly: "To fly",
+            v_arrive: "To arrive",
+            v_depart: "To depart",
+            v_book: "To book"
         },
         education: {
             school: "School",
@@ -737,7 +784,12 @@ export const translations = {
             lesson: "Lesson",
             homework: "Homework",
             grade: "Grade",
-            library: "Library"
+            library: "Library",
+            v_read: "To read",
+            v_write: "To write",
+            v_listen: "To listen",
+            v_understand: "To understand",
+            v_ask: "To ask"
         },
         body: {
             body: "Body",
@@ -755,7 +807,11 @@ export const translations = {
             finger: "Finger",
             stomach: "Stomach",
             heart: "Heart",
-            back: "Back"
+            back: "Back",
+            v_see: "To see",
+            v_hear: "To hear",
+            v_breathe: "To breathe",
+            v_touch: "To touch"
         },
         nature: {
             nature: "Nature",
@@ -772,7 +828,10 @@ export const translations = {
             forest: "Forest",
             river: "River",
             sea: "Sea",
-            mountain: "Mountain"
+            mountain: "Mountain",
+            v_grow: "To grow",
+            v_shine: "To shine",
+            v_bloom: "To bloom"
         },
         celebrations: {
             holiday: "Holiday",
@@ -787,7 +846,12 @@ export const translations = {
             flowers: "Flowers",
             card: "Card",
             congratulations: "Congratulations",
-            cheers: "Cheers"
+            cheers: "Cheers",
+            v_celebrate: "To celebrate",
+            v_congratulate: "To congratulate",
+            v_wish: "To wish",
+            v_give_gift: "To give (a gift)",
+            v_invite: "To invite"
         }
     }
   }
