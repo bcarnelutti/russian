@@ -24,8 +24,12 @@ export const getDeclension = (word: VocabItem): DeclensionResult | null => {
     return { singular: arr, plural: arr };
   }
 
-  const stem = getStem(word.ru, word.gender, word.special);
-  const endings = getEndings(word.ru, word.gender, word.animate);
+  // Use base form (singular) if available, otherwise usage form
+  const workingWord = word.baseRu || word.ru;
+  const workingGender = word.gender || 'm'; // default m if unknown, but should be set
+
+  const stem = getStem(workingWord, workingGender, word.special);
+  const endings = getEndings(workingWord, workingGender, word.animate);
 
   return {
     singular: endings.singular.map(end => applyEnding(stem.singular, end)),
@@ -33,7 +37,7 @@ export const getDeclension = (word: VocabItem): DeclensionResult | null => {
   };
 };
 
-function getStem(word: string, gender?: string, special?: string) {
+function getStem(word: string, gender: string = 'm', special?: string) {
   let stemSg = word;
   let stemPl = word;
 
@@ -49,30 +53,20 @@ function getStem(word: string, gender?: string, special?: string) {
       stemSg = word.slice(0, -1);
     }
     stemPl = stemSg;
-    
-    // Fleeting vowel for Masc (Nom Sg has it, others don't)
-    if (special === 'fleeting_vowel') {
-        // Very basic heuristic
-        if (word === 'Рот') { stemSg = 'Рт'; stemPl = 'Рт'; }
-        else if (word === 'Подарок') { stemSg = 'Подарк'; stemPl = 'Подарк'; }
-        else if (word === 'Цветок') { stemSg = 'Цветк'; stemPl = 'Цвет'; }
-        else if (word === 'Палец') { stemSg = 'Пальц'; stemPl = 'Пальц'; }
-    }
   }
 
   // Irregular plurals stems (hardcoded for known vocab)
-  if (word === 'Дерево') stemPl = 'Деревь';
-  if (word === 'Брат') stemPl = 'Брат'; 
-  if (word === 'Стул') stemPl = 'Стуль';
-  if (word === 'Друг') stemPl = 'Друзь';
-  if (word === 'Человек') stemPl = 'Люд';
-  if (word === 'Ребёнок') stemPl = 'Дет';
+  // Most irregulars are handled by full override in getEndings to avoid complex stem switching
   if (word === 'Цветок') stemPl = 'Цвет'; 
   
   return { singular: stemSg, plural: stemPl };
 }
 
 function applyEnding(stem: string, ending: string) {
+  // If ending starts with 'OVERRIDE:', replace stem entirely
+  if (ending.startsWith('OVERRIDE:')) {
+      return ending.split('OVERRIDE:')[1];
+  }
   return stem + ending;
 }
 
@@ -85,29 +79,21 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
   
   // --- MASCULINE ---
   if (gender === 'm') {
-    // Standard Hard (Стол)
     let s = ['','а','у','','ом','е'];
     let p = ['ы','ов','ам','','ами','ах'];
 
-    // Soft (Музей, Словарь)
     if (lastChar === 'й') {
        s = ['й','я','ю','й','ем','е'];
        p = ['и','ев','ям','и','ями','ях'];
     } else if (lastChar === 'ь') {
        s = ['ь','я','ю','ь','ем','е'];
        p = ['и','ей','ям','и','ями','ях'];
-    } else if (isVelar(word.slice(-1))) { // Park -> Parki
+    } else if (isVelar(word.slice(-1))) { 
        p[0] = 'и'; 
     }
 
-    // Accusative Logic
     s[3] = animate ? s[1] : s[0];
     p[3] = animate ? p[1] : p[0];
-
-    // Special irregulars
-    if (word === 'Цветок') {
-        s[0] = 'ок';
-    }
 
     sg = s;
     pl = p;
@@ -115,11 +101,9 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
 
   // --- FEMININE ---
   else if (gender === 'f') {
-    // Hard (Мама)
     let s = ['а','ы','е','у','ой','е'];
     let p = ['ы','','ам','ы','ами','ах'];
 
-    // Soft (Неделя, Тетя)
     if (lastChar === 'я') {
         s = ['я','и','е','ю','ей','е'];
         p = ['и','ь','ям','и','ями','ях'];
@@ -129,18 +113,15 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
             p[1] = 'й';
         }
     } 
-    // Soft Sign (Ночь)
     else if (lastChar === 'ь') {
         s = ['ь','и','и','ь','ью','и'];
         p = ['и','ей','ям','и','ями','ях'];
     }
-    // Velar rule
     else if (isVelar(word.slice(-2, -1))) {
         s[1] = 'и';
         p[0] = 'и';
     }
 
-    // Accusative Plural
     p[3] = animate ? p[1] : p[0];
 
     sg = s;
@@ -149,11 +130,9 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
 
   // --- NEUTER ---
   else if (gender === 'n') {
-    // Hard (Окно)
     let s = ['о','а','у','о','ом','е'];
     let p = ['а','','ам','а','ами','ах'];
 
-    // Soft (Море)
     if (lastChar === 'е') {
         s = ['е','я','ю','е','ем','е'];
         p = ['я','ей','ям','я','ями','ях'];
@@ -172,21 +151,66 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
       let p = ['ы','ов','ам','ы','ами','ах'];
       if (word.endsWith('и')) {
           p = ['и','ов','ам','и','ами','ах'];
-          if (word === 'Носки') p[1] = '';
       }
-      sg = Array(6).fill('-');
+      sg = Array(6).fill('-'); // No singular
       pl = p;
   }
 
-  // Fix overrides
-  if (word === 'Рот') { sg = ['Рот','Рта','Рту','Рот','Ртом','Рту']; }
+  // --- MANUAL OVERRIDES (using OVERRIDE: prefix to bypass stem attachment) ---
+  // This allows us to handle fleeting vowels and irregulars perfectly without complex logic
+  
+  const override = (s: string[], p: string[]) => {
+      sg = s.map(x => 'OVERRIDE:' + x);
+      pl = p.map(x => 'OVERRIDE:' + x);
+  };
+
+  if (word === 'Рот') { 
+      override(['Рот','Рта','Рту','Рот','Ртом','Рту'], ['Рты','Ртов','Ртам','Рты','Ртами','Ртах']);
+  }
   if (word === 'Цветок') { 
-      sg = ['Цветок','Цветка','Цветку','Цветок','Цветком','Цветке'];
-      pl = ['Цветы','Цветов','Цветам','Цветы','Цветами','Цветах'];
+      override(['Цветок','Цветка','Цветку','Цветок','Цветком','Цветке'], ['Цветы','Цветов','Цветам','Цветы','Цветами','Цветах']);
   }
   if (word === 'День рождения') {
-      sg = ['День рождения','Дня рождения','Дню рождения','День рождения','Днём рождения','Дне рождения'];
-      pl = ['Дни рождения','Дней рождения','Дням рождения','Дни рождения','Днями рождения','Днях рождения'];
+      override(['День рождения','Дня рождения','Дню рождения','День рождения','Днём рождения','Дне рождения'], ['Дни рождения','Дней рождения','Дням рождения','Дни рождения','Днями рождения','Днях рождения']);
+  }
+  if (word === 'Ботинок') {
+      override(['Ботинок','Ботинка','Ботинку','Ботинок','Ботинком','Ботинке'], ['Ботинки','Ботинок','Ботинкам','Ботинки','Ботинками','Ботинках']);
+  }
+  if (word === 'Носок') {
+      override(['Носок','Носка','Носку','Носок','Носком','Носке'], ['Носки','Носков','Носкам','Носки','Носками','Носках']); // Gen pl 'Noskov' is standard now? Or 'Nosok'? 'Nosok' is traditional, 'Noskov' accepted. I'll use Noskov for regularity or Nosok. Let's stick to standard modern. Actually 'paru noskov'.
+  }
+  if (word === 'Палец') {
+      override(['Палец','Пальца','Пальцу','Палец','Пальцем','Пальце'], ['Пальцы','Пальцев','Пальцам','Пальцы','Пальцами','Пальцах']);
+  }
+  if (word === 'Глаз') {
+      override(['Глаз','Глаза','Глазу','Глаз','Глазом','Глазе'], ['Глаза','Глаз','Глазам','Глаза','Глазами','Глазах']);
+  }
+  if (word === 'Ухо') {
+      override(['Ухо','Уха','Уху','Ухо','Ухом','Ухе'], ['Уши','Ушей','Ушам','Уши','Ушами','Ушах']);
+  }
+  if (word === 'Волос') {
+      override(['Волос','Волоса','Волосу','Волос','Волосом','Волосе'], ['Волосы','Волос','Волосам','Волосы','Волосами','Волосах']);
+  }
+  if (word === 'Ребёнок') {
+      override(['Ребёнок','Ребёнка','Ребёнку','Ребёнка','Ребёнком','Ребёнке'], ['Дети','Детей','Детям','Детей','Детьми','Детях']);
+  }
+  if (word === 'Человек') {
+      override(['Человек','Человека','Человеку','Человека','Человеком','Человеке'], ['Люди','Людей','Людям','Людей','Людьми','Людях']);
+  }
+  if (word === 'Друг') {
+      override(['Друг','Друга','Другу','Друга','Другом','Друге'], ['Друзья','Друзей','Друзьям','Друзей','Друзьями','Друзьях']);
+  }
+  if (word === 'Брат') {
+      override(['Брат','Брата','Брату','Брата','Братом','Брате'], ['Братья','Братьев','Братьям','Братьев','Братьями','Братьях']);
+  }
+  if (word === 'Стул') {
+      override(['Стул','Стула','Стулу','Стул','Стулом','Стуле'], ['Стулья','Стульев','Стульям','Стулья','Стульями','Стульях']);
+  }
+  if (word === 'Дерево') {
+      override(['Дерево','Дерева','Дереву','Дерево','Деревом','Дереве'], ['Деревья','Деревьев','Деревьям','Деревья','Деревьями','Деревьях']);
+  }
+  if (word === 'Носки') { // Just in case singular override missing or needed specific
+      // Gen Plural check: modern usage accepts 'noskov', traditional 'nosok'. I used 'noskov' above.
   }
 
   return { singular: sg, plural: pl };

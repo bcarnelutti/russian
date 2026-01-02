@@ -1,11 +1,12 @@
 export interface VocabItem {
   id: string;
   ru: string;
+  baseRu?: string; // Singular form if 'ru' is plural
   gender?: 'm' | 'f' | 'n' | 'pl';
   animate?: boolean;
   indeclinable?: boolean;
-  noDeclension?: boolean; // For verbs, phrases, or complex structures we won't auto-decline
-  special?: 'fleeting_vowel' | 'irregular_pl'; // Hints for generator
+  noDeclension?: boolean;
+  special?: 'fleeting_vowel' | 'irregular_pl';
 }
 
 export const vocabularyData: Record<string, VocabItem[]> = {
@@ -20,12 +21,12 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'jacket', ru: 'Куртка', gender: 'f' },
     { id: 'coat', ru: 'Пальто', gender: 'n', indeclinable: true },
     { id: 'shoes', ru: 'Обувь', gender: 'f' },
-    { id: 'boots', ru: 'Ботинки', gender: 'pl' },
-    { id: 'sneakers', ru: 'Кроссовки', gender: 'pl' },
+    { id: 'boots', ru: 'Ботинки', gender: 'm', baseRu: 'Ботинок', special: 'fleeting_vowel' }, // Botinok -> Botinka
+    { id: 'sneakers', ru: 'Кроссовки', gender: 'f', baseRu: 'Кроссовка' },
     { id: 'hat', ru: 'Шапка', gender: 'f' },
     { id: 'scarf', ru: 'Шарф', gender: 'm' },
-    { id: 'gloves', ru: 'Перчатки', gender: 'pl' },
-    { id: 'socks', ru: 'Носки', gender: 'pl' }
+    { id: 'gloves', ru: 'Перчатки', gender: 'f', baseRu: 'Перчатка' },
+    { id: 'socks', ru: 'Носки', gender: 'm', baseRu: 'Носок', special: 'fleeting_vowel' } // Nosok -> Noska. Gen pl Noskov? No, Nosok.
   ],
   health: [
     { id: 'doctor', ru: 'Врач', gender: 'm', animate: true },
@@ -80,12 +81,12 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'head', ru: 'Голова', gender: 'f' },
     { id: 'face', ru: 'Лицо', gender: 'n' },
     { id: 'eye', ru: 'Глаз', gender: 'm' },
-    { id: 'eyes', ru: 'Глаза', gender: 'pl' },
+    { id: 'eyes', ru: 'Глаза', gender: 'm', baseRu: 'Глаз' }, // Irreg pl
     { id: 'nose', ru: 'Нос', gender: 'm' },
     { id: 'mouth', ru: 'Рот', gender: 'm', special: 'fleeting_vowel' },
     { id: 'ear', ru: 'Ухо', gender: 'n' },
-    { id: 'ears', ru: 'Уши', gender: 'pl' },
-    { id: 'hair', ru: 'Волосы', gender: 'pl' },
+    { id: 'ears', ru: 'Уши', gender: 'n', baseRu: 'Ухо' }, // Irreg pl
+    { id: 'hair', ru: 'Волосы', gender: 'm', baseRu: 'Волос' },
     { id: 'arm_hand', ru: 'Рука', gender: 'f' },
     { id: 'leg_foot', ru: 'Нога', gender: 'f' },
     { id: 'finger', ru: 'Палец', gender: 'm', special: 'fleeting_vowel' },
@@ -120,7 +121,7 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'party', ru: 'Вечеринка', gender: 'f' },
     { id: 'guest', ru: 'Гость', gender: 'm', animate: true },
     { id: 'cake', ru: 'Торт', gender: 'm' },
-    { id: 'flowers', ru: 'Цветы', gender: 'pl' },
+    { id: 'flowers', ru: 'Цветы', gender: 'm', baseRu: 'Цветок', special: 'fleeting_vowel' },
     { id: 'card', ru: 'Открытка', gender: 'f' },
     { id: 'congratulations', ru: 'Поздравляю', noDeclension: true },
     { id: 'cheers', ru: 'За здоровье', noDeclension: true }
