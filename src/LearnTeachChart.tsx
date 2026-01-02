@@ -142,7 +142,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
       
       <div className="mb-4">
         <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('learnTeach.presentFuture')}</div>
-        <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+        <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-2 gap-y-1">
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 last:border-0 pb-0.5">
               <span className="text-xs text-gray-400 mr-2">{pronoun}</span>

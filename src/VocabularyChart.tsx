@@ -60,7 +60,7 @@ const VerbConjugationTable = ({ conjugation }: { conjugation: VerbConjugation })
         <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-b border-slate-100 pb-1">
           Presente / Futuro
         </div>
-        <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md">
+        <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-8 gap-y-2 text-sm max-w-md">
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
               <span className="text-gray-400 font-medium w-16">{pronoun}</span>
