@@ -33,7 +33,6 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'scarf', ru: 'Шарф', gender: 'm' },
     { id: 'gloves', ru: 'Перчатки', gender: 'f', baseRu: 'Перчатка' },
     { id: 'socks', ru: 'Носки', gender: 'm', baseRu: 'Носок', special: 'fleeting_vowel' },
-    // Verbs
     { 
       id: 'v_wear', ru: 'Носить', noDeclension: true,
       conjugation: {
@@ -340,6 +339,41 @@ export const vocabularyData: Record<string, VocabItem[]> = {
       conjugation: {
         presentFuture: ['приглаша́ю', 'приглаша́ешь', 'приглаша́ет', 'приглаша́ем', 'приглаша́ете', 'приглаша́ют'],
         past: ['приглаша́л', 'приглаша́ла', 'приглаша́ло', 'приглаша́ли']
+      }
+    }
+  ],
+  sports: [
+    { id: 'sport', ru: 'Спорт', gender: 'm' },
+    { id: 'football', ru: 'Футбол', gender: 'm' },
+    { id: 'basketball', ru: 'Баскетбол', gender: 'm' },
+    { id: 'tennis', ru: 'Теннис', gender: 'm' },
+    { id: 'volleyball', ru: 'Волейбол', gender: 'm' },
+    { id: 'hockey', ru: 'Хоккей', gender: 'm' },
+    { id: 'swimming', ru: 'Плавание', gender: 'n' },
+    { id: 'running', ru: 'Бег', gender: 'm' },
+    { id: 'gym', ru: 'Спортзал', gender: 'm' },
+    { id: 'match', ru: 'Матч', gender: 'm' },
+    { id: 'team', ru: 'Команда', gender: 'f' },
+    { id: 'ball', ru: 'Мяч', gender: 'm' },
+    { 
+      id: 'v_play', ru: 'Играть', noDeclension: true,
+      conjugation: {
+        presentFuture: ['игра́ю', 'игра́ешь', 'игра́ет', 'игра́ем', 'игра́ете', 'игра́ют'],
+        past: ['игра́л', 'игра́ла', 'игра́ло', 'игра́ли']
+      }
+    },
+    { 
+      id: 'v_win', ru: 'Побеждать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['побежда́ю', 'побежда́ешь', 'побежда́ет', 'побежда́ем', 'побежда́ете', 'побежда́ют'],
+        past: ['побежда́л', 'побежда́ла', 'побежда́ло', 'побежда́ли']
+      }
+    },
+    { 
+      id: 'v_lose', ru: 'Проигрывать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['прои́грываю', 'прои́грываешь', 'прои́грывает', 'прои́грываем', 'прои́грываете', 'прои́грывают'],
+        past: ['прои́грывал', 'прои́грывала', 'прои́грывало', 'прои́грывали']
       }
     }
   ]
