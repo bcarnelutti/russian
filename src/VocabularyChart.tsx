@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { vocabularyData, type VocabItem } from './vocabularyData';
+import { vocabularyData, type VocabItem, type VerbConjugation } from './vocabularyData';
 import { useLanguage } from './LanguageContext';
 import { getDeclension, CASES, type DeclensionResult } from './utils/declension';
 import { Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift, X } from 'lucide-react';
@@ -27,6 +27,74 @@ const colors: Record<string, string> = {
   body: 'text-orange-600 bg-orange-50 border-orange-100',
   nature: 'text-emerald-600 bg-emerald-50 border-emerald-100',
   celebrations: 'text-purple-600 bg-purple-50 border-purple-100'
+};
+
+const NounDeclensionTable = ({ declension }: { declension: DeclensionResult }) => (
+  <div className="overflow-x-auto">
+    <table className="w-full text-left text-sm">
+      <thead>
+        <tr className="border-b-2 border-slate-100 text-slate-400 uppercase tracking-wider text-xs">
+          <th className="pb-3 pl-2">Caso</th>
+          <th className="pb-3">Singolare</th>
+          <th className="pb-3">Plurale</th>
+        </tr>
+      </thead>
+      <tbody className="divide-y divide-slate-50">
+        {CASES.map((caseName, idx) => (
+          <tr key={caseName} className="hover:bg-slate-50 transition-colors">
+            <td className="py-3 pl-2 font-medium text-slate-500">{caseName}</td>
+            <td className="py-3 font-bold text-indigo-900">{declension.singular[idx]}</td>
+            <td className="py-3 font-bold text-emerald-900">{declension.plural[idx]}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+);
+
+const VerbConjugationTable = ({ conjugation }: { conjugation: VerbConjugation }) => {
+  const { t } = useLanguage();
+  return (
+    <div className="space-y-6">
+      <div>
+        <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-b border-slate-100 pb-1">
+          Presente / Futuro
+        </div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md">
+          {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
+            <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
+              <span className="text-gray-400 font-medium w-16">{pronoun}</span>
+              <span className="font-bold text-slate-800 text-lg">{conjugation.presentFuture[idx]}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-b border-slate-100 pb-1">
+          Passato
+        </div>
+        <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md">
+          <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
+            <span className="text-gray-400 font-medium w-16">Он</span>
+            <span className="font-bold text-slate-800 text-lg">{conjugation.past[0]}</span>
+          </div>
+          <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
+            <span className="text-gray-400 font-medium w-16">Она</span>
+            <span className="font-bold text-slate-800 text-lg">{conjugation.past[1]}</span>
+          </div>
+          <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
+            <span className="text-gray-400 font-medium w-16">Оно</span>
+            <span className="font-bold text-slate-800 text-lg">{conjugation.past[2]}</span>
+          </div>
+          <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
+            <span className="text-gray-400 font-medium w-16">Они</span>
+            <span className="font-bold text-slate-800 text-lg">{conjugation.past[3]}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const VocabularyChart = ({ topic }: VocabularyChartProps) => {
@@ -68,7 +136,7 @@ const VocabularyChart = ({ topic }: VocabularyChartProps) => {
         ))}
       </div>
 
-      {/* Declension Modal */}
+      {/* Detail Modal */}
       <AnimatePresence>
         {selectedWord && (
           <motion.div
@@ -99,30 +167,13 @@ const VocabularyChart = ({ topic }: VocabularyChartProps) => {
               </div>
 
               <div className="p-6">
-                {declension ? (
-                  <div className="overflow-x-auto">
-                    <table className="w-full text-left text-sm">
-                      <thead>
-                        <tr className="border-b-2 border-slate-100 text-slate-400 uppercase tracking-wider text-xs">
-                          <th className="pb-3 pl-2">Caso</th>
-                          <th className="pb-3">Singolare</th>
-                          <th className="pb-3">Plurale</th>
-                        </tr>
-                      </thead>
-                      <tbody className="divide-y divide-slate-50">
-                        {CASES.map((caseName, idx) => (
-                          <tr key={caseName} className="hover:bg-slate-50 transition-colors">
-                            <td className="py-3 pl-2 font-medium text-slate-500">{caseName}</td>
-                            <td className="py-3 font-bold text-indigo-900">{declension.singular[idx]}</td>
-                            <td className="py-3 font-bold text-emerald-900">{declension.plural[idx]}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                {selectedWord.conjugation ? (
+                  <VerbConjugationTable conjugation={selectedWord.conjugation} />
+                ) : declension ? (
+                  <NounDeclensionTable declension={declension} />
                 ) : (
                   <div className="text-center py-8 text-slate-400 italic">
-                    Declension not available for this word (indeclinable or phrase).
+                    Declension/Conjugation not available for this word.
                   </div>
                 )}
               </div>

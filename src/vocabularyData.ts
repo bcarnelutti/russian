@@ -1,12 +1,18 @@
+export interface VerbConjugation {
+  presentFuture: string[];
+  past: string[];
+}
+
 export interface VocabItem {
   id: string;
   ru: string;
-  baseRu?: string; // Singular form if 'ru' is plural
+  baseRu?: string;
   gender?: 'm' | 'f' | 'n' | 'pl';
   animate?: boolean;
   indeclinable?: boolean;
   noDeclension?: boolean;
   special?: 'fleeting_vowel' | 'irregular_pl';
+  conjugation?: VerbConjugation;
 }
 
 export const vocabularyData: Record<string, VocabItem[]> = {
@@ -28,10 +34,34 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'gloves', ru: 'Перчатки', gender: 'f', baseRu: 'Перчатка' },
     { id: 'socks', ru: 'Носки', gender: 'm', baseRu: 'Носок', special: 'fleeting_vowel' },
     // Verbs
-    { id: 'v_wear', ru: 'Носить', noDeclension: true },
-    { id: 'v_buy', ru: 'Покупать', noDeclension: true },
-    { id: 'v_try_on', ru: 'Мерить', noDeclension: true },
-    { id: 'v_wash', ru: 'Стирать', noDeclension: true }
+    { 
+      id: 'v_wear', ru: 'Носить', noDeclension: true,
+      conjugation: {
+        presentFuture: ['ношу́', 'но́сишь', 'но́сит', 'но́сим', 'но́сите', 'но́сят'],
+        past: ['носи́л', 'носи́ла', 'носи́ло', 'носи́ли']
+      }
+    },
+    { 
+      id: 'v_buy', ru: 'Покупать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['покупа́ю', 'покупа́ешь', 'покупа́ет', 'покупа́ем', 'покупа́ете', 'покупа́ют'],
+        past: ['покупа́л', 'покупа́ла', 'покупа́ло', 'покупа́ли']
+      }
+    },
+    { 
+      id: 'v_try_on', ru: 'Мерить', noDeclension: true,
+      conjugation: {
+        presentFuture: ['ме́рю', 'ме́ришь', 'ме́рит', 'ме́рим', 'ме́рите', 'ме́рят'],
+        past: ['ме́рил', 'ме́рила', 'ме́рило', 'ме́рили']
+      }
+    },
+    { 
+      id: 'v_wash', ru: 'Стирать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['стира́ю', 'стира́ешь', 'стира́ет', 'стира́ем', 'стира́ете', 'стира́ют'],
+        past: ['стира́л', 'стира́ла', 'стира́ло', 'стира́ли']
+      }
+    }
   ],
   health: [
     { id: 'doctor', ru: 'Врач', gender: 'm', animate: true },
@@ -47,11 +77,34 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'ambulance', ru: 'Скорая помощь', noDeclension: true },
     { id: 'help_me', ru: 'Помогите мне', noDeclension: true },
     { id: 'i_feel_bad', ru: 'Я плохо себя чувствую', noDeclension: true },
-    // Verbs
-    { id: 'v_treat', ru: 'Лечить', noDeclension: true },
-    { id: 'v_hurt', ru: 'Болеть', noDeclension: true },
-    { id: 'v_recover', ru: 'Выздоравливать', noDeclension: true },
-    { id: 'v_call_doc', ru: 'Вызывать', noDeclension: true }
+    { 
+      id: 'v_treat', ru: 'Лечить', noDeclension: true,
+      conjugation: {
+        presentFuture: ['лечу́', 'ле́чишь', 'ле́чит', 'ле́чим', 'ле́чите', 'ле́чат'],
+        past: ['лечи́л', 'лечи́ла', 'лечи́ло', 'лечи́ли']
+      }
+    },
+    { 
+      id: 'v_hurt', ru: 'Болеть', noDeclension: true,
+      conjugation: {
+        presentFuture: ['боле́ю', 'боле́ешь', 'боле́ет', 'боле́ем', 'боле́ете', 'боле́ют'],
+        past: ['боле́л', 'боле́ла', 'боле́ло', 'боле́ли']
+      }
+    },
+    { 
+      id: 'v_recover', ru: 'Выздоравливать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['выздора́вливаю', 'выздора́вливаешь', 'выздора́вливает', 'выздора́вливаем', 'выздора́вливаете', 'выздора́вливают'],
+        past: ['выздора́вливал', 'выздора́вливала', 'выздора́вливало', 'выздора́вливали']
+      }
+    },
+    { 
+      id: 'v_call_doc', ru: 'Вызывать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['вызыва́ю', 'вызыва́ешь', 'вызыва́ет', 'вызыва́ем', 'вызыва́ете', 'вызыва́ют'],
+        past: ['вызыва́л', 'вызыва́ла', 'вызыва́ло', 'вызыва́ли']
+      }
+    }
   ],
   travel: [
     { id: 'ticket', ru: 'Билет', gender: 'm' },
@@ -69,12 +122,41 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'customs', ru: 'Таможня', gender: 'f' },
     { id: 'visa', ru: 'Виза', gender: 'f' },
     { id: 'seat', ru: 'Место', gender: 'n' },
-    // Verbs
-    { id: 'v_travel', ru: 'Путешествовать', noDeclension: true },
-    { id: 'v_fly', ru: 'Летать', noDeclension: true },
-    { id: 'v_arrive', ru: 'Приезжать', noDeclension: true },
-    { id: 'v_depart', ru: 'Уезжать', noDeclension: true },
-    { id: 'v_book', ru: 'Бронировать', noDeclension: true }
+    { 
+      id: 'v_travel', ru: 'Путешествовать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['путеше́ствую', 'путеше́ствуешь', 'путеше́ствует', 'путеше́ствуем', 'путеше́ствуете', 'путеше́ствуют'],
+        past: ['путеше́ствовал', 'путеше́ствовала', 'путеше́ствовало', 'путеше́ствовали']
+      }
+    },
+    { 
+      id: 'v_fly', ru: 'Летать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['лета́ю', 'лета́ешь', 'лета́ет', 'лета́ем', 'лета́ете', 'лета́ют'],
+        past: ['лета́л', 'лета́ла', 'лета́ло', 'лета́ли']
+      }
+    },
+    { 
+      id: 'v_arrive', ru: 'Приезжать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['приезжа́ю', 'приезжа́ешь', 'приезжа́ет', 'приезжа́ем', 'приезжа́ете', 'приезжа́ют'],
+        past: ['приезжа́л', 'приезжа́ла', 'приезжа́ло', 'приезжа́ли']
+      }
+    },
+    { 
+      id: 'v_depart', ru: 'Уезжать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['уезжа́ю', 'уезжа́ешь', 'уезжа́ет', 'уезжа́ем', 'уезжа́ете', 'уезжа́ют'],
+        past: ['уезжа́л', 'уезжа́ла', 'уезжа́ло', 'уезжа́ли']
+      }
+    },
+    { 
+      id: 'v_book', ru: 'Бронировать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['брони́рую', 'брони́руешь', 'брони́рует', 'брони́руем', 'брони́руете', 'брони́руют'],
+        past: ['брони́ровал', 'брони́ровала', 'брони́ровало', 'брони́ровали']
+      }
+    }
   ],
   education: [
     { id: 'school', ru: 'Школа', gender: 'f' },
@@ -91,12 +173,41 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'homework', ru: 'Домашнее задание', noDeclension: true },
     { id: 'grade', ru: 'Оценка', gender: 'f' },
     { id: 'library', ru: 'Библиотека', gender: 'f' },
-    // Verbs
-    { id: 'v_read', ru: 'Читать', noDeclension: true },
-    { id: 'v_write', ru: 'Писать', noDeclension: true },
-    { id: 'v_listen', ru: 'Слушать', noDeclension: true },
-    { id: 'v_understand', ru: 'Понимать', noDeclension: true },
-    { id: 'v_ask', ru: 'Спрашивать', noDeclension: true }
+    { 
+      id: 'v_read', ru: 'Читать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['чита́ю', 'чита́ешь', 'чита́ет', 'чита́ем', 'чита́ете', 'чита́ют'],
+        past: ['чита́л', 'чита́ла', 'чита́ло', 'чита́ли']
+      }
+    },
+    { 
+      id: 'v_write', ru: 'Писать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['пишу́', 'пи́шешь', 'пи́шет', 'пи́шем', 'пи́шете', 'пи́шут'],
+        past: ['писа́л', 'писа́ла', 'писа́ло', 'писа́ли']
+      }
+    },
+    { 
+      id: 'v_listen', ru: 'Слушать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['слу́шаю', 'слу́шаешь', 'слу́шает', 'слу́шаем', 'слу́шаете', 'слу́шают'],
+        past: ['слу́шал', 'слу́шала', 'слу́шало', 'слу́шали']
+      }
+    },
+    { 
+      id: 'v_understand', ru: 'Понимать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['понима́ю', 'понима́ешь', 'понима́ет', 'понима́ем', 'понима́ете', 'понима́ют'],
+        past: ['понима́л', 'понима́ла', 'понима́ло', 'понима́ли']
+      }
+    },
+    { 
+      id: 'v_ask', ru: 'Спрашивать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['спра́шиваю', 'спра́шиваешь', 'спра́шивает', 'спра́шиваем', 'спра́шиваете', 'спра́шивают'],
+        past: ['спра́шивал', 'спра́шивала', 'спра́шивало', 'спра́шивали']
+      }
+    }
   ],
   body: [
     { id: 'body', ru: 'Тело', gender: 'n' },
@@ -115,11 +226,34 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'stomach', ru: 'Живот', gender: 'm' },
     { id: 'heart', ru: 'Сердце', gender: 'n' },
     { id: 'back', ru: 'Спина', gender: 'f' },
-    // Verbs
-    { id: 'v_see', ru: 'Видеть', noDeclension: true },
-    { id: 'v_hear', ru: 'Слышать', noDeclension: true },
-    { id: 'v_breathe', ru: 'Дышать', noDeclension: true },
-    { id: 'v_touch', ru: 'Трогать', noDeclension: true }
+    { 
+      id: 'v_see', ru: 'Видеть', noDeclension: true,
+      conjugation: {
+        presentFuture: ['ви́жу', 'ви́дишь', 'ви́дит', 'ви́дим', 'ви́дите', 'ви́дят'],
+        past: ['ви́дел', 'ви́дела', 'ви́дело', 'ви́дели']
+      }
+    },
+    { 
+      id: 'v_hear', ru: 'Слышать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['слы́шу', 'слы́шишь', 'слы́шит', 'слы́шим', 'слы́шите', 'слы́шат'],
+        past: ['слы́шал', 'слы́шала', 'слы́шало', 'слы́шали']
+      }
+    },
+    { 
+      id: 'v_breathe', ru: 'Дышать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['дышу́', 'ды́шишь', 'ды́шит', 'ды́шим', 'ды́шите', 'ды́шат'],
+        past: ['дыша́л', 'дыша́ла', 'дыша́ло', 'дыша́ли']
+      }
+    },
+    { 
+      id: 'v_touch', ru: 'Трогать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['тро́гаю', 'тро́гаешь', 'тро́гает', 'тро́гаем', 'тро́гаете', 'тро́гают'],
+        past: ['тро́гал', 'тро́гала', 'тро́гало', 'тро́гали']
+      }
+    }
   ],
   nature: [
     { id: 'nature', ru: 'Природа', gender: 'f' },
@@ -137,10 +271,27 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'river', ru: 'Река', gender: 'f' },
     { id: 'sea', ru: 'Море', gender: 'n' },
     { id: 'mountain', ru: 'Гора', gender: 'f' },
-    // Verbs
-    { id: 'v_grow', ru: 'Расти', noDeclension: true },
-    { id: 'v_shine', ru: 'Светить', noDeclension: true },
-    { id: 'v_bloom', ru: 'Цвести', noDeclension: true }
+    { 
+      id: 'v_grow', ru: 'Расти', noDeclension: true,
+      conjugation: {
+        presentFuture: ['расту́', 'растёшь', 'растёт', 'растём', 'растёте', 'расту́т'],
+        past: ['рос', 'росла́', 'росло́', 'росли́']
+      }
+    },
+    { 
+      id: 'v_shine', ru: 'Светить', noDeclension: true,
+      conjugation: {
+        presentFuture: ['свечу́', 'све́тишь', 'све́тит', 'све́тим', 'све́тите', 'све́тят'],
+        past: ['свети́л', 'свети́ла', 'свети́ло', 'свети́ли']
+      }
+    },
+    { 
+      id: 'v_bloom', ru: 'Цвести', noDeclension: true,
+      conjugation: {
+        presentFuture: ['цвету́', 'цветёшь', 'цветёт', 'цветём', 'цветёте', 'цвету́т'],
+        past: ['цвёл', 'цвела́', 'цвело́', 'цвели́']
+      }
+    }
   ],
   celebrations: [
     { id: 'holiday', ru: 'Праздник', gender: 'm' },
@@ -156,11 +307,40 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'card', ru: 'Открытка', gender: 'f' },
     { id: 'congratulations', ru: 'Поздравляю', noDeclension: true },
     { id: 'cheers', ru: 'За здоровье', noDeclension: true },
-    // Verbs
-    { id: 'v_celebrate', ru: 'Праздновать', noDeclension: true },
-    { id: 'v_congratulate', ru: 'Поздравлять', noDeclension: true },
-    { id: 'v_wish', ru: 'Желать', noDeclension: true },
-    { id: 'v_give_gift', ru: 'Дарить', noDeclension: true },
-    { id: 'v_invite', ru: 'Приглашать', noDeclension: true }
+    { 
+      id: 'v_celebrate', ru: 'Праздновать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['пра́здную', 'пра́зднуешь', 'пра́зднует', 'пра́зднуем', 'пра́зднуете', 'пра́зднуют'],
+        past: ['пра́здновал', 'пра́здновала', 'пра́здновало', 'пра́здновали']
+      }
+    },
+    { 
+      id: 'v_congratulate', ru: 'Поздравлять', noDeclension: true,
+      conjugation: {
+        presentFuture: ['поздравля́ю', 'поздравля́ешь', 'поздравля́ет', 'поздравля́ем', 'поздравля́ете', 'поздравля́ют'],
+        past: ['поздравля́л', 'поздравля́ла', 'поздравля́ло', 'поздравля́ли']
+      }
+    },
+    { 
+      id: 'v_wish', ru: 'Желать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['жела́ю', 'жела́ешь', 'жела́ет', 'жела́ем', 'жела́ете', 'жела́ют'],
+        past: ['жела́л', 'жела́ла', 'жела́ло', 'жела́ли']
+      }
+    },
+    { 
+      id: 'v_give_gift', ru: 'Дарить', noDeclension: true,
+      conjugation: {
+        presentFuture: ['дарю́', 'да́ришь', 'да́рит', 'да́рим', 'да́рите', 'да́рят'],
+        past: ['дари́л', 'дари́ла', 'дари́ло', 'дари́ли']
+      }
+    },
+    { 
+      id: 'v_invite', ru: 'Приглашать', noDeclension: true,
+      conjugation: {
+        presentFuture: ['приглаша́ю', 'приглаша́ешь', 'приглаша́ет', 'приглаша́ем', 'приглаша́ете', 'приглаша́ют'],
+        past: ['приглаша́л', 'приглаша́ла', 'приглаша́ло', 'приглаша́ли']
+      }
+    }
   ]
 };
