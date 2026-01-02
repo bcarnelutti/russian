@@ -26,7 +26,8 @@ export const translations = {
       education: "Istruzione",
       body: "Il corpo",
       nature: "Natura",
-      celebrations: "Feste"
+      celebrations: "Feste",
+      sports: "Sport"
     },
     controls: {
       expandAll: "Espandi tutto",
@@ -163,7 +164,9 @@ export const translations = {
             "<strong>Который</strong> si comporta come un aggettivo forte.",
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
-            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimato = Nominativo (который / которые)</li><li>Animato = Genitivo (которого / которых)</li></ul>"
+            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimato = Nominativo (который / которые)</li>
+<li>Animato = Genitivo (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -422,6 +425,23 @@ export const translations = {
             v_wish: "Augurare",
             v_give_gift: "Regalare",
             v_invite: "Invitare"
+        },
+        sports: {
+            sport: "Sport",
+            football: "Calcio",
+            basketball: "Pallacanestro",
+            tennis: "Tennis",
+            volleyball: "Pallavolo",
+            hockey: "Hockey",
+            swimming: "Nuoto",
+            running: "Corsa",
+            gym: "Palestra",
+            match: "Partita",
+            team: "Squadra",
+            ball: "Palla",
+            v_play: "Giocare",
+            v_win: "Vincere",
+            v_lose: "Perdere"
         }
     }
   },
@@ -452,7 +472,8 @@ export const translations = {
       education: "Education",
       body: "The body",
       nature: "Nature",
-      celebrations: "Celebrations"
+      celebrations: "Celebrations",
+      sports: "Sports"
     },
     controls: {
       expandAll: "Expand all",
@@ -589,7 +610,9 @@ export const translations = {
             "<strong>Который</strong> behaves like a hard adjective.",
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
-            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimate = Nominative (который / которые)</li><li>Animate = Genitive (которого / которых)</li></ul>"
+            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
+<li>Inanimate = Nominative (который / которые)</li>
+<li>Animate = Genitive (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -848,6 +871,23 @@ export const translations = {
             v_wish: "To wish",
             v_give_gift: "To give (a gift)",
             v_invite: "To invite"
+        },
+        sports: {
+            sport: "Sport",
+            football: "Football",
+            basketball: "Basketball",
+            tennis: "Tennis",
+            volleyball: "Volleyball",
+            hockey: "Hockey",
+            swimming: "Swimming",
+            running: "Running",
+            gym: "Gym",
+            match: "Match",
+            team: "Team",
+            ball: "Ball",
+            v_play: "To play",
+            v_win: "To win",
+            v_lose: "To lose"
         }
     }
   }
