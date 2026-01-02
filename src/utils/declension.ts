@@ -28,7 +28,7 @@ export const getDeclension = (word: VocabItem): DeclensionResult | null => {
   const workingWord = word.baseRu || word.ru;
   const workingGender = word.gender || 'm'; // default m if unknown, but should be set
 
-  const stem = getStem(workingWord, workingGender, word.special);
+  const stem = getStem(workingWord, workingGender);
   const endings = getEndings(workingWord, workingGender, word.animate);
 
   return {
@@ -37,7 +37,7 @@ export const getDeclension = (word: VocabItem): DeclensionResult | null => {
   };
 };
 
-function getStem(word: string, gender: string = 'm', special?: string) {
+function getStem(word: string, gender: string = 'm') {
   let stemSg = word;
   let stemPl = word;
 
