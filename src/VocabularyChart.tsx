@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { vocabularyData, VocabItem } from './vocabularyData';
+import { vocabularyData, type VocabItem } from './vocabularyData';
 import { useLanguage } from './LanguageContext';
-import { getDeclension, CASES, DeclensionResult } from './utils/declension';
+import { getDeclension, CASES, type DeclensionResult } from './utils/declension';
 import { Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift, X } from 'lucide-react';
 
 interface VocabularyChartProps {

@@ -1,4 +1,4 @@
-import { VocabItem } from '../vocabularyData';
+import { type VocabItem } from '../vocabularyData';
 
 export interface DeclensionResult {
   singular: string[];
@@ -14,9 +14,7 @@ export const CASES = [
   'Prepositivo'
 ];
 
-const isVowel = (char: string) => ['а', 'я', 'э', 'е', 'о', 'ё', 'и', 'ы', 'у', 'ю'].includes(char);
 const isVelar = (char: string) => ['г', 'к', 'х', 'ж', 'ч', 'ш', 'щ'].includes(char);
-const isSibilant = (char: string) => ['ж', 'ч', 'ш', 'щ'].includes(char);
 
 // Basic declension logic
 export const getDeclension = (word: VocabItem): DeclensionResult | null => {
@@ -27,7 +25,7 @@ export const getDeclension = (word: VocabItem): DeclensionResult | null => {
   }
 
   const stem = getStem(word.ru, word.gender, word.special);
-  const endings = getEndings(word.ru, word.gender, word.animate, word.special);
+  const endings = getEndings(word.ru, word.gender, word.animate);
 
   return {
     singular: endings.singular.map(end => applyEnding(stem.singular, end)),
@@ -54,52 +52,39 @@ function getStem(word: string, gender?: string, special?: string) {
     
     // Fleeting vowel for Masc (Nom Sg has it, others don't)
     if (special === 'fleeting_vowel') {
-        // Very basic heuristic: remove the vowel before the last char
-        // E.g. 'подарок' -> 'подарк', 'рот' -> 'рт', 'палец' -> 'пальц' (soft sign might change?)
-        // Custom logic for known words
+        // Very basic heuristic
         if (word === 'Рот') { stemSg = 'Рт'; stemPl = 'Рт'; }
         else if (word === 'Подарок') { stemSg = 'Подарк'; stemPl = 'Подарк'; }
-        else if (word === 'Цветок') { stemSg = 'Цветк'; stemPl = 'Цвет'; } // Irreg plural
+        else if (word === 'Цветок') { stemSg = 'Цветк'; stemPl = 'Цвет'; }
         else if (word === 'Палец') { stemSg = 'Пальц'; stemPl = 'Пальц'; }
     }
   }
 
   // Irregular plurals stems (hardcoded for known vocab)
   if (word === 'Дерево') stemPl = 'Деревь';
-  if (word === 'Брат') stemPl = 'Брат'; // Bratiya
+  if (word === 'Брат') stemPl = 'Брат'; 
   if (word === 'Стул') stemPl = 'Стуль';
   if (word === 'Друг') stemPl = 'Друзь';
-  if (word === 'Человек') stemPl = 'Люд'; // suppletive
-  if (word === 'Ребёнок') stemPl = 'Дет'; // suppletive
+  if (word === 'Человек') stemPl = 'Люд';
+  if (word === 'Ребёнок') stemPl = 'Дет';
   if (word === 'Цветок') stemPl = 'Цвет'; 
   
   return { singular: stemSg, plural: stemPl };
 }
 
 function applyEnding(stem: string, ending: string) {
-  // Hard/Soft matching logic could be here, but we pass pre-calculated endings usually
   return stem + ending;
 }
 
-function getEndings(word: string, gender: string = 'm', animate: boolean = false, special?: string) {
+function getEndings(word: string, gender: string = 'm', animate: boolean = false) {
   // Defaults
   let sg = Array(6).fill('');
   let pl = Array(6).fill('');
 
   const lastChar = word.slice(-1);
-  const isSoft = ['ь', 'й', 'я', 'е', 'ё', 'ю', 'и'].includes(lastChar);
   
   // --- MASCULINE ---
   if (gender === 'm') {
-    // Singular
-    sg[0] = ''; // Nom (stem ending already removed if soft?) No, stem logic handles it.
-    // Wait, getStem returns the base.
-    // If word is 'Стол', stem 'Стол'. Nom is Stem.
-    // If word is 'Музей', stem 'Музе'. Nom is Stem + 'й'.
-    
-    // Let's adjust: getEndings returns the *suffix* to add to the *stem*.
-    // And getStem handles removing the Nom suffix.
-    
     // Standard Hard (Стол)
     let s = ['','а','у','','ом','е'];
     let p = ['ы','ов','ам','','ами','ах'];
@@ -120,13 +105,8 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
     p[3] = animate ? p[1] : p[0];
 
     // Special irregulars
-    if (word === 'Цветок') { // Nom Pl Цветок -> Цветы
-        s[0] = 'ок'; // Stem is Цвет
-        // Actually stem logic for Cvetok was 'Cvetk' for singular oblique?
-        // Gen: Cvetk-a. Nom: Cvet-ok.
-        // This simple engine is struggling with stem alternation.
-        // Let's simplify: Return FULL forms for tricky words?
-        // Or specific rules.
+    if (word === 'Цветок') {
+        s[0] = 'ок';
     }
 
     sg = s;
@@ -143,22 +123,21 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
     if (lastChar === 'я') {
         s = ['я','и','е','ю','ей','е'];
         p = ['и','ь','ям','и','ями','ях'];
-        // If ends in -iya -> -ii in Dat/Prep
         if (word.endsWith('ия')) {
-            s[2] = 'и'; // Dative
-            s[5] = 'и'; // Prep
-            p[1] = 'й'; // Gen Pl (Liniya -> Liniy)
+            s[2] = 'и';
+            s[5] = 'и';
+            p[1] = 'й';
         }
     } 
-    // Soft Sign (Ночь - 3rd Declension)
+    // Soft Sign (Ночь)
     else if (lastChar === 'ь') {
         s = ['ь','и','и','ь','ью','и'];
         p = ['и','ей','ям','и','ями','ях'];
     }
-    // Velar rule for Hard (Kniga -> Knigi)
-    else if (isVelar(word.slice(-2, -1))) { // Check stem last char (before 'a')
-        s[1] = 'и'; // Gen sg
-        p[0] = 'и'; // Nom pl
+    // Velar rule
+    else if (isVelar(word.slice(-2, -1))) {
+        s[1] = 'и';
+        p[0] = 'и';
     }
 
     // Accusative Plural
@@ -179,8 +158,8 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
         s = ['е','я','ю','е','ем','е'];
         p = ['я','ей','ям','я','ями','ях'];
         if (word.endsWith('ие')) {
-            s[5] = 'и'; // Prep (Zdanii)
-            p[1] = 'й'; // Gen Pl (Zdaniy)
+            s[5] = 'и';
+            p[1] = 'й';
         }
     }
     
@@ -190,25 +169,22 @@ function getEndings(word: string, gender: string = 'm', animate: boolean = false
   
   // --- PLURAL ONLY ---
   else if (gender === 'pl') {
-      // Jeansy, Ochki
-      // Assume hard ending -y
       let p = ['ы','ов','ам','ы','ами','ах'];
       if (word.endsWith('и')) {
-          p = ['и','ов','ам','и','ами','ах']; // Defaulting genitive usually
-          // Noski -> Noskov? No, Noski -> Nosok (Gen).
+          p = ['и','ов','ам','и','ами','ах'];
           if (word === 'Носки') p[1] = '';
       }
       sg = Array(6).fill('-');
       pl = p;
   }
 
-  // Fix overrides manually for safety
+  // Fix overrides
   if (word === 'Рот') { sg = ['Рот','Рта','Рту','Рот','Ртом','Рту']; }
   if (word === 'Цветок') { 
       sg = ['Цветок','Цветка','Цветку','Цветок','Цветком','Цветке'];
       pl = ['Цветы','Цветов','Цветам','Цветы','Цветами','Цветах'];
   }
-  if (word === 'День рождения') { // Only 'День' declines
+  if (word === 'День рождения') {
       sg = ['День рождения','Дня рождения','Дню рождения','День рождения','Днём рождения','Дне рождения'];
       pl = ['Дни рождения','Дней рождения','Дням рождения','Дни рождения','Днями рождения','Днях рождения'];
   }
