@@ -163,9 +163,7 @@ export const translations = {
             "<strong>Который</strong> si comporta come un aggettivo forte.",
             "Concorda in <strong>genere e numero</strong> con il sostantivo a cui si riferisce (l'antecedente).",
             "Il <strong>caso</strong> dipende dalla funzione che svolge nella frase subordinata (la frase relativa).",
-            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
-<li>Inanimato = Nominativo (который / которые)</li>
-<li>Animato = Genitivo (которого / которых)</li></ul>"
+            "All'accusativo maschile singolare e plurale:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimato = Nominativo (который / которые)</li><li>Animato = Genitivo (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -298,7 +296,7 @@ export const translations = {
             socks: "Calzini",
             v_wear: "Indossare",
             v_buy: "Comprare",
-            v_try_on: "Misurare",
+            v_try_on: "Provare",
             v_wash: "Lavare"
         },
         health: {
@@ -330,7 +328,7 @@ export const translations = {
             station: "Stazione",
             airport: "Aeroporto",
             platform: "Binario",
-            gate: "Gate / Uscita",
+            gate: "Uscita d'imbarco",
             departure: "Partenza",
             arrival: "Arrivo",
             customs: "Dogana",
@@ -354,7 +352,7 @@ export const translations = {
             pen: "Penna",
             exam: "Esame",
             lesson: "Lezione",
-            homework: "Compiti",
+            homework: "Compiti a casa",
             grade: "Voto",
             library: "Biblioteca",
             v_read: "Leggere",
@@ -374,8 +372,8 @@ export const translations = {
             ear: "Orecchio",
             ears: "Orecchie",
             hair: "Capelli",
-            arm_hand: "Braccio / Mano",
-            leg_foot: "Gamba / Piede",
+            arm_hand: "Braccio / mano",
+            leg_foot: "Gamba / piede",
             finger: "Dito",
             stomach: "Pancia",
             heart: "Cuore",
@@ -412,13 +410,13 @@ export const translations = {
             christmas: "Natale",
             easter: "Pasqua",
             gift: "Regalo",
-            party: "Festa / Party",
+            party: "Festa / party",
             guest: "Ospite",
             cake: "Torta",
             flowers: "Fiori",
             card: "Cartolina",
             congratulations: "Congratulazioni",
-            cheers: "Cin cin / Alla salute",
+            cheers: "Cin cin / alla salute",
             v_celebrate: "Festeggiare",
             v_congratulate: "Congratularsi",
             v_wish: "Augurare",
@@ -591,9 +589,7 @@ export const translations = {
             "<strong>Который</strong> behaves like a hard adjective.",
             "Agrees in <strong>gender and number</strong> with the noun it refers to (the antecedent).",
             "The <strong>case</strong> depends on its function in the subordinate clause (the relative clause).",
-            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\">
-<li>Inanimate = Nominative (который / которые)</li>
-<li>Animate = Genitive (которого / которых)</li></ul>"
+            "In Accusative masculine singular and plural:<ul class=\"list-circle pl-5 mt-1 text-sm text-slate-600\"><li>Inanimate = Nominative (который / которые)</li><li>Animate = Genitive (которого / которых)</li></ul>"
         ]
     },
     learnTeach: {
@@ -758,7 +754,7 @@ export const translations = {
             station: "Station",
             airport: "Airport",
             platform: "Platform",
-            gate: "Gate",
+            gate: "Gate / Boarding gate",
             departure: "Departure",
             arrival: "Arrival",
             customs: "Customs",
