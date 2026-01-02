@@ -24,6 +24,12 @@ const irregularVerbs: VerbData[] = [
     conjugation: ['могу́', 'мо́жешь', 'мо́жет', 'мо́жем', 'мо́жете', 'мо́гут']
   },
   {
+    id: 'zhit',
+    verb: 'Жить',
+    icon: Activity,
+    conjugation: ['живу́', 'живёшь', 'живёт', 'живём', 'живёте', 'живу́т']
+  },
+  {
     id: 'est',
     verb: 'Есть',
     icon: Utensils,
@@ -34,12 +40,6 @@ const irregularVerbs: VerbData[] = [
     verb: 'Дать',
     icon: Gift,
     conjugation: ['дам', 'дашь', 'даст', 'дади́м', 'дади́те', 'даду́т']
-  },
-  {
-    id: 'zhit',
-    verb: 'Жить',
-    icon: Activity,
-    conjugation: ['живу́', 'живёшь', 'живёт', 'живём', 'живёте', 'живу́т']
   }
 ];
 
@@ -96,7 +96,7 @@ const VerbCard = ({ item }: { item: VerbData }) => {
             className="bg-slate-50 border-t border-slate-100"
           >
             <div className="p-5">
-                <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md mx-auto">
+                <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-12 gap-y-2 text-sm max-w-md mx-auto">
                     {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
                         <div key={pronoun} className="flex justify-between items-baseline border-b border-gray-200 pb-1">
                             <span className="text-gray-400 font-medium w-16">{pronoun}</span>
