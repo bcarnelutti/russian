@@ -67,7 +67,7 @@ export const vocabularyData: Record<string, VocabItem[]> = {
       aspects: {
         imp: 'Ме́рить', perf: 'Поме́рить',
         impConjugation: {
-          presentFuture: ['ме́рю', 'ме́ришь', 'ме́рит', 'ме́рим', 'ме́рите', 'ме́рят'],
+          presentFuture: ['ме́рю', 'ме́ришь', 'méрит', 'ме́рим', 'ме́рите', 'ме́рят'],
           past: ['ме́рил', 'ме́рила', 'ме́рило', 'ме́рили']
         },
         perfConjugation: {
@@ -90,15 +90,10 @@ export const vocabularyData: Record<string, VocabItem[]> = {
         }
       }
     },
-    // General / Fashion
     { id: 'fashion', ru: 'Мо́да', gender: 'f' },
-    { id: 'fast_fashion', ru: 'Бы́страя мо́да', gender: 'f' },
-    { id: 'second_hand', ru: 'Се́конд-хенд', gender: 'm' },
-    // Clothes
     { id: 'suit', ru: 'Костю́м', gender: 'm' },
     { id: 'blazer', ru: 'Пиджа́к', gender: 'm' },
     { id: 'cardigan', ru: 'Ко́фта', gender: 'f' },
-    { id: 'long_sleeve', ru: 'Футбо́лка с дли́нными рукава́ми', gender: 'f' },
     { id: 'hoodie', ru: 'Толсто́вка', gender: 'f' },
     { id: 'sweatpants', ru: 'Тре́ники', gender: 'pl' },
     { id: 'hat_brim', ru: 'Шля́па', gender: 'f' },
@@ -110,47 +105,19 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'underpants', ru: 'Трусы́', gender: 'pl' },
     { id: 'tie', ru: 'Га́лстук', gender: 'm' },
     { id: 'swimsuit', ru: 'Купа́льник', gender: 'm' },
-    { id: 'tracksuit', ru: 'Спорти́вный костю́м', gender: 'm' },
     { id: 'pyjamas', ru: 'Пижа́ма', gender: 'f' },
-    { id: 'trunks', ru: 'Пла́вки', gender: 'pl' },
-    // Shoes & Parts
     { id: 'pumps', ru: 'Ту́фли', gender: 'pl' },
-    { id: 'lace_shoes', ru: 'Ту́фли на шнуро́вке', gender: 'pl' },
-    { id: 'heels', ru: 'Ту́фли на каблуке́', gender: 'pl' },
     { id: 'sandals', ru: 'Босоно́жки', gender: 'pl' },
-    { id: 'platform_sandals', ru: 'Босоно́жки на платфо́рме', gender: 'pl' },
     { id: 'boots_high', ru: 'Сапоги́', gender: 'pl' },
-    { id: 'hiking_boots', ru: 'Боти́нки похо́дные', gender: 'pl' },
     { id: 'moccasins', ru: 'Мокаси́ны', gender: 'pl' },
-    { id: 'leather_shoes', ru: 'Ко́жаные ту́фли', gender: 'pl' },
-    { id: 'slippers', ru: 'Дома́шние та́почки', gender: 'pl' },
     { id: 'slippers_colloq', ru: 'Та́пки', gender: 'pl' },
-    { id: 'flip_flops', ru: 'Вьетна́мки', gender: 'pl' },
-    { id: 'men_boots', ru: 'Мужски́е боти́нки', gender: 'pl' },
-    { id: 'men_low_shoes', ru: 'Мужски́е полуботи́нки', gender: 'pl' },
-    { id: 'tongue', ru: 'Язычо́к', gender: 'm' },
     { id: 'eyelet', ru: 'Глазо́к', gender: 'm' },
-    { id: 'lace', ru: 'Шнуро́к', gender: 'm' },
     { id: 'sole', ru: 'Подо́шва', gender: 'f' },
     { id: 'heel_part', ru: 'Каблу́к', gender: 'm' },
-    // Shoe phrases
-    { id: 'kids_shoes', ru: 'Де́тская о́бувь', noDeclension: true },
-    { id: 'womens_shoes', ru: 'Же́нская о́бувь', noDeclension: true },
-    { id: 'winter_shoes', ru: 'Зи́мняя о́бувь', noDeclension: true },
-    { id: 'summer_shoes', ru: 'Ле́тняя о́бувь', noDeclension: true },
-    { id: 'mens_shoes', ru: 'Мужска́я о́бувь', noDeclension: true },
-    { id: 'import_shoes', ru: 'И́мпортная о́бувь', noDeclension: true },
-    { id: 'leather_shoes_phrase', ru: 'Ко́жаная о́бувь', noDeclension: true },
-    { id: 'model_shoes', ru: 'Моде́льная о́бувь', noDeclension: true },
-    { id: 'sport_shoes', ru: 'Спорти́вная о́бувь', noDeclension: true },
-    { id: 'shoe_production', ru: 'Произво́дство о́буви', noDeclension: true },
-    // Accessories
     { id: 'glasses', ru: 'Очки́', gender: 'pl' },
-    { id: 'sunglasses', ru: 'Тёмные очки́', gender: 'pl' },
     { id: 'briefcase', ru: 'Портфе́ль', gender: 'm' },
     { id: 'backpack', ru: 'Рюкза́к', gender: 'm' },
     { id: 'bag', ru: 'Су́мка', gender: 'f' },
-    // Verbs
     { id: 'v_put_on', ru: 'Надева́ть / Наде́ть', noDeclension: true,
       aspects: {
         imp: 'Надева́ть', perf: 'Наде́ть',
@@ -186,8 +153,6 @@ export const vocabularyData: Record<string, VocabItem[]> = {
         perfConjugation: { presentFuture: ['сниму́', 'сни́мешь', 'сни́мет', 'сни́мем', 'сни́мете', 'сни́мут'], past: ['снял', 'сняла́', 'сняло́', 'сняли́'] }
       }
     },
-    // Adjectives / Style
-    { id: 'worn', ru: 'Наде́т / Наде́та...', noDeclension: true },
     { id: 'modern', ru: 'Совреме́нный', noDeclension: true },
     { id: 'fashionable', ru: 'Мо́дный', noDeclension: true },
     { id: 'old_fashioned', ru: 'Старомо́дный', noDeclension: true },
@@ -204,7 +169,6 @@ export const vocabularyData: Record<string, VocabItem[]> = {
     { id: 'winter_adj', ru: 'Зи́мний', noDeclension: true },
     { id: 'warm', ru: 'Тёплый', noDeclension: true },
     { id: 'beautiful', ru: 'Краси́вый', noDeclension: true },
-    { id: 'easily', ru: 'Легко́', noDeclension: true },
     { id: 'comfortably', ru: 'Удо́бно', noDeclension: true }
   ],
     health: [
