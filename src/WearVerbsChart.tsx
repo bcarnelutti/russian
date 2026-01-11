@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shirt, User, ArrowDownCircle, ArrowUpCircle, RefreshCw, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import { underlineStress } from './utils/textUtils';
 
 interface VerbConjugation {
   presentFuture: string[];
@@ -121,9 +122,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
 
   return (
     <div className="text-sm">
-      <div className={`font-bold uppercase tracking-wider mb-2 ${headerColor} border-b ${isBlue ? 'border-blue-100' : 'border-red-100'} pb-1`}>
-        {title}
-      </div>
+      <div className={`font-bold uppercase tracking-wider mb-2 ${headerColor} border-b ${isBlue ? 'border-blue-100' : 'border-red-100'} pb-1`} dangerouslySetInnerHTML={{ __html: underlineStress(title) }} />
       
       <div className="mb-4">
         <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('wearVerbs.presentFuture')}</div>
@@ -131,7 +130,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 last:border-0 pb-0.5">
               <span className="text-xs text-gray-400 mr-2">{pronoun}</span>
-              <span className="font-medium text-slate-800">{data.presentFuture[idx]}</span>
+              <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.presentFuture[idx]) }} />
             </div>
           ))}
         </div>
@@ -142,19 +141,19 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Он</span>
-            <span className="font-medium text-slate-800">{data.past[0]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[0]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Она</span>
-            <span className="font-medium text-slate-800">{data.past[1]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[1]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Оно</span>
-            <span className="font-medium text-slate-800">{data.past[2]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[2]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Они</span>
-            <span className="font-medium text-slate-800">{data.past[3]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[3]) }} />
           </div>
         </div>
       </div>
@@ -189,9 +188,7 @@ const WearVerbCard = ({ item }: { item: VerbData }) => {
                 <item.icon size={24} />
             </div>
             <div>
-                <h3 className="text-2xl font-black text-slate-800">
-                    {item.verb}
-                </h3>
+                <h3 className="text-2xl font-black text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(item.verb) }} />
                 <span className="text-lg font-bold text-indigo-700 block">
                     {translation}
                 </span>
@@ -208,7 +205,7 @@ const WearVerbCard = ({ item }: { item: VerbData }) => {
 
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
                 <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{t('wearVerbs.example')}</div>
-                <div className="text-base font-medium text-slate-800 mb-0.5">{exampleRu}</div>
+                <div className="text-base font-medium text-slate-800 mb-0.5" dangerouslySetInnerHTML={{ __html: underlineStress(exampleRu) }} />
                 <div className="text-sm italic text-slate-500">{exampleIt}</div>
             </div>
         </div>
@@ -269,9 +266,7 @@ const WearVerbsChart = () => {
         <h3 className="text-xl font-bold text-yellow-900 mb-4 flex items-center gap-2">
             💡 {t('wearVerbs.mnemonicsTitle')}
         </h3>
-        <p className="text-yellow-800 text-lg font-medium text-center italic">
-            "{t('wearVerbs.mnemonicsText')}"
-        </p>
+        <p className="text-yellow-800 text-lg font-medium text-center italic" dangerouslySetInnerHTML={{ __html: '"' + underlineStress(t('wearVerbs.mnemonicsText')) + '"' }} />
         <p className="text-yellow-700/80 text-sm text-center mt-2">
             ({t('wearVerbs.mnemonicsDesc')})
         </p>

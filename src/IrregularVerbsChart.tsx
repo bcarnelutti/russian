@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, ChevronDown, Utensils, Gift, Heart, Activity, Zap } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import { underlineStress } from './utils/textUtils';
 
 interface VerbData {
   id: string;
@@ -13,7 +14,7 @@ interface VerbData {
 const irregularVerbs: VerbData[] = [
   {
     id: 'khotet',
-    verb: 'Хотеть',
+    verb: 'Хоте́ть',
     icon: Heart,
     conjugation: ['хочу́', 'хо́чешь', 'хо́чет', 'хоти́м', 'хоти́те', 'хотя́т']
   },
@@ -68,9 +69,7 @@ const VerbCard = ({ item }: { item: VerbData }) => {
                 <item.icon size={24} />
             </div>
             <div>
-                <h3 className="text-2xl font-black text-slate-800">
-                    {item.verb}
-                </h3>
+                <h3 className="text-2xl font-black text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(item.verb) }} />
                 <span className="text-base font-bold text-amber-700 block">
                     {translation}
                 </span>
@@ -100,7 +99,7 @@ const VerbCard = ({ item }: { item: VerbData }) => {
                     {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
                         <div key={pronoun} className="flex justify-between items-baseline border-b border-gray-200 pb-1">
                             <span className="text-gray-400 font-medium w-16">{pronoun}</span>
-                            <span className="font-bold text-slate-800 text-lg">{item.conjugation[idx]}</span>
+                            <span className="font-bold text-slate-800 text-lg" dangerouslySetInnerHTML={{ __html: underlineStress(item.conjugation[idx]) }} />
                         </div>
                     ))}
                 </div>

@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { BookOpen, GraduationCap, School, Brain, PenTool, Users, ChevronDown } from 'lucide-react';
+import { BookOpen, GraduationCap, School, Brain, PenTool, Users } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import { underlineStress } from './utils/textUtils';
 
 interface VerbConjugation {
   presentFuture: string[];
@@ -136,9 +137,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
 
   return (
     <div className="text-sm">
-      <div className={`font-bold uppercase tracking-wider mb-2 ${headerColor} border-b ${isBlue ? 'border-blue-100' : 'border-red-100'} pb-1`}>
-        {title}
-      </div>
+      <div className={`font-bold uppercase tracking-wider mb-2 ${headerColor} border-b ${isBlue ? 'border-blue-100' : 'border-red-100'} pb-1`} dangerouslySetInnerHTML={{ __html: underlineStress(title) }} />
       
       <div className="mb-4">
         <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('learnTeach.presentFuture')}</div>
@@ -146,7 +145,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 last:border-0 pb-0.5">
               <span className="text-xs text-gray-400 mr-2">{pronoun}</span>
-              <span className="font-medium text-slate-800">{data.presentFuture[idx]}</span>
+              <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.presentFuture[idx]) }} />
             </div>
           ))}
         </div>
@@ -157,19 +156,19 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Он</span>
-            <span className="font-medium text-slate-800">{data.past[0]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[0]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Она</span>
-            <span className="font-medium text-slate-800">{data.past[1]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[1]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Оно</span>
-            <span className="font-medium text-slate-800">{data.past[2]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[2]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Они</span>
-            <span className="font-medium text-slate-800">{data.past[3]}</span>
+            <span className="font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[3]) }} />
           </div>
         </div>
       </div>
@@ -203,10 +202,7 @@ const VerbCard = ({ item, colorTheme }: { item: VerbData, colorTheme: 'blue' | '
         className="p-5 cursor-pointer hover:bg-opacity-50 transition-colors"
       >
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-xl font-black text-slate-800 flex items-center gap-2">
-            {item.verb}
-            <ChevronDown size={18} className={`transition-transform duration-300 opacity-40 ${isExpanded ? 'rotate-180' : ''}`} />
-          </h3>
+          <h3 className="text-xl font-black text-slate-800 flex items-center gap-2" dangerouslySetInnerHTML={{ __html: underlineStress(item.verb) + '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down transition-transform duration-300 opacity-40 ' + (isExpanded ? 'rotate-180' : '') + '"><path d="m6 9 6 6 6-6"/></svg>' }} />
           <div className="p-2 bg-white rounded-full shadow-sm border border-slate-100">
             <item.icon size={20} className={iconColor} />
           </div>
@@ -223,7 +219,7 @@ const VerbCard = ({ item, colorTheme }: { item: VerbData, colorTheme: 'blue' | '
 
         <div className="mt-auto bg-slate-50/50 p-3 rounded-lg border border-slate-100">
           <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{t('learnTeach.example')}</div>
-          <div className="text-sm font-medium text-slate-800">{item.exampleRu}</div>
+          <div className="text-sm font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(item.exampleRu) }} />
           <div className="text-xs italic text-slate-500">{exampleIt}</div>
         </div>
       </motion.div>

@@ -9,11 +9,13 @@ import LearnTeachChart from './LearnTeachChart';
 import WearVerbsChart from './WearVerbsChart';
 import IrregularVerbsChart from './IrregularVerbsChart';
 import VocabularyChart from './VocabularyChart';
+import PrepositionsChart from './PrepositionsChart';
 import { LanguageProvider, useLanguage } from './LanguageContext';
+import { underlineStress } from './utils/textUtils';
 
 // --- Context Definition ---
 type ViewState = 
-  | 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'
+  | 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'prepositions' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'
   | 'vocabulary_menu' | 'vocab_clothing' | 'vocab_health' | 'vocab_travel' | 'vocab_education' | 'vocab_body' | 'vocab_nature' | 'vocab_celebrations' | 'vocab_sports';
 
 interface ChartContextType {
@@ -142,6 +144,16 @@ const Navigation = () => {
         }`}
       >
         {t('nav.cases')}
+      </button>
+      <button
+        onClick={() => setView('prepositions')}
+        className={`px-8 py-3 rounded-xl font-bold text-lg transition-all ${
+          view === 'prepositions'
+            ? 'bg-indigo-600 text-white shadow-lg scale-105'
+            : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
+        }`}
+      >
+        {t('nav.prepositions')}
       </button>
       <button
         onClick={() => setView('pronouns')}
@@ -321,7 +333,7 @@ const GerundChart = () => {
                 >
                   <span className="font-bold block mb-1">-вшись</span>
                   {t('gerund.steps.perf3b')}
-                  <div className="text-xs text-blue-200 mt-1 italic">Es: умыться → умывшись</div>
+                  <div className="text-xs text-blue-200 mt-1 italic" dangerouslySetInnerHTML={{ __html: 'Es: ' + underlineStress('умыться → умывшись') }} />
                 </motion.div>
               </div>
             )}
@@ -396,7 +408,7 @@ const StepCard = ({ number, text, example, color }: { number: number, text: stri
     <div className={`font-bold text-sm mb-1 ${color === 'blue' ? 'text-blue-800' : 'text-red-800'}`}>
       {number}. {text}
     </div>
-    {example && <div className="text-xs text-slate-500 italic ml-4">{example}</div>}
+    {example && <div className="text-xs text-slate-500 italic ml-4" dangerouslySetInnerHTML={{ __html: underlineStress(example) }} />}
   </motion.div>
 );
 
@@ -656,6 +668,10 @@ const MainContent = () => {
 
   if (view === 'cases') {
     return <CasesChart />;
+  }
+
+  if (view === 'prepositions') {
+    return <PrepositionsChart />;
   }
 
   if (view === 'learn_teach') {

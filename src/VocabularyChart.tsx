@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { vocabularyData, type VocabItem, type VerbConjugation } from './vocabularyData';
 import { useLanguage } from './LanguageContext';
 import { getDeclension, CASES, type DeclensionResult } from './utils/declension';
+import { underlineStress } from './utils/textUtils';
 import { Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift, X } from 'lucide-react';
 
 interface VocabularyChartProps {
@@ -43,8 +44,8 @@ const NounDeclensionTable = ({ declension }: { declension: DeclensionResult }) =
         {CASES.map((caseName, idx) => (
           <tr key={caseName} className="hover:bg-slate-50 transition-colors">
             <td className="py-3 pl-2 font-medium text-slate-500">{caseName}</td>
-            <td className="py-3 font-bold text-indigo-900">{declension.singular[idx]}</td>
-            <td className="py-3 font-bold text-emerald-900">{declension.plural[idx]}</td>
+            <td className="py-3 font-bold text-indigo-900" dangerouslySetInnerHTML={{ __html: underlineStress(declension.singular[idx]) }} />
+            <td className="py-3 font-bold text-emerald-900" dangerouslySetInnerHTML={{ __html: underlineStress(declension.plural[idx]) }} />
           </tr>
         ))}
       </tbody>
@@ -64,7 +65,7 @@ const VerbConjugationTable = ({ conjugation }: { conjugation: VerbConjugation })
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
               <span className="text-gray-400 font-medium w-16">{pronoun}</span>
-              <span className="font-bold text-slate-800 text-lg">{conjugation.presentFuture[idx]}</span>
+              <span className="font-bold text-slate-800 text-lg" dangerouslySetInnerHTML={{ __html: underlineStress(conjugation.presentFuture[idx]) }} />
             </div>
           ))}
         </div>
@@ -77,19 +78,19 @@ const VerbConjugationTable = ({ conjugation }: { conjugation: VerbConjugation })
         <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
             <span className="text-gray-400 font-medium w-16">Он</span>
-            <span className="font-bold text-slate-800 text-lg">{conjugation.past[0]}</span>
+            <span className="font-bold text-slate-800 text-lg" dangerouslySetInnerHTML={{ __html: underlineStress(conjugation.past[0]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
             <span className="text-gray-400 font-medium w-16">Она</span>
-            <span className="font-bold text-slate-800 text-lg">{conjugation.past[1]}</span>
+            <span className="font-bold text-slate-800 text-lg" dangerouslySetInnerHTML={{ __html: underlineStress(conjugation.past[1]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
             <span className="text-gray-400 font-medium w-16">Оно</span>
-            <span className="font-bold text-slate-800 text-lg">{conjugation.past[2]}</span>
+            <span className="font-bold text-slate-800 text-lg" dangerouslySetInnerHTML={{ __html: underlineStress(conjugation.past[2]) }} />
           </div>
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">
             <span className="text-gray-400 font-medium w-16">Они</span>
-            <span className="font-bold text-slate-800 text-lg">{conjugation.past[3]}</span>
+            <span className="font-bold text-slate-800 text-lg" dangerouslySetInnerHTML={{ __html: underlineStress(conjugation.past[3]) }} />
           </div>
         </div>
       </div>
@@ -130,7 +131,7 @@ const VocabularyChart = ({ topic }: VocabularyChartProps) => {
             whileTap={{ scale: 0.98 }}
             className="bg-white p-4 rounded-xl border border-slate-100 shadow-sm hover:shadow-md transition-all flex flex-col items-center text-center cursor-pointer group"
           >
-            <span className="text-xl font-bold text-slate-800 mb-1 group-hover:text-indigo-600 transition-colors">{item.ru}</span>
+            <span className="text-xl font-bold text-slate-800 mb-1 group-hover:text-indigo-600 transition-colors" dangerouslySetInnerHTML={{ __html: underlineStress(item.ru) }} />
             <span className="text-sm text-slate-500 font-medium">{t(`vocabulary.${topic}.${item.id}`)}</span>
           </motion.div>
         ))}
@@ -155,7 +156,7 @@ const VocabularyChart = ({ topic }: VocabularyChartProps) => {
             >
               <div className="p-6 bg-slate-50 border-b border-slate-100 flex justify-between items-center sticky top-0 z-10">
                 <div>
-                  <h3 className="text-3xl font-black text-slate-800">{selectedWord.ru}</h3>
+                  <h3 className="text-3xl font-black text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(selectedWord.ru) }} />
                   <p className="text-slate-500 font-medium">{t(`vocabulary.${topic}.${selectedWord.id}`)}</p>
                 </div>
                 <button 

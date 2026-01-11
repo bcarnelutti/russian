@@ -1,10 +1,11 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from './LanguageContext';
+import { underlineStress } from './utils/textUtils';
 
 const casesData = [
   { 
     id: 'nominative',
-    ru: 'Именительный', 
+    ru: 'Имени́тельный', 
     question: 'кто? что?', 
     rows: {
       m: { adj: '-ый / -ий', noun: 'Ø / -й / -ь' },
@@ -15,7 +16,7 @@ const casesData = [
   },
   { 
     id: 'genitive',
-    ru: 'Родительный', 
+    ru: 'Роди́тельный', 
     question: 'кого? чего?', 
     rows: {
       m: { adj: '-ого / -его', noun: '-а / -я' },
@@ -26,7 +27,7 @@ const casesData = [
   },
   { 
     id: 'dative',
-    ru: 'Дательный', 
+    ru: 'Да́тельный', 
     question: 'кому? чему?', 
     rows: {
       m: { adj: '-ому / -ему', noun: '-у / -ю' },
@@ -37,7 +38,7 @@ const casesData = [
   },
   { 
     id: 'accusative',
-    ru: 'Винительный', 
+    ru: 'Вини́тельный', 
     question: 'кого? что?', 
     rows: {
       m: { adj: 'Inan=Nom / Anim=Gen', noun: 'Inan=Nom / Anim=Gen' },
@@ -48,7 +49,7 @@ const casesData = [
   },
   { 
     id: 'instrumental',
-    ru: 'Творительный', 
+    ru: 'Твори́тельный', 
     question: 'кем? чем?', 
     rows: {
       m: { adj: '-ым / -им', noun: '-ом / -ем' },
@@ -59,7 +60,7 @@ const casesData = [
   },
   { 
     id: 'prepositional',
-    ru: 'Предложный', 
+    ru: 'Предло́жный', 
     question: 'о ком? о чём?', 
     rows: {
       m: { adj: '-ом / -ем', noun: '-е / -и' },
@@ -104,7 +105,7 @@ const CasesChart = () => {
               {/* Case Header Column */}
               <div className="flex flex-col justify-center pl-2">
                 <div className="text-xl font-bold text-gray-800">{t(`cases.list.${c.id}.name`)}</div>
-                <div className="text-sm text-indigo-500 font-medium opacity-80">{c.ru}</div>
+                <div className="text-sm text-indigo-500 font-medium opacity-80" dangerouslySetInnerHTML={{ __html: underlineStress(c.ru) }} />
                 <div className="text-xs text-gray-400 italic mt-1">{c.question}</div>
                 <div className="text-xs text-slate-500 mt-1 font-medium bg-slate-100 w-fit px-2 py-0.5 rounded">{t(`cases.list.${c.id}.desc`)}</div>
               </div>

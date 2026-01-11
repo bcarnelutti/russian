@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Repeat, Footprints, Car, Plane, Waves, Package, Briefcase, User, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
+import { underlineStress } from './utils/textUtils';
 
 interface VerbPair {
   id: string;
@@ -26,7 +27,7 @@ const intransitivePairs: VerbPair[] = [
     unidirectional: {
       infinitive: 'Идти́',
       conjugation: ['иду́', 'идёшь', 'идёт', 'идём', 'идёте', 'иду́т'],
-      past: ['шёл', 'шла', 'шло', 'шли']
+      past: ['шёл', 'шла́', 'шло́', 'шли́']
     },
     multidirectional: {
       infinitive: 'Ходи́ть',
@@ -99,7 +100,7 @@ const transitivePairs: VerbPair[] = [
     unidirectional: {
       infinitive: 'Вести́',
       conjugation: ['веду́', 'ведёшь', 'ведёт', 'ведём', 'ведёте', 'веду́т'],
-      past: ['вёл', 'вела́', 'ве́ло', 'ве́ли']
+      past: ['вёл', 'вела́', 'вело́', 'вели́']
     },
     multidirectional: {
       infinitive: 'Води́ть',
@@ -147,7 +148,7 @@ const ConjugationCard = ({ title, data, colorClass }: { title: string, data: { i
       className={`p-4 rounded-xl border-2 ${colorClass} bg-white shadow-sm h-full`}
     >
       <h4 className="font-bold text-lg mb-2 text-center opacity-80">{title}</h4>
-      <div className="text-2xl font-black text-center mb-6 text-slate-900">{data.infinitive}</div>
+      <div className="text-2xl font-black text-center mb-6 text-slate-900" dangerouslySetInnerHTML={{ __html: underlineStress(data.infinitive) }} />
       
       <div className="mb-6">
         <div className="text-xs font-bold uppercase tracking-wider text-center mb-3 opacity-60">{t('motionVerbs.present')}</div>
@@ -155,7 +156,7 @@ const ConjugationCard = ({ title, data, colorClass }: { title: string, data: { i
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between border-b border-gray-100 py-1">
               <span className="text-gray-400 font-medium mr-4">{pronoun}</span>
-              <span className="font-bold">{data.conjugation[idx]}</span>
+              <span className="font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(data.conjugation[idx]) }} />
             </div>
           ))}
         </div>
@@ -166,19 +167,19 @@ const ConjugationCard = ({ title, data, colorClass }: { title: string, data: { i
         <div className="grid grid-cols-2 gap-x-8 gap-y-1 text-sm">
           <div className="flex justify-between border-b border-gray-100 py-1">
             <span className="text-gray-400 font-medium mr-4">Он</span>
-            <span className="font-bold">{data.past[0]}</span>
+            <span className="font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[0]) }} />
           </div>
           <div className="flex justify-between border-b border-gray-100 py-1">
             <span className="text-gray-400 font-medium mr-4">Она</span>
-            <span className="font-bold">{data.past[1]}</span>
+            <span className="font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[1]) }} />
           </div>
           <div className="flex justify-between border-b border-gray-100 py-1">
             <span className="text-gray-400 font-medium mr-4">Оно</span>
-            <span className="font-bold">{data.past[2]}</span>
+            <span className="font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[2]) }} />
           </div>
           <div className="flex justify-between border-b border-gray-100 py-1">
             <span className="text-gray-400 font-medium mr-4">Они</span>
-            <span className="font-bold">{data.past[3]}</span>
+            <span className="font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(data.past[3]) }} />
           </div>
         </div>
       </div>
@@ -237,7 +238,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   <span className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${state.uni ? 'text-blue-100' : 'text-blue-400'}`}>
                     {t('motionVerbs.unidirectional')}
                   </span>
-                  <span className="text-2xl font-serif font-bold">{pair.unidirectional.infinitive}</span>
+                  <span className="text-2xl font-serif font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(pair.unidirectional.infinitive) }} />
                   <ChevronDown className={`w-4 h-4 mt-1 transition-transform ${state.uni ? 'rotate-180' : ''}`} />
                 </motion.button>
 
@@ -250,13 +251,13 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   className={`flex flex-col items-center p-4 rounded-xl border-2 transition-all min-w-[160px] ${
                     state.multi 
                       ? 'bg-orange-600 border-orange-700 text-white shadow-md' 
-                      : 'bg-white border-orange-100 text-orange-600 hover:border-orange-300'
+                      : 'bg-white border-blue-100 text-orange-600 hover:border-orange-300'
                   }`}
                 >
                   <span className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${state.multi ? 'text-orange-100' : 'text-orange-400'}`}>
                      {t('motionVerbs.multidirectional')}
                   </span>
-                  <span className="text-2xl font-serif font-bold">{pair.multidirectional.infinitive}</span>
+                  <span className="text-2xl font-serif font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(pair.multidirectional.infinitive) }} />
                   <ChevronDown className={`w-4 h-4 mt-1 transition-transform ${state.multi ? 'rotate-180' : ''}`} />
                 </motion.button>
               </div>
