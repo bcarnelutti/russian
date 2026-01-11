@@ -42,6 +42,16 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 *   `src/index.css`: Tailwind CSS imports and global styles.
 *   `src/main.tsx`: Application entry point.
 *   `vite.config.ts`: Vite configuration.
+*   `.github/workflows/deploy.yml`: GitHub Actions workflow for automatic deployment.
+
+## Deployment
+
+The application is automatically deployed to **GitHub Pages** via GitHub Actions whenever changes are pushed to the `main` branch.
+
+*   **Live URL:** `https://bacarnelutti.github.io/russian/`
+*   **Deployment Configuration:**
+    *   `vite.config.ts`: The `base` property is set to `'/russian/'` to match the repository name.
+    *   **Settings Required:** In the GitHub repository settings under **Pages**, ensure the Source is set to **"Deploy from a branch"** and the branch is set to **`gh-pages`**.
 
 ## Development
 
