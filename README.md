@@ -71,3 +71,10 @@ export default defineConfig([
   },
 ])
 ```
+
+## License
+
+This web application is dual-licensed:
+
+*   **Code:** The source code is licensed under the [MIT License](https://opensource.org/licenses/MIT). You are free to use, modify, and distribute the code, provided that you include the original copyright notice and license.
+*   **Content:** The educational content (text, grammar explanations, vocabulary lists) is licensed under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. You may share and adapt the content for non-commercial purposes, provided you give appropriate credit and distribute your contributions under the same license.
