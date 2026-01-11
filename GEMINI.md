@@ -8,11 +8,13 @@ This is a React application built with TypeScript and Vite, designed to help stu
 *   **Причастие (Participio):** Present and Past tenses, including Active and Passive voices.
 *   **Cases (Падежи):** Usage and endings for nouns and adjectives.
 *   **Verbs of Motion (Глаголы движения):** Prefixed and unprefixed forms with prepositions.
+*   **Prepositions (Предлоги):** Common prepositions categorized by case with examples and related verbs.
 *   **Pronouns (Местоимения):** Personal, possessive, and demonstrative pronoun declensions.
 *   **Learn/Teach (Учить/Учиться):** Differences in usage.
+*   **Vocabulary (Словарный запас):** Comprehensive lists for Clothing, Health, Sports, Travel, and more.
 *   **Language Support:** Switchable between Italian and English.
 
-The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics.
+The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics. All Russian words feature **underlined stress marks** to aid pronunciation.
 
 ## Architecture & Tech Stack
 
@@ -33,8 +35,10 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 *   `src/translations.ts`: Dictionary for Italian and English text.
 *   `src/CasesChart.tsx`: Logic and layout for Russian case endings.
 *   `src/MotionVerbsChart.tsx` & `src/MotionVerbsPrepositionsChart.tsx`: Visualizations for movement verbs.
+*   `src/PrepositionsChart.tsx`: Visualizations for prepositions governed by cases.
 *   `src/PronounChart.tsx`: Declension tables for pronouns.
 *   `src/LearnTeachChart.tsx`: Guidance on using "to learn" and "to teach" verbs.
+*   `src/utils/textUtils.ts`: Utility for underlining stressed vowels in Russian text.
 *   `src/index.css`: Tailwind CSS imports and global styles.
 *   `src/main.tsx`: Application entry point.
 *   `vite.config.ts`: Vite configuration.
@@ -78,5 +82,6 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 
 *   **Components:** Functional components with hooks are used throughout.
 *   **Styling:** Utility-first CSS with Tailwind.
+*   **Text Rendering:** Use the `underlineStress` utility for all Russian text to automatically format stress marks (`\u0301`) as underlines.
 *   **State:** Local state is used for simple toggles, but `ChartContext` is preferred for shared state like expanding/collapsing all chart nodes.
 *   **Animations:** `AnimatePresence` and `motion` components from `framer-motion` are used for entry/exit animations.
