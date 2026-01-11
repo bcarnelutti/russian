@@ -2,7 +2,7 @@ export const translations = {
   it: {
     title: "Studiare il russo",
     subtitle: "Schede grammaticali interattive per comprendere le forme verbali e i casi russi.",
-    footer: "Creato per gli studenti di lingua russa",
+    footer: "Creato da <a href='https://github.com/bcarnelutti/russian' target='_blank' rel='noopener noreferrer' class='underline hover:text-indigo-600 transition-colors'>Beatrice Carnelutti</a>",
     nav: {
       cases: "Casi",
       pronouns: "Pronomi",
@@ -612,7 +612,7 @@ export const translations = {
   en: {
     title: "Study Russian",
     subtitle: "Interactive grammar charts to understand Russian verb forms and cases.",
-    footer: "Created for Russian language students",
+    footer: "Created by <a href='https://github.com/bcarnelutti/russian' target='_blank' rel='noopener noreferrer' class='underline hover:text-indigo-600 transition-colors'>Beatrice Carnelutti</a>",
     nav: {
       cases: "Cases",
       pronouns: "Pronouns",

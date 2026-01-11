@@ -631,9 +631,7 @@ const AppContent = () => {
 
         <MainContent />
         
-        <footer className="mt-24 text-center text-slate-400 text-sm">
-          {t('footer')}
-        </footer>
+        <footer className="mt-24 text-center text-slate-400 text-sm" dangerouslySetInnerHTML={{ __html: t('footer') }} />
       </div>
     </div>
   );
