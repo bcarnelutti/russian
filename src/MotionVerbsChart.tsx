@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, Repeat, Footprints, Car, Plane, Waves, Package, Briefcase, User, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import { underlineStress } from './utils/textUtils';
+import { translations } from './translations';
+
+const it = translations.it;
 
 interface VerbPair {
   id: string;
@@ -236,7 +239,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   }`}
                 >
                   <span className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${state.uni ? 'text-blue-100' : 'text-blue-400'}`}>
-                    {t('motionVerbs.unidirectional')}
+                    {it.motionVerbs.unidirectional}
                   </span>
                   <span className="text-2xl font-serif font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(pair.unidirectional.infinitive) }} />
                   <ChevronDown className={`w-4 h-4 mt-1 transition-transform ${state.uni ? 'rotate-180' : ''}`} />
@@ -251,11 +254,11 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   className={`flex flex-col items-center p-4 rounded-xl border-2 transition-all min-w-[160px] ${
                     state.multi 
                       ? 'bg-orange-600 border-orange-700 text-white shadow-md' 
-                      : 'bg-white border-blue-100 text-orange-600 hover:border-orange-300'
+                      : 'bg-white border-orange-100 text-orange-600 hover:border-orange-300'
                   }`}
                 >
                   <span className={`text-[10px] font-bold uppercase tracking-widest mb-1 ${state.multi ? 'text-orange-100' : 'text-orange-400'}`}>
-                     {t('motionVerbs.multidirectional')}
+                     {it.motionVerbs.multidirectional}
                   </span>
                   <span className="text-2xl font-serif font-bold" dangerouslySetInnerHTML={{ __html: underlineStress(pair.multidirectional.infinitive) }} />
                   <ChevronDown className={`w-4 h-4 mt-1 transition-transform ${state.multi ? 'rotate-180' : ''}`} />
@@ -274,7 +277,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                   <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                     {state.uni ? (
                       <ConjugationCard 
-                        title={t('motionVerbs.unidirectional')}
+                        title={it.motionVerbs.unidirectional}
                         data={pair.unidirectional} 
                         colorClass="border-blue-200 text-blue-900"
                       />
@@ -282,7 +285,7 @@ const VerbList = ({ pairs }: { pairs: VerbPair[] }) => {
                     
                     {state.multi ? (
                       <ConjugationCard 
-                        title={t('motionVerbs.multidirectional')}
+                        title={it.motionVerbs.multidirectional}
                         data={pair.multidirectional} 
                         colorClass="border-orange-200 text-orange-900"
                       />

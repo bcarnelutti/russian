@@ -12,6 +12,9 @@ import VocabularyChart from './VocabularyChart';
 import PrepositionsChart from './PrepositionsChart';
 import { LanguageProvider, useLanguage } from './LanguageContext';
 import { underlineStress } from './utils/textUtils';
+import { translations } from './translations';
+
+const it = translations.it;
 
 // --- Context Definition ---
 type ViewState = 
@@ -129,7 +132,7 @@ const LanguageSwitcher = () => {
 
 const Navigation = () => {
   const { view, setView } = useChartContext();
-  const { t } = useLanguage();
+  const nav = it.nav;
   const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'irregular_verbs', 'gerund', 'participle'].includes(view);
   const isVocabActive = ['vocabulary_menu', 'vocab_clothing', 'vocab_health', 'vocab_travel', 'vocab_education', 'vocab_body', 'vocab_nature', 'vocab_celebrations', 'vocab_sports'].includes(view);
 
@@ -143,7 +146,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        {t('nav.cases')}
+        {nav.cases}
       </button>
       <button
         onClick={() => setView('prepositions')}
@@ -153,7 +156,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        {t('nav.prepositions')}
+        {nav.prepositions}
       </button>
       <button
         onClick={() => setView('pronouns')}
@@ -163,7 +166,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        {t('nav.pronouns')}
+        {nav.pronouns}
       </button>
       <button
         onClick={() => setView('verbs_menu')}
@@ -173,7 +176,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        {t('nav.verbs')}
+        {nav.verbs}
       </button>
       <button
         onClick={() => setView('vocabulary_menu')}
@@ -183,7 +186,7 @@ const Navigation = () => {
             : 'bg-white text-gray-500 hover:bg-gray-50 shadow-sm'
         }`}
       >
-        {t('nav.vocabulary')}
+        {nav.vocabulary}
       </button>
     </div>
   );
@@ -191,16 +194,14 @@ const Navigation = () => {
 
 const VerbsMenu = () => {
   const { setView } = useChartContext();
-  const { t } = useLanguage();
-
   const menuItems = [
-    { id: 'motion_verbs', label: t('verbsMenu.motion_verbs') },
-    { id: 'motion_verbs_prepositions', label: t('verbsMenu.motion_verbs_prepositions') },
-    { id: 'learn_teach', label: t('verbsMenu.learn_teach') },
-    { id: 'wear_verbs', label: t('verbsMenu.wear_verbs') },
-    { id: 'gerund', label: t('verbsMenu.gerund') },
-    { id: 'participle', label: t('verbsMenu.participle') },
-    { id: 'irregular_verbs', label: t('verbsMenu.irregular_verbs') },
+    { id: 'motion_verbs', label: it.verbsMenu.motion_verbs },
+    { id: 'motion_verbs_prepositions', label: it.verbsMenu.motion_verbs_prepositions },
+    { id: 'learn_teach', label: it.verbsMenu.learn_teach },
+    { id: 'wear_verbs', label: it.verbsMenu.wear_verbs },
+    { id: 'gerund', label: it.verbsMenu.gerund },
+    { id: 'participle', label: it.verbsMenu.participle },
+    { id: 'irregular_verbs', label: it.verbsMenu.irregular_verbs },
   ] as const;
 
   return (
@@ -228,17 +229,15 @@ const VerbsMenu = () => {
 
 const VocabularyMenu = () => {
   const { setView } = useChartContext();
-  const { t } = useLanguage();
-
   const menuItems = [
-    { id: 'vocab_clothing', label: t('vocabularyMenu.clothing'), icon: Shirt, color: 'text-pink-600' },
-    { id: 'vocab_health', label: t('vocabularyMenu.health'), icon: Stethoscope, color: 'text-red-600' },
-    { id: 'vocab_travel', label: t('vocabularyMenu.travel'), icon: Plane, color: 'text-sky-600' },
-    { id: 'vocab_education', label: t('vocabularyMenu.education'), icon: GraduationCap, color: 'text-indigo-600' },
-    { id: 'vocab_body', label: t('vocabularyMenu.body'), icon: User, color: 'text-orange-600' },
-    { id: 'vocab_nature', label: t('vocabularyMenu.nature'), icon: Trees, color: 'text-emerald-600' },
-    { id: 'vocab_celebrations', label: t('vocabularyMenu.celebrations'), icon: Gift, color: 'text-purple-600' },
-    { id: 'vocab_sports', label: t('vocabularyMenu.sports'), icon: Dumbbell, color: 'text-blue-600' },
+    { id: 'vocab_clothing', label: it.vocabularyMenu.clothing, icon: Shirt, color: 'text-pink-600' },
+    { id: 'vocab_health', label: it.vocabularyMenu.health, icon: Stethoscope, color: 'text-red-600' },
+    { id: 'vocab_travel', label: it.vocabularyMenu.travel, icon: Plane, color: 'text-sky-600' },
+    { id: 'vocab_education', label: it.vocabularyMenu.education, icon: GraduationCap, color: 'text-indigo-600' },
+    { id: 'vocab_body', label: it.vocabularyMenu.body, icon: User, color: 'text-orange-600' },
+    { id: 'vocab_nature', label: it.vocabularyMenu.nature, icon: Trees, color: 'text-emerald-600' },
+    { id: 'vocab_celebrations', label: it.vocabularyMenu.celebrations, icon: Gift, color: 'text-purple-600' },
+    { id: 'vocab_sports', label: it.vocabularyMenu.sports, icon: Dumbbell, color: 'text-blue-600' },
   ] as const;
 
   return (
@@ -288,8 +287,8 @@ const GerundChart = () => {
         {/* Imperfective Block */}
         <div className="flex-1 w-full">
           <ParticipleBlock 
-            title={t('gerund.imperfective')}
-            subtitle={t('gerund.imperfectiveSubtitle')}
+            title={it.gerund.imperfective}
+            subtitle={it.gerund.imperfectiveSubtitle}
             colorTheme="blue" 
             currentStep={imperfectiveStep}
             advanceStep={advanceImperfective}
@@ -309,8 +308,8 @@ const GerundChart = () => {
         {/* Perfective Block */}
         <div className="flex-1 w-full">
           <ParticipleBlock 
-            title={t('gerund.perfective')}
-            subtitle={t('gerund.perfectiveSubtitle')}
+            title={it.gerund.perfective}
+            subtitle={it.gerund.perfectiveSubtitle}
             colorTheme="red" 
             currentStep={perfectiveStep}
             advanceStep={advancePerfective}
@@ -464,7 +463,7 @@ const ParticipleChart = () => {
             onClick={togglePast}
             className={`cursor-pointer p-4 rounded-xl border-2 text-center mb-8 transition-colors ${pastStep > 0 ? 'bg-[#D52B1E] text-white border-red-800 shadow-md' : 'bg-white text-red-600 border-red-200 hover:bg-red-50'}`}
           >
-            <h3 className="text-2xl font-bold">{t('participle.past')}</h3>
+            <h3 className="text-2xl font-bold">{it.participle.past}</h3>
             <p className="text-sm opacity-90 italic">Tempo Passato</p>
           </motion.div>
 
@@ -478,7 +477,7 @@ const ParticipleChart = () => {
               >
                 {/* Active Past */}
                 <ParticipleBlock 
-                  title={t('participle.active')}
+                  title={it.participle.active}
                   subtitle="Действительное" 
                   colorTheme="blue" 
                   currentStep={activePastStep}
@@ -491,7 +490,7 @@ const ParticipleChart = () => {
 
                 {/* Passive Past */}
                 <ParticipleBlock 
-                  title={t('participle.passive')}
+                  title={it.participle.passive}
                   subtitle="Страдательное" 
                   colorTheme="red" 
                   currentStep={passivePastStep}
@@ -524,7 +523,7 @@ const ParticipleChart = () => {
             onClick={togglePresent}
             className={`cursor-pointer p-4 rounded-xl border-2 text-center mb-8 transition-colors ${presentStep > 0 ? 'bg-blue-600 text-white border-blue-800 shadow-md' : 'bg-white text-blue-600 border-blue-200 hover:bg-blue-50'}`}
           >
-            <h3 className="text-2xl font-bold">{t('participle.present')}</h3>
+            <h3 className="text-2xl font-bold">{it.participle.present}</h3>
             <p className="text-sm opacity-90 italic">Tempo Presente</p>
           </motion.div>
 
@@ -538,7 +537,7 @@ const ParticipleChart = () => {
               >
                 {/* Active Present */}
                 <ParticipleBlock 
-                  title={t('participle.active')}
+                  title={it.participle.active}
                   subtitle="Действительное" 
                   colorTheme="blue" 
                   currentStep={activePresentStep}
@@ -551,7 +550,7 @@ const ParticipleChart = () => {
 
                 {/* Passive Present */}
                 <ParticipleBlock 
-                  title={t('participle.passive')}
+                  title={it.participle.passive}
                   subtitle="Страдательное" 
                   colorTheme="red" 
                   currentStep={passivePresentStep}
@@ -573,7 +572,6 @@ const ParticipleChart = () => {
 
 const ControlPanel = () => {
   const { expandAll, collapseAll, isAllExpanded, view } = useChartContext();
-  const { t } = useLanguage();
   
   if (!['gerund', 'participle'].includes(view)) return null;
 
@@ -588,7 +586,7 @@ const ControlPanel = () => {
           : 'bg-indigo-600 text-white border-indigo-700 hover:bg-indigo-700'
       }`}
     >
-      {isAllExpanded ? t('controls.collapseAll') : t('controls.expandAll')}
+      {isAllExpanded ? it.controls.collapseAll : it.controls.expandAll}
     </motion.button>
   );
 };

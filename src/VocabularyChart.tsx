@@ -4,7 +4,10 @@ import { vocabularyData, type VocabItem, type VerbConjugation } from './vocabula
 import { useLanguage } from './LanguageContext';
 import { getDeclension, CASES, type DeclensionResult } from './utils/declension';
 import { underlineStress } from './utils/textUtils';
+import { translations } from './translations';
 import { Shirt, Stethoscope, Plane, GraduationCap, User, Trees, Gift, X } from 'lucide-react';
+
+const it = translations.it;
 
 interface VocabularyChartProps {
   topic: keyof typeof vocabularyData;
@@ -54,12 +57,11 @@ const NounDeclensionTable = ({ declension }: { declension: DeclensionResult }) =
 );
 
 const VerbConjugationTable = ({ conjugation }: { conjugation: VerbConjugation }) => {
-  const { t } = useLanguage();
   return (
     <div className="space-y-6">
       <div>
         <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-b border-slate-100 pb-1">
-          {t('learnTeach.presentFuture')}
+          {it.learnTeach.presentFuture}
         </div>
         <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-8 gap-y-2 text-sm max-w-md">
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
@@ -73,7 +75,7 @@ const VerbConjugationTable = ({ conjugation }: { conjugation: VerbConjugation })
 
       <div>
         <div className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 border-b border-slate-100 pb-1">
-          {t('learnTeach.past')}
+          {it.learnTeach.past}
         </div>
         <div className="grid grid-cols-2 gap-x-8 gap-y-2 text-sm max-w-md">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-1">

@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { BookOpen, GraduationCap, School, Brain, PenTool, Users } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import { underlineStress } from './utils/textUtils';
+import { translations } from './translations';
+
+const it = translations.it;
 
 interface VerbConjugation {
   presentFuture: string[];
@@ -133,14 +136,13 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
   const isBlue = colorTheme === 'blue';
   const headerColor = isBlue ? 'text-blue-800' : 'text-red-800';
   const subHeaderColor = isBlue ? 'text-blue-600' : 'text-red-600';
-  const { t } = useLanguage();
 
   return (
     <div className="text-sm">
       <div className={`font-bold uppercase tracking-wider mb-2 ${headerColor} border-b ${isBlue ? 'border-blue-100' : 'border-red-100'} pb-1`} dangerouslySetInnerHTML={{ __html: underlineStress(title) }} />
       
       <div className="mb-4">
-        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('learnTeach.presentFuture')}</div>
+        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{it.learnTeach.presentFuture}</div>
         <div className="grid grid-cols-2 grid-flow-col grid-rows-3 gap-x-2 gap-y-1">
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 last:border-0 pb-0.5">
@@ -152,7 +154,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
       </div>
 
       <div>
-        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('learnTeach.past')}</div>
+        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{it.learnTeach.past}</div>
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Он</span>
@@ -218,7 +220,7 @@ const VerbCard = ({ item, colorTheme }: { item: VerbData, colorTheme: 'blue' | '
         </div>
 
         <div className="mt-auto bg-slate-50/50 p-3 rounded-lg border border-slate-100">
-          <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{t('learnTeach.example')}</div>
+          <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{it.learnTeach.example}</div>
           <div className="text-sm font-medium text-slate-800" dangerouslySetInnerHTML={{ __html: underlineStress(item.exampleRu) }} />
           <div className="text-xs italic text-slate-500">{exampleIt}</div>
         </div>
@@ -271,7 +273,7 @@ const LearnTeachChart = () => {
         <div>
           <div className="mb-6 sticky top-4 z-10 bg-white pb-2 pt-2">
             <h3 className="text-xl font-bold text-blue-900 bg-blue-100/50 py-2 rounded-lg border-2 border-blue-200 text-center shadow-sm">
-              {t('learnTeach.aspectPairs')}
+              {it.learnTeach.aspectPairs}
             </h3>
           </div>
           <div className="space-y-4">
@@ -285,7 +287,7 @@ const LearnTeachChart = () => {
         <div>
           <div className="mb-6 sticky top-4 z-10 bg-white pb-2 pt-2">
             <h3 className="text-xl font-bold text-red-900 bg-red-100/50 py-2 rounded-lg border-2 border-red-200 text-center shadow-sm">
-              {t('learnTeach.imperfOnly')}
+              {it.learnTeach.imperfOnly}
             </h3>
           </div>
           <div className="space-y-4">

@@ -3,6 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Shirt, User, ArrowDownCircle, ArrowUpCircle, RefreshCw, ChevronDown } from 'lucide-react';
 import { useLanguage } from './LanguageContext';
 import { underlineStress } from './utils/textUtils';
+import { translations } from './translations';
+
+const it = translations.it;
 
 interface VerbConjugation {
   presentFuture: string[];
@@ -118,14 +121,13 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
   const isBlue = colorTheme === 'blue';
   const headerColor = isBlue ? 'text-blue-800' : 'text-red-800';
   const subHeaderColor = isBlue ? 'text-blue-600' : 'text-red-600';
-  const { t } = useLanguage();
 
   return (
     <div className="text-sm">
       <div className={`font-bold uppercase tracking-wider mb-2 ${headerColor} border-b ${isBlue ? 'border-blue-100' : 'border-red-100'} pb-1`} dangerouslySetInnerHTML={{ __html: underlineStress(title) }} />
       
       <div className="mb-4">
-        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('wearVerbs.presentFuture')}</div>
+        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{it.wearVerbs.presentFuture}</div>
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           {['Я', 'Ты', 'Он/Она', 'Мы', 'Вы', 'Они'].map((pronoun, idx) => (
             <div key={pronoun} className="flex justify-between items-baseline border-b border-dashed border-gray-100 last:border-0 pb-0.5">
@@ -137,7 +139,7 @@ const ConjugationTable = ({ data, title, colorTheme }: { data: VerbConjugation, 
       </div>
 
       <div>
-        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{t('wearVerbs.past')}</div>
+        <div className={`text-[10px] font-bold uppercase mb-1 opacity-70 ${subHeaderColor}`}>{it.wearVerbs.past}</div>
         <div className="grid grid-cols-2 gap-x-2 gap-y-1">
           <div className="flex justify-between items-baseline border-b border-dashed border-gray-100 pb-0.5">
             <span className="text-xs text-gray-400 mr-2">Он</span>
@@ -204,7 +206,7 @@ const WearVerbCard = ({ item }: { item: VerbData }) => {
             </p>
 
             <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
-                <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{t('wearVerbs.example')}</div>
+                <div className="text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider">{it.wearVerbs.example}</div>
                 <div className="text-base font-medium text-slate-800 mb-0.5" dangerouslySetInnerHTML={{ __html: underlineStress(exampleRu) }} />
                 <div className="text-sm italic text-slate-500">{exampleIt}</div>
             </div>
@@ -233,7 +235,7 @@ const WearVerbCard = ({ item }: { item: VerbData }) => {
                 />
               ) : (
                 <div className="flex items-center justify-center text-slate-400 italic text-sm p-8 border-2 border-dashed border-slate-200 rounded-xl">
-                   {t('wearVerbs.imperfOnly')}
+                   {it.wearVerbs.imperfOnly}
                 </div>
               )}
             </div>
@@ -264,11 +266,11 @@ const WearVerbsChart = () => {
 
        <div className="mt-12 bg-yellow-50 p-6 rounded-xl border border-yellow-200">
         <h3 className="text-xl font-bold text-yellow-900 mb-4 flex items-center gap-2">
-            💡 {t('wearVerbs.mnemonicsTitle')}
+            💡 {it.wearVerbs.mnemonicsTitle}
         </h3>
-        <p className="text-yellow-800 text-lg font-medium text-center italic" dangerouslySetInnerHTML={{ __html: '"' + underlineStress(t('wearVerbs.mnemonicsText')) + '"' }} />
+        <p className="text-yellow-800 text-lg font-medium text-center italic" dangerouslySetInnerHTML={{ __html: '"' + underlineStress(it.wearVerbs.mnemonicsText) + '"' }} />
         <p className="text-yellow-700/80 text-sm text-center mt-2">
-            ({t('wearVerbs.mnemonicsDesc')})
+            ({it.wearVerbs.mnemonicsDesc})
         </p>
       </div>
     </section>
