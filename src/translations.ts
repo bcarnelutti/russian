@@ -14,7 +14,7 @@ export const translations = {
     verbsMenu: {
       motion_verbs: "Verbi di moto",
       motion_verbs_prepositions: "Verbi di moto + prefissi",
-      learn_teach: "Imparare e insegnare",
+      learn_teach: "ESERCIZI (Imparare e insegnare)",
       wear_verbs: "Verbo indossare",
       irregular_verbs: "Verbi irregolari",
       gerund: "Gerundio (Деепричастие)",
@@ -179,32 +179,32 @@ export const translations = {
         verbs: {
             uchit_vyuchit: {
                 translation: "Imparare / studiare (specifico)",
-                usage: "Accusativo (что?). Studio di una materia o imparare a memoria (poesie, parole).",
+                usage: "Accusativo (что?). Study of a subject or memorizing (poems, words).",
                 exampleIt: "Imparo nuove parole ogni giorno."
             },
             izuchat_izuchit: {
                 translation: "Studiare (approfonditamente)",
-                usage: "Accusativo (что?). Studio profondo, accademico. Più formale di учить.",
+                usage: "Accusativo (что?). Deep, academic study. More formal than учить.",
                 exampleIt: "Gli scienziati studiano lo spazio."
             },
             uchit_nauchit: {
                 translation: "Insegnare (a qualcuno)",
-                usage: "Accusativo (кого? - pers.) + Dativo (чему? - materia) O Infinito.",
+                usage: "Accusativo (кого? - pers.) + Dative (чему? - subject) OR Infinitive.",
                 exampleIt: "Il padre insegna al figlio a nuotare."
             },
             uchitsya: {
                 translation: "Studiare (essere studente)",
-                usage: "1. Place (где?): univ/school. 2. Manner (как?): well/badly. 3. + Inf: Imparare a.",
+                usage: "1. Place (где?): univ/school. 2. Manner (как?): well/badly. 3. + Inf: Learn to.",
                 exampleIt: "Mio fratello studia all'università."
             },
             zanimatsya: {
                 translation: "Studiare (fare i compiti)",
-                usage: "1. Studiare sui libri. 2. Strumentale (чем?): Praticare sport/musica.",
+                usage: "1. Study with books. 2. Instrumental (чем?): Practice sport/music.",
                 exampleIt: "Studio in biblioteca ogni sera."
             },
             prepodavat: {
                 translation: "Insegnare (professione)",
-                usage: "Accusativo (что? - materia) o senza oggetto. Attività del docente.",
+                usage: "Accusativo (что? - subject) or without object. Activity of a lecturer.",
                 exampleIt: "Lei insegna russo a scuola."
             }
         }
