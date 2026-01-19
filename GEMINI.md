@@ -10,9 +10,9 @@ This is a React application built with TypeScript and Vite, designed to help stu
 *   **Verbs of Motion (Глаголы движения):** Prefixed and unprefixed forms with prepositions.
 *   **Prepositions (Предлоги):** Common prepositions categorized by case with examples and related verbs.
 *   **Pronouns (Местоимения):** Personal, possessive, and demonstrative pronoun declensions.
-*   **Learn/Teach (Учить/Учиться):** Differences in usage.
+*   **ESERCIZI (Learn/Teach):** Differences in usage between "to learn" and "to teach" verbs. Usage instructions are provided in English for clarity, even in Italian mode.
 *   **Vocabulary (Словарный запас):** Comprehensive lists for Clothing, Health, Sports, Travel, and more.
-*   **Language Support:** Switchable between Italian and English.
+*   **Language Support:** Switchable between Italian and English. UI buttons and navigation remain in Italian to maintain a consistent interface.
 
 The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics. All Russian words feature **underlined stress marks** to aid pronunciation.
 
