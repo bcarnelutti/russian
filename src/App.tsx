@@ -7,6 +7,7 @@ import MotionVerbsPrepositionsChart from './MotionVerbsPrepositionsChart';
 import CasesChart from './CasesChart';
 import LearnTeachChart from './LearnTeachChart';
 import WearVerbsChart from './WearVerbsChart';
+import RememberVerbsChart from './RememberVerbsChart';
 import IrregularVerbsChart from './IrregularVerbsChart';
 import VocabularyChart from './VocabularyChart';
 import PrepositionsChart from './PrepositionsChart';
@@ -18,7 +19,7 @@ const it = translations.it;
 
 // --- Context Definition ---
 type ViewState = 
-  | 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'prepositions' | 'learn_teach' | 'wear_verbs' | 'irregular_verbs' | 'gerund' | 'participle'
+  | 'verbs_menu' | 'pronouns' | 'motion_verbs' | 'motion_verbs_prepositions' | 'cases' | 'prepositions' | 'learn_teach' | 'wear_verbs' | 'remember_verbs' | 'irregular_verbs' | 'gerund' | 'participle'
   | 'vocabulary_menu' | 'vocab_clothing' | 'vocab_health' | 'vocab_travel' | 'vocab_education' | 'vocab_body' | 'vocab_nature' | 'vocab_celebrations' | 'vocab_sports';
 
 interface ChartContextType {
@@ -133,7 +134,7 @@ const LanguageSwitcher = () => {
 const Navigation = () => {
   const { view, setView } = useChartContext();
   const nav = it.nav;
-  const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'irregular_verbs', 'gerund', 'participle'].includes(view);
+  const isVerbsActive = ['verbs_menu', 'motion_verbs', 'motion_verbs_prepositions', 'learn_teach', 'wear_verbs', 'remember_verbs', 'irregular_verbs', 'gerund', 'participle'].includes(view);
   const isVocabActive = ['vocabulary_menu', 'vocab_clothing', 'vocab_health', 'vocab_travel', 'vocab_education', 'vocab_body', 'vocab_nature', 'vocab_celebrations', 'vocab_sports'].includes(view);
 
   return (
@@ -199,6 +200,7 @@ const VerbsMenu = () => {
     { id: 'motion_verbs_prepositions', label: it.verbsMenu.motion_verbs_prepositions },
     { id: 'learn_teach', label: it.verbsMenu.learn_teach },
     { id: 'wear_verbs', label: it.verbsMenu.wear_verbs },
+    { id: 'remember_verbs', label: it.verbsMenu.remember_verbs },
     { id: 'gerund', label: it.verbsMenu.gerund },
     { id: 'participle', label: it.verbsMenu.participle },
     { id: 'irregular_verbs', label: it.verbsMenu.irregular_verbs },
@@ -676,6 +678,10 @@ const MainContent = () => {
 
   if (view === 'wear_verbs') {
     return <WearVerbsChart />;
+  }
+
+  if (view === 'remember_verbs') {
+    return <RememberVerbsChart />;
   }
 
   if (view === 'irregular_verbs') {

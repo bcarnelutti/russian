@@ -16,6 +16,7 @@ export const translations = {
       motion_verbs_prepositions: "Verbi di moto + prefissi",
       learn_teach: "ESERCIZI (Imparare e insegnare)",
       wear_verbs: "Verbo indossare",
+      remember_verbs: "Verbo ricordare",
       irregular_verbs: "Verbi irregolari",
       gerund: "Gerundio (Деепричастие)",
       participle: "Participio (Причастие)"
@@ -249,6 +250,35 @@ export const translations = {
                 usage: "Togliere vestiti o accessori.",
                 exampleRu: "Он снима́ет ша́пку.",
                 exampleIt: "Lui si toglie il cappello."
+            }
+        }
+    },
+    rememberVerbs: {
+        title: "Verbo Ricordare",
+        subtitle: "Помнить, Вспоминать, Запоминать, Напоминать",
+        noteTitle: "Sfumature di significato",
+        note1: "<strong>Помнить</strong> è uno stato (tenere a mente), mentre <strong>Вспомнить</strong> e <strong>Запомнить</strong> sono azioni (richiamare, memorizzare).",
+        note2: "I verbi perfettivi (Запомнить, Вспомнить) si usano spesso al futuro per indicare 'riuscirò a ricordare'.",
+        verbs: {
+            pomnit: {
+                translation: "Ricordare / Tenere a mente",
+                usage: "Stato mentale. Avere qualcosa nella memoria. Imperfettivo (processo/stato).",
+                exampleIt: "Ricordo quel giorno."
+            },
+            zapominat_zapomnit: {
+                translation: "Memorizzare / Imparare a memoria",
+                usage: "L'atto di fissare nella memoria. Запоминать (processo), Запомнить (risultato).",
+                exampleIt: "Memorizzo facilmente le parole nuove."
+            },
+            vspominat_vspomnit: {
+                translation: "Ricordare / Tornare in mente",
+                usage: "Richiamare alla memoria qualcosa che si era dimenticato o che è nel passato.",
+                exampleIt: "All'improvviso mi sono ricordato il suo nome."
+            },
+            napominat_napomnit: {
+                translation: "Ricordare (a qualcuno) / Somigliare",
+                usage: "Far ricordare qualcosa a qualcuno. O assomigliare a qualcuno/qualcosa.",
+                exampleIt: "Ricordami di comprare il pane."
             }
         }
     },
@@ -597,6 +627,7 @@ export const translations = {
       motion_verbs_prepositions: "Verbs of motion + prepositions",
       learn_teach: "To learn & to teach",
       wear_verbs: "Verb to wear",
+      remember_verbs: "Verb to remember",
       irregular_verbs: "Irregular verbs",
       gerund: "Gerund (Деепричастие)",
       participle: "Participle (Причастие)"
@@ -830,6 +861,35 @@ export const translations = {
                 usage: "Remove clothes or accessories.",
                 exampleRu: "Он снима́ет ша́пку.",
                 exampleIt: "He takes off his hat."
+            }
+        }
+    },
+    rememberVerbs: {
+        title: "Verb To Remember",
+        subtitle: "Помнить, Вспоминать, Запоминать, Напоминать",
+        noteTitle: "Nuances of meaning",
+        note1: "<strong>Помнить</strong> is a state (keeping in mind), while <strong>Вспомнить</strong> and <strong>Запомнить</strong> are actions (recalling, memorizing).",
+        note2: "Perfective verbs (Запомнить, Вспомнить) are often used in the future to mean 'I will remember/recall'.",
+        verbs: {
+            pomnit: {
+                translation: "To remember / To keep in mind",
+                usage: "Mental state. Having something in memory. Imperfective (process/state).",
+                exampleIt: "I remember that day."
+            },
+            zapominat_zapomnit: {
+                translation: "To memorize / To commit to memory",
+                usage: "The act of fixing in memory. Запоминать (process), Запомнить (result).",
+                exampleIt: "I easily memorize new words."
+            },
+            vspominat_vspomnit: {
+                translation: "To recall / To remember suddenly",
+                usage: "To call back to memory something forgotten or from the past.",
+                exampleIt: "Suddenly I remembered his name."
+            },
+            napominat_napomnit: {
+                translation: "To remind / To resemble",
+                usage: "To make someone remember something. Or to look like someone/something.",
+                exampleIt: "Remind me to buy bread."
             }
         }
     },
