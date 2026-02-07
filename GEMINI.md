@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This is a React application built with TypeScript and Vite, designed to help students learn Russian grammar. Specifically, it features interactive charts for understanding the formation and usage of:
+**Кот Граммучёный** is a React application built with TypeScript and Vite, designed to help students learn Russian grammar through interactive visualizations. Specifically, it features interactive charts for understanding the formation and usage of:
 
 *   **Деепричастие (Gerundio):** Imperfective and Perfective aspects.
 *   **Причастие (Participio):** Present and Past tenses, including Active and Passive voices.
