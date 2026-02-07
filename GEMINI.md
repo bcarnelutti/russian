@@ -48,10 +48,10 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 
 The application is automatically deployed to **GitHub Pages** via GitHub Actions whenever changes are pushed to the `main` branch.
 
-*   **Live URL:** `https://bcarnelutti.github.io/russian/`
+*   **Live URL:** `https://kgu.beatricecarnelutti.com/`
 *   **Deployment Configuration:**
-    *   `vite.config.ts`: The `base` property is set to `'/russian/'` to match the repository name.
-    *   **Settings Required:** In the GitHub repository settings under **Pages**, ensure the Source is set to **"Deploy from a branch"** and the branch is set to **`gh-pages`**.
+    *   `vite.config.ts`: The `base` property is set to `'/'` since the site is hosted on a custom root domain.
+    *   **Settings Required:** In the GitHub repository settings under **Pages**, ensure the Source is set to **"Deploy from a branch"** and the branch is set to **`gh-pages`**. Also, ensure the custom domain is correctly configured in the repository settings.
 
 ## Development
 
