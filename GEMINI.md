@@ -1,8 +1,8 @@
-# Russian Grammar Learning Tool
+# Grammatica Italiana
 
 ## Project Overview
 
-This is a React application built with TypeScript and Vite, designed to help students learn Russian grammar. Specifically, it features interactive charts for understanding the formation and usage of:
+This is a React application built with TypeScript and Vite, designed to help students learn grammar. Specifically, it features interactive charts for understanding the formation and usage of:
 
 *   **Деепричастие (Gerundio):** Imperfective and Perfective aspects.
 *   **Причастие (Participio):** Present and Past tenses, including Active and Passive voices.
@@ -14,7 +14,7 @@ This is a React application built with TypeScript and Vite, designed to help stu
 *   **Vocabulary (Словарный запас):** Comprehensive lists for Clothing, Health, Sports, Travel, and more.
 *   **Language Support:** Switchable between Italian and English. UI buttons and navigation remain in Italian to maintain a consistent interface.
 
-The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics. All Russian words feature **underlined stress marks** to aid pronunciation.
+The application uses `framer-motion` for animations (revealing steps, arrows) and `tailwindcss` for styling. It implements a custom "butterfly" chart layout for the Participles and structured grids/trees for other grammar topics. All foreign words feature **underlined stress marks** where applicable to aid pronunciation.
 
 ## Architecture & Tech Stack
 
@@ -33,12 +33,12 @@ The application uses `framer-motion` for animations (revealing steps, arrows) an
 *   `src/App.tsx`: Main entry point for the UI components.
 *   `src/LanguageContext.tsx`: Context provider for language state and translation hook.
 *   `src/translations.ts`: Dictionary for Italian and English text.
-*   `src/CasesChart.tsx`: Logic and layout for Russian case endings.
+*   `src/CasesChart.tsx`: Logic and layout for grammar case endings.
 *   `src/MotionVerbsChart.tsx` & `src/MotionVerbsPrepositionsChart.tsx`: Visualizations for movement verbs.
 *   `src/PrepositionsChart.tsx`: Visualizations for prepositions governed by cases.
 *   `src/PronounChart.tsx`: Declension tables for pronouns.
 *   `src/LearnTeachChart.tsx`: Guidance on using "to learn" and "to teach" verbs.
-*   `src/utils/textUtils.ts`: Utility for underlining stressed vowels in Russian text.
+*   `src/utils/textUtils.ts`: Utility for underlining stressed vowels in text.
 *   `src/index.css`: Tailwind CSS imports and global styles.
 *   `src/main.tsx`: Application entry point.
 *   `vite.config.ts`: Vite configuration.
@@ -85,13 +85,13 @@ The application is automatically deployed to **GitHub Pages** via GitHub Actions
 
 ## Source Control
 
-*   **Repository:** `https://github.com/bcarnelutti/russian`
+*   **Repository:** `https://github.com/bcarnelutti/grammatica-italiana`
 *   **Workflow:** Always push to GitHub after every major update of the code.
 
 ## Coding Conventions
 
 *   **Components:** Functional components with hooks are used throughout.
 *   **Styling:** Utility-first CSS with Tailwind.
-*   **Text Rendering:** Use the `underlineStress` utility for all Russian text to automatically format stress marks (`\u0301`) as underlines.
+*   **Text Rendering:** Use the `underlineStress` utility for all grammar text to automatically format stress marks (`\u0301`) as underlines.
 *   **State:** Local state is used for simple toggles, but `ChartContext` is preferred for shared state like expanding/collapsing all chart nodes.
 *   **Animations:** `AnimatePresence` and `motion` components from `framer-motion` are used for entry/exit animations.
