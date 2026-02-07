@@ -1,6 +1,6 @@
 export const translations = {
   it: {
-    title: "Studiare il russo",
+    title: "Кот Граммучёный",
     subtitle: "Schede grammaticali interattive per comprendere le forme verbali e i casi russi.",
     footer: "Creato da <a href='https://github.com/bcarnelutti/russian' target='_blank' rel='noopener noreferrer' class='underline hover:text-indigo-600 transition-colors'>Beatrice Carnelutti</a><br/><span class='text-xs opacity-75'>Codice: MIT | Contenuti: <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener noreferrer' class='hover:underline'>CC BY-NC-SA 4.0</a></span>",
     nav: {
@@ -611,7 +611,7 @@ export const translations = {
     }
   },
   en: {
-    title: "Study Russian",
+    title: "Кот Граммучёный",
     subtitle: "Interactive grammar charts to understand Russian verb forms and cases.",
     footer: "Created by <a href='https://github.com/bcarnelutti/russian' target='_blank' rel='noopener noreferrer' class='underline hover:text-indigo-600 transition-colors'>Beatrice Carnelutti</a><br/><span class='text-xs opacity-75'>Code: MIT | Content: <a href='https://creativecommons.org/licenses/by-nc-sa/4.0/' target='_blank' rel='noopener noreferrer' class='hover:underline'>CC BY-NC-SA 4.0</a></span>",
     nav: {

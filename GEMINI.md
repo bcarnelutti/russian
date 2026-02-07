@@ -1,4 +1,4 @@
-# Russian Grammar Learning Tool
+# Кот Граммучёный
 
 ## Project Overview
 
